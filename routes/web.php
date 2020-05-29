@@ -116,15 +116,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::resource("admin/city","CityController");
     
 
-    Route::post('mailsetting/update','SettingController@updateMailSetting')->name('update.mail.set');
-    Route::get('settings','SettingController@genreal')->name('gen.set');
-    Route::post('setting/store','SettingController@store')->name('setting.store');
-    Route::post('setting/seo','SettingController@updateSeo')->name('seo.set');
-    Route::post('setting/addcss','SettingController@storeCSS')->name('css.store');
-    Route::post('setting/addjs','SettingController@storeJS')->name('js.store');
-    Route::post('setting/sociallogin/fb','SettingController@slfb')->name('sl.fb');
-    Route::post('setting/sociallogin/gl','SettingController@slgl')->name('sl.gl');
-    Route::post('setting/sociallogin/git','SettingController@slgit')->name('sl.git');
+    
 
     Route::get('/admin/api','ApiController@setApiView')->name('api.setApiView');
     Route::post('admin/api','ApiController@changeEnvKeys')->name('api.update');
@@ -175,8 +167,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::resource('user/course/report','CourseReportController');
 
-    Route::get('banktransfer', 'BankTransferController@show')->name('bank.transfer');
-    Route::put('banktransfer/update', 'BankTransferController@update');
+   
 
     Route::get('admin/lang', 'LanguageController@showlang')->name('show.lang');
 
@@ -246,6 +237,8 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::resource('instructorquestion', 'InstructorQuestionController');
     Route::resource('instructoranswer', 'InstructorAnswerController');
     Route::get('coursereview', 'CourseReviewController@index');
+    Route::get('attendance/students','AttendanceController@StudentAttendance')->name('students.attendance.index');
+
 
     Route::resource('instructor/announcement', 'InstructorAnnouncementController');
     Route::resource('usermessage', 'ContactUsController');
@@ -261,7 +254,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::resource('/admin/questions', 'QuizController');
 
-    Route::resource('blog', 'BlogController');
+   // Route::resource('blog', 'BlogController');
 
   });
 
@@ -385,7 +378,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::post('/paywithpayment', 'PaytmController@order')->name('paywithpayment');
     Route::post('/payment/status', 'PaytmController@paymentCallback');
 
-    Route::post('process/banktransfer', 'BankTransferController@banktransfer');
+    //Route::post('process/banktransfer', 'BankTransferController@banktransfer');
     
     Route::get('watchcourse/in/frame/{url}/{course_id}', 'WatchController@view')->name('watchinframe');
 
@@ -403,9 +396,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::post('question/reports/{id}','QuestionReportController@store')->name('question.report');
 
-    Route::get('cirtificate/{id}', 'CertificateController@show')->name('cirtificate.show');
-
-    Route::get('cirtificate/download/{id}', 'CertificateController@pdfdownload')->name('cirtificate.download');
+    
 
   });
 
@@ -445,8 +436,7 @@ Route::get('admin/paid/{id}', 'AdminPayoutController@paid')->name('admin.paid');
 Route::post('admin/payout/bulk_payout/{id}', 'AdminPayoutController@bulk_payout');
 
 Route::post('admin/paypal/{id}', 'PaymentController@paypal')->name('admin.paypal');
-Route::post('admin/banktransfer/{id}', 'PaymentController@banktransfer')->name('admin.banktransfer');
-Route::post('admin/paytm/{id}', 'PaymentController@paytm')->name('admin.paytm');
+
 
 
 
@@ -454,10 +444,10 @@ Route::post('featuredwithpaypal', 'FeatureCourseController@payWithpaypal')->name
 Route::get('getfeaturedstatus', 'FeatureCourseController@getPaymentStatus')->name('featured');
 
 
-Route::get('admin/completed/payout', 'CompletedPayoutController@show')->name('admin.completed');
-Route::get('payout/completed/view/{id}', 'CompletedPayoutController@view')->name('completed.view');
 
 
-Route::get('admin/meeting/show', 'MeetingController@index')->name('meeting.show');
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+  \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 

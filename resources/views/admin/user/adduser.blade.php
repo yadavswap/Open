@@ -136,19 +136,7 @@
                   <option value="admin">{{ __('adminstaticword.Instructor') }}</option>
                 </select>
               </div> 
-              <div class="col-md-3">
-                  <label  for="married_status">{{ __('adminstaticword.ChooseMarrigeStatus') }}: </label>
-                  <select class="form-control js-example-basic-single" id="married_status" name="married_status">
-                    <option value="none" selected disabled hidden> 
-                      {{ __('adminstaticword.SelectanOption') }}
-                    </option>
-                    <option value="Unmarried">{{ __('adminstaticword.Unmarried') }}</option>
-                    <option value="Married">{{ __('adminstaticword.Married') }}</option>
-                    <option value="Divorced">{{ __('adminstaticword.Divorced') }}</option>
-                    <option value="Widowed">{{ __('adminstaticword.Widowed') }}</option>
-                  </select>
-                  <br> 
-              </div>
+           
               <div class="col-md-3 display-none" id="doaboxxx">
                 <label for="dob">{{ __('adminstaticword.DateofAnniversary') }}: <sup class="redstar">*</sup></label>
                   <input value="{{ old('doa')}}" name="doa" id="doa" type="text" class="form-control" placeholder="Enter your date of anniversary">
@@ -197,34 +185,7 @@
             </div>
             <br>
 
-            <div class="row">
-              <div class="col-md-6">
-                <label for="fb_url">
-                {{ __('adminstaticword.FacebookUrl') }}:
-                </label>
-                <input autofocus name="fb_url" type="text" class="form-control" placeholder="Facebook.com/"/>
-              </div>
-              <div class="col-md-6">
-                <label for="youtube_url">
-                {{ __('adminstaticword.YoutubeUrl') }}:
-                </label>
-                <input autofocus name="youtube_url" type="text" class="form-control" placeholder="youtube.com/"/>
-                <br>
-              </div>
-            
-              <div class="col-md-6">
-                <label for="twitter_url">
-                {{ __('adminstaticword.TwitterUrl') }}:
-                </label>
-                <input autofocus name="twitter_url" type="text" class="form-control" placeholder="Twitter.com/"/>
-              </div>
-              <div class="col-md-6">
-                <label for="linkedin_url">
-                {{ __('adminstaticword.LinkedInUrl') }}:
-                </label>
-                <input autofocus name="linkedin_url" type="text" class="form-control" placeholder="Linkedin.com/"/>
-              </div>
-            </div>
+          
             <br>
             <br>
             

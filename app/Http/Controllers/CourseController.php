@@ -80,6 +80,8 @@ class CourseController extends Controller
             'short_detail' => 'required',
             'detail' => 'required',
             'video' => 'mimes:mp4,avi,wmv',
+
+      
         ]);
 
         $input = $request->all();
@@ -139,7 +141,7 @@ class CourseController extends Controller
 
         $data->save();
 
-        return redirect('course');
+        return redirect('course')->with('courseid',$data->id);
     }
 
     /**

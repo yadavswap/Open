@@ -213,26 +213,28 @@ td .btn-success {
 	background-color: #003845;
 }
 .main-footer {
-	background-color: #F4824A;
+	background-color: #d32626;
 	color: #FFF;
 }
 .bg-red, .callout.callout-danger, 
 .alert-danger, .alert-error, .label-danger, 
 .modal-danger .modal-body {
-	background-color: #F44A4A !important;
+	background-color: #d32626 !important;
 }
 td form .btn-danger {
-	background-color: #F44A4A !important;
+	background-color: #d32626 !important;
 }
 .tgl-skewed + .tgl-btn {
-	background-color: #F44A4A !important;
+	background-color: #d32626 !important;
+	border-radius:50px;
 }
 .tgl-skewed:checked + .tgl-btn {
-    background-color: #86d993 !important;
+	background-color: #79d70f !important;
+	border-radius:50px;
 }
 .inputfile-1 + label {
     color: #FFF;
-    background-color: #F44A4A !important;
+    background-color: #d32626 !important;
 }
 .content-wrapper {
     background-color: #DEDFE0;

@@ -30,8 +30,7 @@ class Course extends Model
     protected $table = 'courses';  
 
     protected $fillable = [
-        'category_id','childcategory_id','subcategory_id', 'language_id', 'user_id', 'title','short_detail', 'detail',  'price', 'discount_price','day','video', 'video_url', 'featured','requirement','url','slug','status','preview_image', 'type', 'preview_type', 'duration'
-    ];
+        'category_id','childcategory_id','subcategory_id', 'language_id', 'user_id', 'title','short_detail', 'detail',  'price', 'discount_price','day','video', 'video_url', 'featured','requirement','url','slug','status','preview_image', 'type', 'preview_type', 'duration','fees'];
 
     public function chapter()
     {

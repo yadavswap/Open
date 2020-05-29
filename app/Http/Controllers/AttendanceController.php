@@ -19,4 +19,8 @@ class AttendanceController extends Controller
     	return view('admin.attendance.index');
 
     }
+
+    public function StudentAttendance(){
+        return view('admin.attendance.students');
+    }
 }

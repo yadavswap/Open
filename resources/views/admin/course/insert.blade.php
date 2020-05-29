@@ -153,10 +153,18 @@
 
                 <label for="exampleInputSlug">Course Expire Duration</label>
                 <p class="inline info"> - Please enter duration in month</p>
-                <input min="1" class="form-control" name="duration" type="number" id="duration"  placeholder="Enter Duration in months">
+                <input min="1" class="form-control" name="duration" type="number" id="duration"  placeholder="Enter Duration in months" value="0">
 
 
               </div>
+              <div class="col-md-3">
+
+<label for="exampleInputSlug">Course Fees</label>
+<p class="inline info"> - Please enter Course Fees </p>
+<input min="1" class="form-control" name="price" type="number" id="duration"  placeholder="Keep Blank For Free" >
+
+
+</div>
               </div>
               </br>
 
