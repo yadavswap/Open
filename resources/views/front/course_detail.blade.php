@@ -42,9 +42,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="no-rating">
-                                    {{ __('frontstaticword.NoRating') }}
-                                </div>
+                             
                             @endif
                         </li>
 
@@ -294,22 +292,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="requirements">
-                    <h3>{{ __('frontstaticword.Requirements') }}</h3>
-                    <ul>
-                        <li class="comment more">
-                            @if(strlen($course->requirement) > 400)
-                            {{substr($course->requirement,0,400)}}
-                            <span class="read-more-show hide_content"><br>+&nbsp;See More</span>
-                            <span class="read-more-content"> {{substr($course->requirement,400,strlen($course->requirement))}}
-                            <span class="read-more-hide hide_content"><br>-&nbsp;See Less</span> </span>
-                            @else
-                            {{$course->requirement}}
-                            @endif
-                        </li>
-                       
-                    </ul>
-                </div>
+            
                 <div class="description-block btm-30">
                     <h3>{{ __('frontstaticword.Description') }}</h3>
 
@@ -459,7 +442,7 @@
                 @endif
               
                 <div class="about-instructor-block">
-                    <h3>{{ __('frontstaticword.AboutInstructor') }}</h3>
+                    <h3>Teacher Details</h3>
                     
                     <div class="about-instructor btm-40">
                         <div class="row">
@@ -684,73 +667,8 @@
                 <hr>
                 @endif
                 @auth
-                <div class="learning-review btm-40">
-                     @php
-                        $orders = App\Order::where('user_id', Auth::User()->id)->where('course_id', $course->id)->first();
-                    @endphp
-                    @if(!empty($orders))
-                        <div class="review-block">
-                            <div class="row">
-                                <div class="col-lg-2">
-                                    <h3 class="top-20">{{ __('frontstaticword.Reviews') }}</h3>
-                                </div>
-                                <div class="col-lg-10 col-12">
-                                    <form id="demo-form2" method="post" action="{{route('course.rating',$course->id)}}" data-parsley-validate class="form-horizontal form-label-left">
-                                        {{ csrf_field() }}
-                                        <div class="review-table top-20">
-                                            <table class="table">
-                                              <thead>
-                                                <tr>
-                                                  <th scope="col"></th>
-                                                  <th scope="col">1 {{ __('frontstaticword.Star') }}</th>
-                                                  <th scope="col">2 {{ __('frontstaticword.Star') }}</th>
-                                                  <th scope="col">3 {{ __('frontstaticword.Star') }}</th>
-                                                  <th scope="col">4 {{ __('frontstaticword.Star') }}</th>
-                                                  <th scope="col">5 {{ __('frontstaticword.Star') }}</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <th scope="row">{{ __('frontstaticword.Learn') }}</th>
-                                                  <td><input type="radio" name="learn" value="1" id="option1" autocomplete="off"></td>
-                                                  <td><input type="radio" name="learn" value="2" id="option2" autocomplete="off"></td>
-                                                  <td><input type="radio" name="learn" value="3" id="option3" autocomplete="off"></td>
-                                                  <td><input type="radio" name="learn" value="4" id="option4" autocomplete="off"></td>
-                                                  <td><input type="radio" name="learn" value="5" id="option5" autocomplete="off"></td>
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">{{ __('frontstaticword.Price') }}</th>
-                                                  <td><input type="radio" name="price" value="1" id="option6" autocomplete="off"></td>
-                                                  <td><input type="radio" name="price" value="2" id="option7" autocomplete="off"></td>
-                                                  <td><input type="radio" name="price" value="3" id="option8" autocomplete="off"></td>
-                                                  <td><input type="radio" name="price" value="4" id="option9" autocomplete="off"></td>
-                                                  <td><input type="radio" name="price" value="5" id="option10" autocomplete="off"></td>
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">{{ __('frontstaticword.Value') }}</th>
-                                                  <td><input type="radio" name="value" value="1" id="option11" autocomplete="off"></td>
-                                                  <td><input type="radio" name="value" value="2" id="option12" autocomplete="off"></td>
-                                                  <td><input type="radio" name="value" value="3" id="option13" autocomplete="off"></td>
-                                                  <td><input type="radio" name="value" value="4" id="option14" autocomplete="off"></td>
-                                                  <td><input type="radio" name="value" value="5" id="option15" autocomplete="off"></td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                            <div class="review-text btm-30">
-                                                <label for="review">{{ __('frontstaticword.Writereview') }}:</label>
-                                                <textarea name="review" rows="4" class="form-control" placeholder=""></textarea>
-                                            </div>
-                                            <div class="review-rating-btn text-right">
-                                                <button type="submit" class="btn btn-success" title="Review">{{ __('frontstaticword.Submit') }}</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
+           
 
-                    @endif
 
 
                     @php
@@ -1064,66 +982,14 @@
                 </div>
                 @endif
                 @if(Auth::check())
-                    <div class="report-abuse text-center btm-20">
-                        <a href="#" data-toggle="modal" data-target="#myModalCourse" title="report"><i class="fa fa-flag rgt-10"></i>{{ __('frontstaticword.Report') }}</a>
-                    </div>
+                   
                 @else
-                    <div class="report-abuse text-center btm-20">
-                        <a href="{{ route('login') }}" title="report"><i class="fa fa-flag rgt-10"></i>{{ __('frontstaticword.Report') }}</a>
-                    </div>
+                   
                 @endif
 
                 <!--Model start-->
                 @auth
-                <div class="modal fade" id="myModalCourse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-
-                          <h4 class="modal-title" id="myModalLabel">{{ __('frontstaticword.Report') }}</h4>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="box box-primary">
-                          <div class="panel panel-sum">
-                            <div class="modal-body">
-                            
-                            <form id="demo-form2" method="post" action="{{ route('course.report', $course->id) }}"
-                                data-parsley-validate class="form-horizontal form-label-left">
-                                    {{ csrf_field() }}
-                                        
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="title">{{ __('frontstaticword.Title') }}:<sup class="redstar">*</sup></label>
-                                        <input type="text" class="form-control" name="title" id="title" placeholder="Please Enter Title" value="" required>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">{{ __('frontstaticword.Email') }}:<sup class="redstar">*</sup></label>
-                                        <input type="email" class="form-control" name="email" id="title" placeholder="Please Enter Email" value="{{ Auth::user()->email }}" required>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="detail">{{ __('frontstaticword.Detail') }}:<sup class="redstar">*</sup></label>
-                                        <textarea name="detail" rows="4"  class="form-control" placeholder="Enter Detail" required></textarea>
-                                    </div>
-                                  </div>
-                                </div>
-                                <br>
-                                <div class="box-footer">
-                                    <button type="submit" class="btn btn-lg col-md-3 btn-primary">{{ __('frontstaticword.Submit') }}</button>
-                                </div>
-                            </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                </div>
+              
                 @endauth
                 <!--Model close -->
             </div>

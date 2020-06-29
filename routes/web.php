@@ -4,6 +4,8 @@ use App\FaqStudent;
 use App\FaqInstructor;
 use App\User;
 use App\Setting;
+use App\Helpers\AttendanceHelper;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,6 @@ use App\Setting;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/u1',function(){
-
-    return "Test Complete";
-
-})->name('wishlist.show');
-
 
 
 
@@ -31,11 +27,9 @@ Route::middleware(['web','IsInstalled' ,'switch_languages'])->group(function () 
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
   
-      Route::get('/', function () {
-        return view('home');
-      });
+      Route::get('/', 'HomeController@index');
 
-      Auth::routes();
+      Auth::routes(['verify' => true, 'register' => false]);
 
     Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
@@ -193,7 +187,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
   });
 
-  Route::middleware(['web', 'is_active', 'auth','admin_instructor', 'switch_languages'])->group(function () {
+  Route::middleware(['web', 'is_active', 'auth','admin_instructor', 'switch_languages','userdailyattendance'])->group(function () {
 
      $zoom_enable = Setting::first()->zoom_enable;
 
@@ -260,7 +254,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
   
   
-  Route::middleware(['web','switch_languages'])->group(function () {
+  Route::middleware(['web','switch_languages','userdailyattendance'])->group(function () {
 
     Route::post('rating/show/{id}','ReviewratingController@rating')->name('course.rating');
     Route::post('reports/insert/{id}','ReportReviewController@store')->name('report.review');

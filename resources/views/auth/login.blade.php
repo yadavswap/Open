@@ -22,7 +22,7 @@
                     @if($logo->logo_type == 'L')
                         <a href="{{ url('/') }}" title="logo"><img src="{{ asset('images/logo/'.$logo->logo) }}" class="img-fluid" alt="logo"></a>
                     @else()
-                        <a href="{{ url('/') }}"><b><div class="logotext">{{ $logo->project_title }}</div></b></a>
+                        <a href="{{ url('/') }}"><b><div class="logotext">Login To Portal</div></b></a>
                     @endif
                 </div>
             </div>
@@ -38,7 +38,7 @@
     <div class="container">
         <div class="col-md-6 offset-md-3">
             <div class="signup-heading">
-                {{ __('frontstaticword.LogIntoYour') }} {{ $project_title }} {{ __('frontstaticword.Account') }}!
+                {{ __('frontstaticword.LogIntoYour') }} {{ __('frontstaticword.Account') }}!
             </div>
 
             <div class="signup-block">
@@ -96,8 +96,7 @@
 
                   
                     <hr>
-                    <div class="sign-up text-center">{{ __('frontstaticword.Donothaveanaccount') }}?<a href="{{ route('register') }}" title="sign-up"> {{ __('frontstaticword.Signup') }}</a>
-                    </div>
+                   
                     <div class="row mt-2">
                         <div class="col-md-4">
                         </div>

@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'is_active' => \App\Http\Middleware\IsActive::class,
         'optimizeImages' => \Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class,
         'lastactive' => \App\Http\Middleware\LastActive::class,
+        'userdailyattendance' => \App\Http\Middleware\AttendanceMiddleware::class,
     ];
 
     /**

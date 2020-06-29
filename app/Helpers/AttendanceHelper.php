@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Attendance;
 use App\Course;
+use App\UserDailyAttendance;
 
 class AttendanceHelper
 {
@@ -73,6 +74,38 @@ class AttendanceHelper
         }
 
 	}
+
+    public function userDailyAttendance(){
+
+         $role = Auth::user()->role;
+        $date = date('Y-m-d');
+      //  $course_id = request()->segment(3);
+        $time = date("h:i:s");
+
+          $userattendanceExist = UserDailyAttendance::where('user_id',Auth::user()->id)
+        ->where('attendance_date',$date)->first();
+
+        if($userattendanceExist){
+            return false;
+        }
+        else{
+              $userattendance = new UserDailyAttendance();
+            $userattendance->user_id = Auth::user()->id;
+            $userattendance->attendance_date =  $date ;
+            $userattendance->attendance_time =  $time ;
+            $userattendance->save();
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+    }
 
 	
 	   

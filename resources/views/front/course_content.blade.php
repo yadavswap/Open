@@ -251,7 +251,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-lg-3 col-sm-3">
-                                    <div class="content-course-number">{{ __('frontstaticword.Instructor') }}</div>
+                                    <div class="content-course-number">Teacher Details</div>
                                 </div>
                                 <div class="col-lg-9 col-sm-9">
                                     <div class="content-course-number content-course-number-one">
@@ -271,10 +271,7 @@
                                                 <p>{{ $course->user->email }}</p>
                                             </div>
                                         </div>
-                                        <ul>
-                                            <li class="rgt-10"><a href="{{ $course->user['twitter_url'] }}" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="{{ $course->user['fb_url'] }}" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
-                                        </ul>
+                                        
                                         <p>{!! $course->user->detail !!}<p>
                                     </div>
                                 </div>
