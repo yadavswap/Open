@@ -181,10 +181,9 @@
                                 @if(Auth::User()->role == "admin" || Auth::User()->role == "instructor"  )
                                 <a target="_blank" href="{{ url('/admins') }}"><li><i class="fa fa-dashboard"></i>{{ __('frontstaticword.AdminDashboard') }}</li></a>
                                 @endif
-                                <a href="{{ route('mycourse.show') }}"><li><i class="fa fa-book"></i>{{ __('frontstaticword.MyCourses') }}</li></a>
-                                 <a href=""><li><i class="fa fa-check"></i>{{"My Attendnace"}}</li></a>
+                              
                                
-                                <a href=""><li><i class="fa fa-bar-chart"></i>{{"Reports"}}</li></a>
+                               
                                 <a href="{{route('profile.show',Auth::User()->id)}}"><li ><i class="fa fa-user"></i>{{ __('frontstaticword.UserProfile') }}</li></a>
                                 @if(Auth::User()->role == "user")
                               

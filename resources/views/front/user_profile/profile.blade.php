@@ -6,9 +6,7 @@
 
 <!-- about-home start -->
 <section id="blog-home" class="blog-home-main-block">
-    <div class="container">
-        <h1 class="blog-home-heading text-white">{{ __('frontstaticword.UserProfile') }}</h1>
-    </div>
+   
 </section> 
 <!-- profile update start -->
 <section id="profile-item" class="profile-item-block">
@@ -18,42 +16,24 @@
             {{ method_field('PUT') }}
 
 	        <div class="row">
-	            <div class="col-xl-3 col-lg-4">
-	                <div class="dashboard-author-block text-center">
-	                    <div class="author-image">
-						    <div class="avatar-upload">
-						        <div class="avatar-edit">
-						            <input type='file' id="imageUpload" name="user_img" accept=".png, .jpg, .jpeg" />
-						            <label for="imageUpload"><i class="fa fa-pencil"></i></label>
-						        </div>
-						        <div class="avatar-preview">
-						        	@if(Auth::User()->user_img != null || Auth::User()->user_img !='')
-							            <div class="avatar-preview-img" id="imagePreview" style="background-image: url({{ url('/images/user_img/'.Auth::User()->user_img) }});">
-							            </div>
-							        @else
-							        	<div class="avatar-preview-img" id="imagePreview" style="background-image: url({{ asset('images/default/user.jpg')}});">
-							            </div>
-							        @endif
-						        </div>
-						    </div>
-	                    </div>
-	                    <div class="author-name">{{ Auth::User()->fname }}&nbsp;{{ Auth::User()->lname }}</div>
-	                </div>
+	            <div class="col-xl-3 col-lg-3">
+	                
 	                <div class="dashboard-items">
 	                    <ul>
 	                        <li><i class="fa fa-book"></i><a href="{{ route('mycourse.show') }}" title="Dashboard">{{ __('frontstaticword.MyCourses') }}</a></li>
-	                        <li><i class="fa fa-heart"></i><a href="{{ route('wishlist.show') }}" title="Profile Update">{{ __('frontstaticword.MyWishlist') }}</a></li>
+	                     <li><i class="fa fa-bar-chart"></i><a href="{{route('profile.attendance',Auth::user()->id)}}">My Attendance</a></li>
+	                        <li><i class="fa fa-area-chart"></i><a href="">My Activity</a></li>
 	                        <li><i class="fa fa-history"></i><a href="{{ route('purchase.show') }}" title="Followers">Enrolled History</a></li>
 	                        <li><i class="fa fa-user"></i><a href="{{route('profile.show',Auth::User()->id)}}" title="Upload Items">{{ __('frontstaticword.UserProfile') }}</a></li>
-	                        <li><i class="fa fa-check"></i><a href="{{ route('purchase.show') }}" title="Followers">Attendance</a></li>
-	                        <li><i class="fa fa-bar-chart"></i><a href="{{ route('purchase.show') }}" title="Followers">Exam Report</a></li>
+	       
+	                        <li><i class="fa fa-pie-chart"></i><a href="{{ route('purchase.show') }}" title="Followers">Report</a></li>
 	                        @if(Auth::User()->role == "user")
 	                       
 	                        @endif
 	                    </ul>
 	                </div>
 	            </div>
-	            <div class="col-xl-9 col-lg-8">
+	            <div class="col-xl-9 col-lg-7">
 
 	                <div class="profile-info-block">
 	                    <div class="profile-heading">{{ __('frontstaticword.PersonalInfo') }}</div>

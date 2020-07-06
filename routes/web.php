@@ -321,6 +321,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     
     Route::get('profile/show/{id}', 'UserProfileController@userprofilepage')->name('profile.show');
+       Route::get('profile/attendance/{id}', 'UserProfileController@userattendance')->name('profile.attendance');
     Route::put('/edit/{id}','UserProfileController@userprofile')->name('user.profile');
 
     Route::post('course/reports/{id}','CourseReportController@store')->name('course.report');
