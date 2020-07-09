@@ -12,6 +12,7 @@ use Session;
 use Image;
 use Auth;
 use Hash;
+use App\UserDailyAttendance;
 
 class UserProfileController extends Controller
 {
@@ -23,6 +24,23 @@ class UserProfileController extends Controller
         $cities = City::all();
         $orders = User::where('id', $id)->first();
         return view('front.user_profile.profile',compact('orders', 'course', 'countries', 'states', 'cities'));  
+    }
+
+    public function userattendance($id){
+
+
+         $course = Course::all();
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+        $orders = User::where('id', $id)->first();
+        $attendance = UserDailyAttendance::where('user_id',$id)->orderBy('created_at','DESC')->get();
+        return view('front.user_profile.attendance',compact('orders', 'course', 'countries', 'states', 'cities','attendance'));  
+
+
+
+    
+
     }
 
     public function userprofile(Request $request,$id)

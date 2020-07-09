@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="{{ url('vendor/owl/css/owl.carousel.min.css') }}" /> <!-- owl carousel css -->
 <link rel="stylesheet" href="{{ url('vendor/protip/protip.css') }}" /> <!-- menu css -->
 
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+
+
 <?php
 $language = Session::get('changed_language'); //or 'english' //set the system language
 $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl languages
