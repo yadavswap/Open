@@ -36,5 +36,6 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 <link rel="stylesheet" href="{{ URL::asset('css/pace.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('css/protip.css') }}" /> <!-- protip css -->
 <link rel="manifest" href="{{url('manifest.json')}}">
+<link rel="stylesheet" href="{{ asset('zabuto_calendar.min.css') }}">
 <!-- end theme styles -->
 </head>

@@ -35,7 +35,24 @@ class UserProfileController extends Controller
         $cities = City::all();
         $orders = User::where('id', $id)->first();
         $attendance = UserDailyAttendance::where('user_id',$id)->orderBy('created_at','DESC')->get();
-        return view('front.user_profile.attendance',compact('orders', 'course', 'countries', 'states', 'cities','attendance'));  
+        $attendancearray  = [];
+
+        // return $attendance;
+
+        // foreach ($variable as $key => $value) {
+        //     # code...
+        // }
+
+        foreach ($attendance as $key=>$ud) {
+          $attendancearray['date'] =  $attendance[$key]->attendance_date;
+          $attendancearray['badge'] = true;
+          $attendancearray['title'] = "Present";
+        }
+
+        $attendancearray = json_encode($attendancearray);
+     // return $attendancearray;
+       
+        return view('front.user_profile.attendance',compact('orders', 'course', 'countries', 'states', 'cities','attendance','attendancearray'));  
 
 
 

@@ -37,45 +37,9 @@
 
 	                <div class="profile-info-block">
 	                    <div class="profile-heading">Attendance Info</div>
-	                  <div class="row">
-
-	                  	<table id="example" class="table table-striped table-bordered" style="width:700px;">
-        <thead>
-            <tr>
-                <th>Sr. No</th>
-                <th>Attendance Date</th>
-                <th>Attendance Time</th>
-                            </tr>
-        </thead>
-        <tbody>
-           
-          <?php $i=1;?>
-          @foreach($attendance as $atd)
-
-
-
-            <tr>
-
-            	<td> {{$i}}</td>
-            	<td> {{$atd->attendance_date}}</td>
-            	<td> {{$atd->attendance_time}}</td>
-                
-            </tr>
-           <?php $i++?>
-
-          @endforeach
-    
-        </tbody>
-        <tfoot>
-            <tr>
-             <th>Sr. No</th>
-                <th>Attendance Date</th>
-                <th>Attendance Time</th>
-            </tr>
-        </tfoot>
-    </table>
-	                  </div>
-	                    
+	                 		<span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; line-height: 18px; white-space: pre-wrap; background-color: rgb(255, 255, 255);"><div id="demo"></div></span>
+	                
+	              
 		               
 		                <br>
 	                </div>
@@ -90,12 +54,52 @@
         </form>
     </div>
 </section>
+
+
+
 <!-- profile update end -->
 @endsection
 
 @section('custom-script')
 
+
+
+<script type="application/javascript">
+var eventData = [
+  <?= $attendancearray;?>
+];
+$(document).ready(function () {
+  $("#demo").zabuto_calendar({
+    data: eventData
+  });
+});
+
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth() + 1;
+var settings = {
+    language: false,
+    year: year,
+    month: month,
+    show_previous: true,
+    show_next: true,
+    cell_border: true,
+    today: false,
+    show_days: true,
+    weekstartson: 1,
+    nav_icon: false, // object: prev: string, next: string
+    data: false,
+    ajax: false, // object: url: string, modal: boolean,
+    legend: false, // object array, [{type: string, label: string, classname: string}]
+    action: false, // function
+    action_nav: false // function
+};
+
+</script>
+
 <script>
+
+
 (function($) {
   "use strict";
   $(function() {

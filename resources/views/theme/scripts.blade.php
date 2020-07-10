@@ -27,6 +27,9 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 <script src="{{ URL::asset('js/pace.min.js') }}"></script>
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
+<script src="{{ asset('zabuto_calendar.min.js') }}"></script>
+
+
 
 @if($gsetting->rightclick=='1')
 	<script>
