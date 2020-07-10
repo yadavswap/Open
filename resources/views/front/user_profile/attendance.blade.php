@@ -45,7 +45,7 @@
 	                </div>
 	              
 	                <div class="upload-items text-right">
-	                    <button type="submit" class="btn btn-primary" title="upload items">{{ __('frontstaticword.UpdateProfile') }}</button>
+	                  
 	                </div>
 	                
 	            </div>
@@ -65,12 +65,17 @@
 
 
 <script type="application/javascript">
-var eventData = [
-  <?= $attendancearray;?>
-];
+var eventData = 
+ <?=$attendancearray;?>
+;
 $(document).ready(function () {
   $("#demo").zabuto_calendar({
-    data: eventData
+    data: eventData,
+     nav_icon: {
+      prev: '<i class="fa fa-chevron-circle-left"></i>',
+      next: '<i class="fa fa-chevron-circle-right"></i>'
+    },
+        cell_border: true,
   });
 });
 
@@ -222,5 +227,13 @@ var settings = {
 	tinymce.init({selector:'textarea#detail'});
 })(jQuery);
 </script>
+
+<style type="text/css">
+	
+	div.zabuto_calendar .badge-event, div.zabuto_calendar div.legend span.badge-event{
+		background-color:#08ff50 !important;
+	}
+
+</style>
 
 @endsection

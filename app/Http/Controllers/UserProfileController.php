@@ -35,7 +35,8 @@ class UserProfileController extends Controller
         $cities = City::all();
         $orders = User::where('id', $id)->first();
         $attendance = UserDailyAttendance::where('user_id',$id)->orderBy('created_at','DESC')->get();
-        $attendancearray  = [];
+        // return $attendance->toArray();
+      //  $attendancearray  = [];
 
         // return $attendance;
 
@@ -43,10 +44,31 @@ class UserProfileController extends Controller
         //     # code...
         // }
 
-        foreach ($attendance as $key=>$ud) {
-          $attendancearray['date'] =  $attendance[$key]->attendance_date;
-          $attendancearray['badge'] = true;
-          $attendancearray['title'] = "Present";
+
+        $i = 0;
+        foreach ($attendance as $ud) {
+
+         // $ud->attendance_date
+
+
+           // echo $ud;
+
+          $attendancearray[$i]['date']=   $ud->attendance_date;
+           $attendancearray[$i]['badge']=   true;
+            $attendancearray[$i]['title']=   "Present";
+
+            $attendancearray[$i]['body'] = "<p class=\"lead\">Party<\/p><p>Like it's 1999.<\/p>";
+
+
+            $i++;
+
+
+
+
+           
+          // $attendancearray[$key]['date'] =  $ud['attendance_date'];
+          // $attendancearray[$key]['badge'] = true;
+          // $attendancearray[$key]['title'] = "Present";
         }
 
         $attendancearray = json_encode($attendancearray);
