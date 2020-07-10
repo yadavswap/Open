@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('auth');
+        return $this->middleware('auth',['expect'=>['is_admin']]);
     }
     /**
      * Display a listing of the resource.
@@ -37,6 +37,13 @@ class UserController extends Controller
 
     public function viewAllUser()
     {
+
+        if(Auth::user()->role == "instructor"){
+
+            $users = User::where('role','user')->get();
+        return view('admin.user.index', compact('users'));
+        }
+      
         $users = User::all();
         return view('admin.user.index', compact('users'));
     }

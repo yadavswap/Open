@@ -44,7 +44,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
   
   
 
-  Route::middleware(['web', 'auth','is_admin', 'switch_languages'])->group(function () {
+  Route::middleware(['web', 'auth', 'switch_languages'])->group(function () {
 
     // Player Settings
     Route::get('/admin/playersetting','PlayerSettingController@get')->name('player.set');

@@ -58,7 +58,11 @@
           <li class="{{ Nav::isRoute('zoom.setting') }}"><a href="{{route('students.attendances',Auth::user()->id)}}"><i class="fa fa-plus" aria-hidden="true"></i><span>Students Attendance</span></a></li>
 
 
-          <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user" aria-hidden="true"></i><span>All Enrolled Students</span></a></li>
+
+          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Add New Student</span></a></li>
+
+
+          <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user" aria-hidden="true"></i><span>Enrolled Students</span></a></li>
 
 
           <li class="{{ Nav::isResource('instructorquestion') }} {{ Nav::isResource('instructoranswer') }} treeview">
