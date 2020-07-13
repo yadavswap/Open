@@ -131,9 +131,10 @@
                   <option value="none" selected disabled hidden> 
                    {{ __('adminstaticword.SelectanOption') }}
                   </option>
-                  <option value="user" <?php if(Auth::user() != "admin"){ echo "selected"; } ?>>{{ __('adminstaticword.User') }}</option>
-                  <option value="admin" <?php if(Auth::user() != "admin"){ echo "disabled"; } ?>>{{ __('adminstaticword.Admin') }}</option>
-                  <option value="admin" <?php if(Auth::user() != "admin"){ echo "disabled"; } ?>>{{ __('adminstaticword.Instructor') }}</option>
+
+
+                  <option value="user">Student</option>
+                  <option value="instructor">Teacher</option>
                 </select>
               </div> 
            

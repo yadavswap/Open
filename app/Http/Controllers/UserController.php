@@ -40,7 +40,7 @@ class UserController extends Controller
 
         if(Auth::user()->role == "instructor"){
 
-            $users = User::where('role','user')->get();
+            $users = User::where('role','user')->where('added_by_user_id',Auth::user()->id)->get();
         return view('admin.user.index', compact('users'));
         }
       
@@ -98,6 +98,7 @@ class UserController extends Controller
         $input['password'] = Hash::make($request->password);
         $input['detail'] = $request->detail;           
         $data = User::create($input);
+        $data->added_by_user_id = Auth::user()->id;
         $data->save(); 
 
         Session::flash('success','User Added Successfully !');

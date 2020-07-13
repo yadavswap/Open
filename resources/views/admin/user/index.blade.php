@@ -14,6 +14,15 @@
 
           <a class="btn btn-info btn-sm" href="{{ route('user.add') }}">+ {{ __('adminstaticword.Add') }} {{ __('adminstaticword.User') }}</a>
           
+            <div class="input-group pull-right">
+          <form method="" action="" name="searchuser">
+        <input type="text" name="search" class= "form-control" placeholder="Enter student email or number">
+
+      
+
+
+      </form>
+    </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -26,10 +35,12 @@
                   <th>{{ __('adminstaticword.LastName') }}</th>
                   <th>{{ __('adminstaticword.Email') }}</th>
                   <th>{{ __('adminstaticword.Mobile') }}</th>
-                  <th>{{ __('adminstaticword.Country') }}</th>
+                  <th>Type</th>
                   <th>{{ __('adminstaticword.Status') }}</th>
                   <th>{{ __('adminstaticword.Edit') }}</th>
                   <th>{{ __('adminstaticword.Delete') }}</th>
+                    <th>Attendance</th>
+                    <th>Report</th>
                 </thead> 
 
                 <tbody>
@@ -54,7 +65,7 @@
                         <td>
                           {{$user->mobile}}
                         </td>
-                        <td>{{  $user->country['nicename']  }}</td>
+                        <td class="btn btn-info btn-xs">{{  ucfirst($user->role)  }}</td>
                         <td>
                           <form action="{{ route('user.quick',$user->id) }}" method="POST">
                             {{ csrf_field() }}
@@ -81,6 +92,8 @@
                               <input type="submit" value="Delete" onclick="return confirm('Are you sure Delete This User..?')" class="btn btn-sm btn-danger"/>
                             </form>
                         </td>
+
+                          <td class="btn btn-sm btn-danger">{{  ucfirst($user->role)  }}</td>
                     </tr>
                     @endif
                     @endforeach
