@@ -252,38 +252,57 @@
             <br>
 
             <div class="box-header with-border">
-              <h3 class="box-title">{{ __('adminstaticword.SocialProfile') }}</h3>
+              <h3 class="box-title">Parent Info</h3>
             </div>
             <br>
 
             <div class="row">
-              <div class="col-md-6">
-                <label for="fb_url">
-                {{ __('adminstaticword.FacebookUrl') }}:
+             <div class="col-md-6">
+                <label for="fname">
+                  {{ __('adminstaticword.FirstName') }}:
+                  <sup class="redstar">*</sup>
                 </label>
-                <input autofocus name="fb_url" value="{{ $user->fb_url }}" type="text" class="form-control" placeholder="Facebook.com/"/>
+                <input value="{{ $user->fname }}" autofocus required name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
               </div>
+
               <div class="col-md-6">
-                <label for="youtube_url">
-                {{ __('adminstaticword.YoutubeUrl') }}:
+                <label for="lname">
+                  {{ __('adminstaticword.LastName') }}:
+                  <sup class="redstar">*</sup>
                 </label>
-                <input autofocus name="youtube_url" value="{{ $user->youtube_url }}" type="text" class="form-control" placeholder="youtube.com/"/>
-                <br>
+                <input value="{{ $user->lname }}" required name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
               </div>
-            
-              <div class="col-md-6">
-                <label for="twitter_url">
-                {{ __('adminstaticword.TwitterUrl') }}:
+
+                            <div class="col-md-6">
+                <label for="parentemail">
+                 Parent Email
+                  <sup class="redstar">*</sup>
                 </label>
-                <input autofocus name="twitter_url" value="{{ $user->twitter_url }}" type="text" class="form-control" placeholder="Twitter.com/"/>
+                <input value="{{ $user->lname }}" required name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
               </div>
-              <div class="col-md-6">
-                <label for="linkedin_url">
-                {{ __('adminstaticword.LinkedInUrl') }}:
+
+                 <div class="col-md-6">
+                <label for="parentemail">
+                 Parent Mobile
+                  <sup class="redstar">*</sup>
                 </label>
-                <input autofocus name="linkedin_url" value="{{ $user->linkedin_url }}" type="text" class="form-control" placeholder="Linkedin.com/"/>
+                <input value="{{ $user->lname }}" required name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
+              </div>
+
+
+             
+            </div>
+
+            <div class="row">
+                 <div class="col-md-6">
+                <label for="parentpassword">
+                  Parent Password:
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="{{ $user->lname }}" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
               </div>
             </div>
+
             <br>
             <br>
             

@@ -54,7 +54,7 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="exampleInputDetails">{{ __('adminstaticword.Address') }}:<sup class="redstar">*</sup></label>
-                <textarea name="address" rows="1"  class="form-control" placeholder="Enter your address"></textarea>
+                <textarea name="address" rows="1"  class="form-control" placeholder="Enter your address" value="{{old('address')}}"></textarea>
               </div>
               <div class="col-md-6">
                 <label for="dob">{{ __('adminstaticword.DateofBirth') }}:<sup class="redstar">*</sup></label>
@@ -62,7 +62,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" value="{{ old('dob')}}" name="dob" required class="form-control pull-right" id="dob" placeholder="Enter your date of birth">
+                  <input type="text" value="{{ old('dob')}}" name="dob" required class="form-control pull-right" id="dob" placeholder="Enter your date of birth" autocomplete="off">
                 </div>
 
               </div>
@@ -182,9 +182,58 @@
 
             
             <div class="box-header with-border">
-              <h3 class="box-title">{{ __('adminstaticword.SocialProfile') }}</h3>
+               <h3 class="box-title">Parent Info</h3>
             </div>
             <br>
+
+
+
+            <div class="row">
+             <div class="col-md-6">
+                <label for="fname">
+                  {{ __('adminstaticword.FirstName') }}:
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="{{ old('parentfname') }}" autofocus required name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
+              </div>
+
+              <div class="col-md-6">
+                <label for="lname">
+                  {{ __('adminstaticword.LastName') }}:
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="{{ old('parentlname') }}" required name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
+              </div>
+
+                            <div class="col-md-6">
+                <label for="parentemail">
+                 Parent Email
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="{{ old('parentemail') }}" required name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
+              </div>
+
+                 <div class="col-md-6">
+                <label for="parentmobile">
+                 Parent Mobile
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="{{ old('parentmobile') }}" required name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
+              </div>
+
+
+             
+            </div>
+
+            <div class="row">
+                 <div class="col-md-6">
+                <label for="parentpassword">
+                  Parent Password:
+                  <sup class="redstar">*</sup>
+                </label>
+                <input value="" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
+              </div>
+            </div>
 
           
             <br>

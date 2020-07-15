@@ -80,11 +80,30 @@ class UserController extends Controller
             'password' => 'required|min:6|max:20',
             'status' => 'required|boolean',
             'role' => 'required',
-            'user_img' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'user_img' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'parentfname'=>'required|string',
+            'parentlname'=>'required|string',
+            'parentemail'=>'required|unique:users,email',
+            'parentmobile'=>'required|regex:/[0-9]{9}/',
+            'parentpassword'=>'required'
+
         ]);
+
+         $parent = new User();
+         $parent->fname = $request->parentfname;
+         $parent->lname = $request->parentlname;
+         $parent->mobile = $request->parentmobile;
+         $parent->email = $request->parentemail;
+          $parent->role = "parent";
+         $issave = $parent->save();
+
+         if($issave){
+
+           // dd($parent->id);
 
 
         $input = $request->all();
+     
         if ($file = $request->file('user_img')) 
         {            
             $optimizeImage = Image::make($file);
@@ -96,13 +115,28 @@ class UserController extends Controller
         }
 
         $input['password'] = Hash::make($request->password);
-        $input['detail'] = $request->detail;           
+        $input['detail'] = $request->detail;   
+        $input['parent_id'] = $parent->id;        
         $data = User::create($input);
         $data->added_by_user_id = Auth::user()->id;
         $data->save(); 
 
         Session::flash('success','User Added Successfully !');
         return redirect('user');
+         }
+
+         else{
+
+             Session::flash('error','Something Went Wrong!');
+        return redirect('user');
+
+         }
+
+
+
+
+
+
 
     }
 
