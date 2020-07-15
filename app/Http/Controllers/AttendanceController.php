@@ -28,7 +28,9 @@ class AttendanceController extends Controller
         ->where('attendance_date',$date)
         ->get();
 
-        return $users;
+        $count = $users->count();
+
+        return view('admin.attendance.index',compact('count','date','users'));
 
 
     }
