@@ -228,6 +228,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::get('instructor', 'InstructorController@index')->name('instructor.index');
     Route::resource('userenroll', 'InstructorEnrollController');
     Route::get('attendances/students/{id}', 'AttendanceController@viewStudentsAttendance')->name('students.attendances');
+      Route::post('attendances/students/{id}', 'AttendanceController@viewStudentsAttendanceByDate')->name('students.attendances.post');
     Route::resource('instructorquestion', 'InstructorQuestionController');
     Route::resource('instructoranswer', 'InstructorAnswerController');
     Route::get('coursereview', 'CourseReviewController@index');

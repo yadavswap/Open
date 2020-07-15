@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\UserDailyAttendance;
+use Carbon\Carbon;
 
 
 
@@ -31,6 +32,19 @@ class AttendanceController extends Controller
         $count = $users->count();
 
         return view('admin.attendance.index',compact('count','date','users'));
+
+
+    }
+
+
+    public function viewStudentsAttendanceByDate(Request $request,$id){
+
+       $date = str_replace('/', '-', $request->selectdate);
+       $date = strtotime($request->selectdate);
+        $newDate = date("Y-m-d", strtotime($date));
+
+        return dd($newDate);
+
 
 
     }

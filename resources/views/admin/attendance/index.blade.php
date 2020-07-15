@@ -24,11 +24,12 @@
           <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-               <form action="/hms/accommodations" method="GET" class=""> 
+               <form action="{{route('students.attendances.post',Auth::user()->id)}}" method="POST" class="" >
+               @csrf 
   <div class="row">
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-6 col-md-6 pull-right">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Select Date" id="selectdate" name="selectdate" />
+        <input type="text" class="form-control" placeholder="Select Date"  name="selectdate" id="datepicker" />
         <div class="input-group-btn">
           <button class="btn btn-primary" type="submit">
             <span class="glyphicon glyphicon-search"></span>
@@ -75,7 +76,7 @@
                        <td>{{ $user->fname }}</td>
                         <td>{{ $user->lname }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->fname }}</td>
+          
                         <td>{{$user->attendance_date}}</td>
                           <td>{{$user->attendance_time}}</td>
                        
@@ -103,17 +104,23 @@
   <!-- /.row -->
 </section>
 
-<script type="text/javascript">
-  
-   $(function() {
-    $( "#selectdate" ).datepicker({
-      changeYear: true,
+
+
+
+@endsection
+
+
+@section('scripts')
+
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+       changeYear: true,
       yearRange: "-100:+0",
-      dateFormat: 'yy/mm/dd',
+        altFormat: "yy-mm-dd"
     });
-  });
+  } );
+
 
 
 </script>
-
-@endsection
