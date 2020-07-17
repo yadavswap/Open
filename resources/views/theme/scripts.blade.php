@@ -29,6 +29,16 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 
 <script src="{{ asset('zabuto_calendar.min.js') }}"></script>
 
+<!-- 
+<script >
+	
+	 $.datepicker.setDefaults({
+     dateFormat: 'yy-mm-dd'
+});
+</script>
+
+ -->
+
 
 
 @if($gsetting->rightclick=='1')

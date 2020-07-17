@@ -102,6 +102,19 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+
+  <script>
+ 
+$().datepicker({
+  format: 'yyyy-mm-dd'
+});
+
+
+$('#datepicker').datepicker();
+
+
+
+</script>
 </section>
 
 
@@ -112,15 +125,4 @@
 
 @section('scripts')
 
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-       changeYear: true,
-      yearRange: "-100:+0",
-        altFormat: "yy-mm-dd"
-    });
-  } );
 
-
-
-</script>
