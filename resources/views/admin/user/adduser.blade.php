@@ -127,7 +127,7 @@
               </div>
               <div class="col-md-3"> 
                 <label for="role">{{ __('adminstaticword.SelectRole') }}: <sup class="redstar">*</sup></label>
-                <select class="form-control js-example-basic-single" name="role" required>
+                <select class="form-control js-example-basic-single" name="role" required id="roleselect">
                   <option value="none" selected disabled hidden> 
                    {{ __('adminstaticword.SelectanOption') }}
                   </option>
@@ -181,7 +181,9 @@
             <br>
 
             
-            <div class="box-header with-border">
+            <div id="parentinfo">
+
+            <div class="box-header with-border" id="">
                <h3 class="box-title">Parent Info</h3>
             </div>
             <br>
@@ -194,7 +196,7 @@
                   {{ __('adminstaticword.FirstName') }}:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ old('parentfname') }}" autofocus required name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
+                <input value="{{ old('parentfname') }}" autofocus  name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
               </div>
 
               <div class="col-md-6">
@@ -202,7 +204,7 @@
                   {{ __('adminstaticword.LastName') }}:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ old('parentlname') }}" required name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
+                <input value="{{ old('parentlname') }}"  name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
               </div>
 
                             <div class="col-md-6">
@@ -210,7 +212,7 @@
                  Parent Email
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ old('parentemail') }}" required name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
+                <input value="{{ old('parentemail') }}"  name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
               </div>
 
                  <div class="col-md-6">
@@ -218,7 +220,7 @@
                  Parent Mobile
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ old('parentmobile') }}" required name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
+                <input value="{{ old('parentmobile') }}"  name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
               </div>
 
 
@@ -231,10 +233,10 @@
                   Parent Password:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
+                <input value=""  name="parentpassword" type="password" class="form-control" placeholder="********"/>
               </div>
             </div>
-
+</div>
           
             <br>
             <br>
@@ -268,6 +270,24 @@
 @section('scripts')
 
 <script>
+
+
+
+
+   $("#roleselect").change(function(){
+
+     var role = $(this).val();
+
+    if(role == "instructor")
+    {
+      $('#parentinfo').hide();
+    }
+
+   });
+
+
+
+
 (function($) {
   "use strict";
 

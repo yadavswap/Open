@@ -81,13 +81,25 @@ class UserController extends Controller
             'status' => 'required|boolean',
             'role' => 'required',
             'user_img' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'parentfname'=>'required|string',
+
+        ]);
+
+        $parentid = 0;
+
+
+        if($request->role == "user")
+        {
+
+             $data = $this->validate($request, [
+             'parentfname'=>'required|string',
             'parentlname'=>'required|string',
             'parentemail'=>'required|unique:users,email',
             'parentmobile'=>'required|regex:/[0-9]{9}/',
             'parentpassword'=>'required'
 
         ]);
+
+
 
          $parent = new User();
          $parent->fname = $request->parentfname;
@@ -97,12 +109,27 @@ class UserController extends Controller
           $parent->role = "parent";
          $issave = $parent->save();
 
-         if($issave){
+           $parentid = $parent->id;
+
+
+
+
+
+
+            
+
+
+        }
+
+
+        
 
            // dd($parent->id);
 
 
         $input = $request->all();
+
+       
      
         if ($file = $request->file('user_img')) 
         {            
@@ -115,22 +142,22 @@ class UserController extends Controller
         }
 
         $input['password'] = Hash::make($request->password);
-        $input['detail'] = $request->detail;   
-        $input['parent_id'] = $parent->id;        
+        $input['detail'] = $request->detail;      
+        $input['parent_id'] = $parentid;
         $data = User::create($input);
         $data->added_by_user_id = Auth::user()->id;
         $data->save(); 
 
         Session::flash('success','User Added Successfully !');
         return redirect('user');
-         }
+         
 
-         else{
+        //  else{
 
-             Session::flash('error','Something Went Wrong!');
-        return redirect('user');
+        //      Session::flash('error','Something Went Wrong!');
+        // return redirect('user');
 
-         }
+        //  }
 
 
 
@@ -180,6 +207,40 @@ class UserController extends Controller
 
         $user = User::findorfail($id);
 
+        if($user->parent_id == 0 && $user->role == "user")
+        {
+            $parent = new User;
+            $parent->fname = $request->parentfname;
+              $parent->lname = $request->parentlname;
+                $parent->email = $request->parentemail;
+                 $parent->mobile = $request->parentmobile;
+                 $parent->password = $request->parentpassword;
+                 $parent->save();
+
+
+        }
+        else{
+
+             if(isset($request->update_pass)){
+          
+            $input['password'] = Hash::make($request->parentpassword);
+        }
+        else{
+            $input['password'] = "12345678";
+        }
+
+
+
+
+            // $parentinput = array(
+            //     'fname' = $request->parentfname,
+            //     'lname' = $request->parentlname,
+            //     'email' = $request->parentemail,
+            //     'mobile'= $request->parentmobile,
+            //     'password' = $input['password'],
+            // );
+        }
+
         $input = $request->all();
         
 
@@ -197,6 +258,7 @@ class UserController extends Controller
             $image = time().$file->getClientOriginalName();
             $optimizeImage->save($optimizePath.$image, 72);
             $input['user_img'] = $image;
+             $input['parent_id'] = $parent->id;
           
         }
 

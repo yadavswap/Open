@@ -256,13 +256,32 @@
             </div>
             <br>
 
+            <?php
+
+            if($user->role == "user")
+            {
+              
+          ?>
+
+
+            <?php
+        $parents =     App\User::where('id',$user->parent_id)->get();
+
+        $parentsarray = $parents->toArray();
+
+       // dd($parentsarray);
+
+
+
+            ?>
+
             <div class="row">
              <div class="col-md-6">
                 <label for="fname">
                   {{ __('adminstaticword.FirstName') }}:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ $user->fname }}" autofocus required name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
+                <input value="<?= ($parentsarray) ? $parentsarray['0']['fname'] : '' ?>" autofocus  name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
               </div>
 
               <div class="col-md-6">
@@ -270,7 +289,7 @@
                   {{ __('adminstaticword.LastName') }}:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ $user->lname }}" required name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
+                <input value="<?= ($parentsarray) ? $parentsarray['0']['lname'] : '' ?>"  name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
               </div>
 
                             <div class="col-md-6">
@@ -278,7 +297,7 @@
                  Parent Email
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ $user->lname }}" required name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
+                <input value="<?= ($parentsarray) ? $parentsarray['0']['email'] : '' ?>"  name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
               </div>
 
                  <div class="col-md-6">
@@ -286,7 +305,7 @@
                  Parent Mobile
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ $user->lname }}" required name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
+                <input value="<?= ($parentsarray) ? $parentsarray['0']['mobile'] : '' ?>"  name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
               </div>
 
 
@@ -299,12 +318,19 @@
                   Parent Password:
                   <sup class="redstar">*</sup>
                 </label>
-                <input value="{{ $user->lname }}" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
+                <input value="" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
               </div>
             </div>
 
             <br>
             <br>
+            <?php
+
+              }
+
+
+            ?>
+
             
 
             <div class="box-footer">
