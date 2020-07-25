@@ -20,18 +20,18 @@
                         <div class="navigation">
                             <div id="cssmenu">
                                 <ul>
-                                    <li><a href="#" title="Categories"><i class="flaticon-grid"></i>{{"Class"}}</a>
+                                    <li><a href="#" title="Categories"><i class="flaticon-grid"></i>{{ __('frontstaticword.Categories') }}</a>
                                         @php
                                          $categories = App\Categories::orderBy('position','ASC')->get();
                                         @endphp
                                         <ul>
                                             @foreach($categories as $cate)
                                             @if($cate->status == 1 )
-                                            <li><a href="{{ route('category.page',$cate->id) }}" title="{{ $cate->title }}">{{ $cate->title }}<i class="fa fa-chevron-right float-rgt"></i></a>
+                                            <li><a href="{{ route('category.page',$cate->id) }}" title="{{ $cate->title }}"><i class="fa {{ $cate->icon }} rgt-20"></i>{{ $cate->title }}<i class="fa fa-chevron-right float-rgt"></i></a>
                                             <ul>   
                                                 @foreach($cate->subcategory as $sub)
                                                 @if($sub->status ==1)
-                                                <li><a href="{{ route('subcategory.page',$sub->id) }}" title="{{ $sub->title }}">{{ $sub->title }}
+                                                <li><a href="{{ route('subcategory.page',$sub->id) }}" title="{{ $sub->title }}"><i class="fa {{ $sub->icon }} rgt-20"></i>{{ $sub->title }}
                                                     <i class="fa fa-chevron-right float-rgt"></i></a>
                                                     <ul>
                                                         @foreach($sub->childcategory as $child)
@@ -71,11 +71,15 @@
                 @guest
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                      
+                        <div class="learning-business">
+                            @if($setting->instructor_enable == 1)
+                                <a href="{{ route('login') }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Login/Register To Become an Instructor">{{ __('frontstaticword.BecomeAnInstructor') }}</a>
+                            @endif
+                        </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="Login-btn">
-                         
+                            <a href="{{ route('register') }}" class="btn btn-primary" title="register">{{ __('frontstaticword.Signup') }}</a>
                             <a href="{{ route('login') }}" class="btn btn-secondary" title="login">{{ __('frontstaticword.Login') }}</a>
                         </div> 
                     </div>
@@ -84,7 +88,13 @@
                 @auth
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-6">
-                       
+                        <div class="learning-business learning-business-two">
+                            @if(Auth::User()->role == "user")
+                                @if($setting->instructor_enable == 1)
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor">{{ __('frontstaticword.BecomeAnInstructor') }}</a>
+                                @endif
+                            @endif
+                        </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-6">
                         <div class="learning-business">
@@ -148,9 +158,41 @@
                             </ul>
                         </div>
                     </div>
-                   
                     <div class="col-lg-1 col-md-1 col-sm-2 col-2">
-                       
+                        <div class="nav-wishlist">
+                            <a href="{{ route('wishlist.show') }}" title="Go to Wishlist"><i class="fa fa-heart"></i></a>
+                            <span class="red-menu-badge red-bg-success">
+                                @php
+                                    $data = App\Wishlist::where('user_id', Auth::User()->id)->get();
+                                    if(count($data)>0){
+
+                                        echo count($data);
+                                    }
+                                    else{
+
+                                        echo "0";
+                                    }
+                                @endphp
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-2 col-2">
+                        <div class="shopping-cart">
+                            <a href="{{ route('cart.show') }}" title="Cart"><i class="flaticon-shopping-cart"></i></a>
+                            <span class="red-menu-badge red-bg-success">
+                                @php
+                                    $item = App\Cart::where('user_id', Auth::User()->id)->get();
+                                    if(count($item)>0){
+
+                                        echo count($item);
+                                    }
+                                    else{
+
+                                        echo "0";
+                                    }
+                                @endphp
+                            </span>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-3 col-sm-6 col-6">
                         <div class="my-container">
@@ -181,12 +223,14 @@
                                 @if(Auth::User()->role == "admin" || Auth::User()->role == "instructor"  )
                                 <a target="_blank" href="{{ url('/admins') }}"><li><i class="fa fa-dashboard"></i>{{ __('frontstaticword.AdminDashboard') }}</li></a>
                                 @endif
-                              
-                               
-                               
+                                <a href="{{ route('mycourse.show') }}"><li><i class="fa fa-diamond"></i>{{ __('frontstaticword.MyCourses') }}</li></a>
+                                <a href="{{ route('wishlist.show') }}"><li><i class="fa fa-heart"></i>{{ __('frontstaticword.MyWishlist') }}</li></a>
+                                <a href="{{ route('purchase.show') }}"><li><i class="fa fa-shopping-cart"></i>{{ __('frontstaticword.PurchaseHistory') }}</li></a>
                                 <a href="{{route('profile.show',Auth::User()->id)}}"><li ><i class="fa fa-user"></i>{{ __('frontstaticword.UserProfile') }}</li></a>
                                 @if(Auth::User()->role == "user")
-                              
+                                @if($gsetting->instructor_enable == 1)
+                                <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i class="fas fa-chalkboard-teacher"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
+                                @endif
                         
                                 @endif
 
@@ -211,4 +255,3 @@
 </section>
 
 @include('instructormodel')
-
