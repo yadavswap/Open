@@ -26,6 +26,18 @@ class UserProfileController extends Controller
         return view('front.user_profile.profile',compact('orders', 'course', 'countries', 'states', 'cities'));  
     }
 
+     public function userdashboard()
+    {
+
+        $id = Auth::user()->id;
+        $course = Course::all();
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+        $orders = User::where('id', $id)->first();
+        return view('front.user_profile.profile',compact('orders', 'course', 'countries', 'states', 'cities'));  
+    }
+
     public function userattendance($id){
 
 

@@ -68,22 +68,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                @guest
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="learning-business">
-                            @if($setting->instructor_enable == 1)
-                                <a href="{{ route('login') }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Login/Register To Become an Instructor">{{ __('frontstaticword.BecomeAnInstructor') }}</a>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="Login-btn">
-                            <a href="{{ route('register') }}" class="btn btn-primary" title="register">{{ __('frontstaticword.Signup') }}</a>
-                            <a href="{{ route('login') }}" class="btn btn-secondary" title="login">{{ __('frontstaticword.Login') }}</a>
-                        </div> 
-                    </div>
-                @endguest
+               
 
                 @auth
                 <div class="row">
@@ -96,12 +81,14 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-6">
+                    <div class="hidemobile-sm">
+                    <div class="col-lg-2 col-md-2 hidden-md">
                         <div class="learning-business">
                             <a href="{{ route('mycourse.show') }}" class="btn btn-link" title="My Course">{{ __('frontstaticword.MyCourses') }}</a>
                         </div>
+                        </div>
                     </div>
-                    <div class="col-lg-1 col-md-1 col-sm-2 col-2">
+                    <div class="col-lg-1 col-md-1 col-sm-2 col-2 hidemobile-sm">
                         <div class="nav-wishlist">
                             <ul id="nav">
                                 <li id="notification_li">
@@ -158,43 +145,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-1 col-md-1 col-sm-2 col-2">
-                        <div class="nav-wishlist">
-                            <a href="{{ route('wishlist.show') }}" title="Go to Wishlist"><i class="fa fa-heart"></i></a>
-                            <span class="red-menu-badge red-bg-success">
-                                @php
-                                    $data = App\Wishlist::where('user_id', Auth::User()->id)->get();
-                                    if(count($data)>0){
-
-                                        echo count($data);
-                                    }
-                                    else{
-
-                                        echo "0";
-                                    }
-                                @endphp
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-1 col-sm-2 col-2">
-                        <div class="shopping-cart">
-                            <a href="{{ route('cart.show') }}" title="Cart"><i class="flaticon-shopping-cart"></i></a>
-                            <span class="red-menu-badge red-bg-success">
-                                @php
-                                    $item = App\Cart::where('user_id', Auth::User()->id)->get();
-                                    if(count($item)>0){
-
-                                        echo count($item);
-                                    }
-                                    else{
-
-                                        echo "0";
-                                    }
-                                @endphp
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                   
+                    <div class="col-lg-4 col-md-3 col-sm-6 col-6 hidemobile-sm">
                         <div class="my-container">
                           <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle  my-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -223,14 +175,11 @@
                                 @if(Auth::User()->role == "admin" || Auth::User()->role == "instructor"  )
                                 <a target="_blank" href="{{ url('/admins') }}"><li><i class="fa fa-dashboard"></i>{{ __('frontstaticword.AdminDashboard') }}</li></a>
                                 @endif
-                                <a href="{{ route('mycourse.show') }}"><li><i class="fa fa-diamond"></i>{{ __('frontstaticword.MyCourses') }}</li></a>
-                                <a href="{{ route('wishlist.show') }}"><li><i class="fa fa-heart"></i>{{ __('frontstaticword.MyWishlist') }}</li></a>
-                                <a href="{{ route('purchase.show') }}"><li><i class="fa fa-shopping-cart"></i>{{ __('frontstaticword.PurchaseHistory') }}</li></a>
-                                <a href="{{route('profile.show',Auth::User()->id)}}"><li ><i class="fa fa-user"></i>{{ __('frontstaticword.UserProfile') }}</li></a>
+                               
+                            
+                                <a href="{{route('dashboard')}}"><li ><i class="fa fa-user"></i>{{ "User Dashboard"}}</li></a>
                                 @if(Auth::User()->role == "user")
-                                @if($gsetting->instructor_enable == 1)
-                                <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i class="fas fa-chalkboard-teacher"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
-                                @endif
+                               
                         
                                 @endif
 

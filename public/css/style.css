@@ -6699,3 +6699,13 @@ input.razorpay-payment-button {
   text-transform: lowercase;;
 }
 
+
+
+@media(max-width: 768px){
+
+    .hidemobile-sm{
+        display: none;
+    }
+
+  }
+

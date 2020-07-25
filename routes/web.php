@@ -322,6 +322,9 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     
     Route::get('profile/show/{id}', 'UserProfileController@userprofilepage')->name('profile.show');
+
+    Route::get('dashboard','UserProfileController@userdashboard')->name('dashboard')->middleware('auth');
+
        Route::get('profile/attendance/{id}', 'UserProfileController@userattendance')->name('profile.attendance');
     Route::put('/edit/{id}','UserProfileController@userprofile')->name('user.profile');
 
