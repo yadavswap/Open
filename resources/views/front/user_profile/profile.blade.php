@@ -27,9 +27,26 @@
 	                        <li><i class="fa fa-user"></i><a href="{{route('profile.show',Auth::User()->id)}}" title="Upload Items">{{ __('frontstaticword.UserProfile') }}</a></li>
 	       
 	                        <li><i class="fa fa-pie-chart"></i><a href="{{ route('purchase.show') }}" title="Followers">Report</a></li>
-	                        @if(Auth::User()->role == "user")
+
+	                         
+
+
+	                          	  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <div>
+                                      <li style="color: #716E6E;
+font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
+                                        
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="display-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </a>
+
+	                          </li>
 	                       
-	                        @endif
+
+
+
 	                    </ul>
 	                </div>
 	            </div>
