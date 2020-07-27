@@ -26,6 +26,10 @@
 
           <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>{{ __('adminstaticword.User') }}</span></a></li>
 
+           <li class="{{ Nav::isRoute('assign.index') }}"><a href="{{route('assign.index')}}"><i class="fa fa-plus" aria-hidden="true"></i><span>Assign To Teacher</span></a></li>
+
+
+
           @if(isset($zoom_enable) && $zoom_enable == 1)
           <li class="{{ Nav::isRoute('meeting.create') }} {{ Nav::isRoute('zoom.show') }} {{ Nav::isRoute('zoom.edit') }} {{ Nav::isRoute('zoom.setting') }} {{ Nav::isRoute('zoom.index') }}  treeview">
             <a href="#">

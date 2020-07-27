@@ -48,6 +48,19 @@ class UserController extends Controller
         return view('admin.user.index', compact('users'));
     }
 
+    public function viewStudents()
+    {
+
+        if(Auth::user()->role == "instructor"){
+
+            $users = User::where('role','user')->where('added_by_user_id',Auth::user()->id)->get();
+        return view('admin.user.index', compact('users'));
+        }
+      
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

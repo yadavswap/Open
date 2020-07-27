@@ -98,7 +98,8 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::prefix('user')->group(function (){
     Route::get('/','UserController@viewAllUser')->name('user.index');
-    Route::get('/adduser','UserController@create')->name('user.add');
+    Route::get('/assign','UserController@viewStudents')->name('assign.index');
+     Route::get('/adduser','UserController@create')->name('user.add');
     Route::post('/insertuser','UserController@store')->name('user.store');
     Route::get('edit/{id}','UserController@edit')->name('user.edit');
     Route::put('/edit/{id}','UserController@update')->name('user.update');   
@@ -318,6 +319,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::get('/user/movie/time/{endtime}/{movie_id}/{user_id}','TimeHistoryController@movie_time');
 
     Route::get('all/purchase', 'OrderController@purchasehistory')->name('purchase.show');
+      Route::get('reports', 'ReportController@index')->name('front.report.index');
     Route::get('invoice/show/{id}', 'OrderController@invoice')->name('invoice.show');
 
     

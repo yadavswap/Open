@@ -26,7 +26,7 @@
 	                        <li><i class="fa fa-history"></i><a href="{{ route('purchase.show') }}" title="Followers">Enrolled History</a></li>
 	                        <li><i class="fa fa-user"></i><a href="{{route('profile.show',Auth::User()->id)}}" title="Upload Items">{{ __('frontstaticword.UserProfile') }}</a></li>
 	       
-	                        <li><i class="fa fa-pie-chart"></i><a href="{{ route('purchase.show') }}" title="Followers">Report</a></li>
+	                        <li><i class="fa fa-pie-chart"></i><a href="{{ route('front.report.index') }}" title="Followers">Report</a></li>
 
 	                         
 
