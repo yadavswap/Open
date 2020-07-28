@@ -27,16 +27,12 @@
                 </div>
 
                 <div class="col-md-5">
-                  <label for="exampleInputTit1e">{{ __('adminstaticword.SubCategory') }}</label>
+                  <label for="exampleInputTit1e">{{ "Subject" }}</label>
                   <select name="subcategories" id="upload_id" class="form-control js-example-basic-single col-md-7 col-xs-12">
                   </select>
                 </div>
 
-                <div class="col-md-2">
-                  <label for="exampleInputTit1e">{{ __('adminstaticword.SubCategory') }}</label>
-                  <br>
-                  <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal7" title="AddCategory" class="btn btn-md btn-primary">{{ __('adminstaticword.Add') }}</button>
-                </div>
+             
               </div>
               <br>       
                      
@@ -47,7 +43,7 @@
                 </div>
               
                 <div class="col-md-6">
-                  <label for="exampleInputTit1e">{{ __('adminstaticword.Icon') }}:<sup class="redstar">*</sup></label>
+                  <label for="exampleInputTit1e">{{ __('adminstaticword.Icon') }}:</label>
                   <input type="text" class="form-control icp-auto icp" name="icon" id="exampleInputTitle" placeholder="Enter your icon" value="">
                 </div>
               </div>

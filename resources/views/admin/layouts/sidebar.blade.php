@@ -97,9 +97,9 @@
                     <a href="#"><i class="fa fa-star" aria-hidden="true"></i>{{ "Classes & Subjects" }}<i class="fa fa-angle-left pull-right"></i></a>
                     
                     <ul class="treeview-menu">
-                      <li class="{{ Nav::isResource('category') }}"><a href="{{url('category')}}"><i class="fa fa-circle-o"></i>{{ "Class"}}</a></li>
+                      <li class="{{ Nav::isResource('category') }}"><a href="{{url('category')}}"><i class="fa fa-circle-o"></i>{{ "Category"}}</a></li>
                       <li class="{{ Nav::isResource('subcategory') }}"><a href="{{url('subcategory')}}"><i class="fa fa-circle-o"></i>{{ "Subject" }}</a></li>
-                      <li class="{{ Nav::isResource('childcategory') }}"><a href="{{url('childcategory')}}"><i class="fa fa-circle-o"></i>{{ "Category" }}</a></li>
+                      <li class="{{ Nav::isResource('childcategory') }}"><a href="{{url('childcategory')}}"><i class="fa fa-circle-o"></i>Units</a></li>
                     </ul>
 
                     <li class="{{ Nav::isResource('course') }}"><a href="{{url('course')}}"><i class="fa fa-book" aria-hidden="true"></i><span>{{ __('adminstaticword.Course') }}</span></a></li>

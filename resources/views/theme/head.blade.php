@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 
 
+
+
 <?php
 $language = Session::get('changed_language'); //or 'english' //set the system language
 $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl languages
@@ -38,4 +40,6 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 <link rel="manifest" href="{{url('manifest.json')}}">
 <link rel="stylesheet" href="{{ asset('zabuto_calendar.min.css') }}">
 <!-- end theme styles -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
 </head>

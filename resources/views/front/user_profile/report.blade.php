@@ -11,7 +11,7 @@
 <!-- profile update start -->
 <section id="profile-item" class="profile-item-block">
     <div class="container">
-    	<form action="" method="POST" enctype="multipart/form-data">
+    
         	{{ csrf_field() }}
             {{ method_field('PUT') }}
 
@@ -36,7 +36,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
                                         
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="display-none">
                                             @csrf
-                                        </form>
+                                    
                                     </div>
                                 </a>
 
@@ -73,7 +73,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
    </div>
    
   </div>
-  <center> <div class="card-footer"><button class="btn-xs btn-primary">View More</button></div></center>
+  <center> <div class="card-footer"><a href="" class="btn-xs btn-primary">View More</a></div></center>
 </div>
 
                         </div>
@@ -93,6 +93,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 
    
   </div>
+   <center> <div class="card-footer"><a href="" class="btn-xs btn-primary">View More</a></div></center>
 </div>
                          </div>
                           <div class="col-md-4">
@@ -110,8 +111,10 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
    </div>
    
   </div>
+   <center> <div class="card-footer"><a href="{{route('')}}" class="btn-xs btn-primary">View More</a></div></center>
 </div>
                           </div>
+
                       </div>
 	                 	
 	                

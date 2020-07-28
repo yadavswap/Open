@@ -8,10 +8,10 @@
     <div class="col-xs-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">{{ __('adminstaticword.ChildCategory') }}</h3>
+          <h3 class="box-title">Unit Name</h3>
         </div>
         <div class="box-header">
-          <a href="{{url('childcategory/create')}}" class="btn btn-info btn-sm">+ {{ __('adminstaticword.AddChildCategory') }}</a> 
+          <a href="{{url('childcategory/create')}}" class="btn btn-info btn-sm">Add Units</a> 
           <br>
         </div>
 
@@ -24,9 +24,9 @@
                 <tr>
                   
                   <th>#</th>
-                  <th>{{ __('adminstaticword.SubCategory') }}</th>
-                  <th>{{ __('adminstaticword.ChildCategory') }}</th>
-                  <th>{{ __('adminstaticword.Icon') }}</th>
+                  <th>{{ "Subjects" }}</th>
+                  <th>{{ "Unit Name" }}</th>
+                 
                   <th>{{ __('adminstaticword.Status') }}</th>
                   <th>{{ __('adminstaticword.Edit') }}</th>
                   <th>{{ __('adminstaticword.Delete') }}</th>
@@ -40,7 +40,7 @@
                   <td><?php echo $i;?></td>
                   <td>{{$cat->subcategory->title}}</td>
                   <td>{{$cat->title}}</td>
-                  <td><i class="fa {{$cat->icon}}"></i></td>
+                
                   <td>
                     <form action="{{ route('childcategory.quick',$cat->id) }}" method="POST">
                       {{ csrf_field() }}

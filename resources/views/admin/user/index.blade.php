@@ -65,7 +65,9 @@
                         <td>
                           {{$user->mobile}}
                         </td>
-                        <td class="btn btn-info btn-xs">{{  ucfirst($user->role)  }}</td>
+                        <td >
+
+                          {{  ucfirst($user->role)  }}</td>
                         <td>
                           <form action="{{ route('user.quick',$user->id) }}" method="POST">
                             {{ csrf_field() }}
@@ -93,7 +95,7 @@
                             </form>
                         </td>
 
-                          <td class="btn btn-sm btn-danger">{{  ucfirst($user->role)  }}</td>
+                          <td></td>
                     </tr>
                     @endif
                     @endforeach

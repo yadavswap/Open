@@ -47,6 +47,10 @@
 		
 		<!-- Setup video player-->
 		<script>
+
+			var stopurl = "{{url('stopwatch')}}";
+			var lectureid = "<?= 1 ?>";
+
 			FWDUVPUtils.onReady(function(){
 				
 				new FWDUVPlayer({		

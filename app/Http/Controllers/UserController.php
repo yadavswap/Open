@@ -21,6 +21,7 @@ use App\State;
 use App\City;
 use App\Country;
 use App\Course;
+use App\UserAssignTeacher;
 
 class UserController extends Controller
 {
@@ -40,7 +41,11 @@ class UserController extends Controller
 
         if(Auth::user()->role == "instructor"){
 
-            $users = User::where('role','user')->where('added_by_user_id',Auth::user()->id)->get();
+            $teacherid = Auth::user()->id;
+
+
+            $users = UserAssignTeacher::select('users.*','user_assign_teachers.*')
+            ->join('users','user_assign_teachers.student_id','=','users.id')->get();
         return view('admin.user.index', compact('users'));
         }
       
@@ -51,14 +56,54 @@ class UserController extends Controller
     public function viewStudents()
     {
 
-        if(Auth::user()->role == "instructor"){
-
-            $users = User::where('role','user')->where('added_by_user_id',Auth::user()->id)->get();
-        return view('admin.user.index', compact('users'));
-        }
       
-        $users = User::all();
-        return view('admin.user.index', compact('users'));
+    }
+
+    public function assignStudent(){
+
+        $authid = Auth::user()->id;
+
+        $users = User::where('role','user')->where('id','!=',$authid)->orderBy('fname','ASC')->get();
+         $teachers = User::where('role','instructor')->where('id','!=',$authid)->orderBy('fname','ASC')->get();
+        return view('admin.user.assign', compact('users','teachers'));
+
+    }
+
+    public function assignToStudent(Request $request){
+
+        $studentid = $request->student;
+        $instructid = $request->teacher;
+
+        $exists = UserAssignTeacher::where('student_id', $studentid)
+        ->where('instructor_id',$instructid)
+        ->first();
+
+        if($exists)
+        {
+              return back()->with('error','Assigned Successfully');
+        }
+
+       
+        $assign = new UserAssignTeacher;
+        $assign->student_id = $studentid;
+        $assign->instructor_id = $instructid;
+        $assign->save();
+
+          return back()->with('success','Assigned Successfully');
+
+   
+
+      
+
+           
+
+
+
+
+
+
+
+
     }
 
     /**

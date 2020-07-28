@@ -30,6 +30,7 @@ use Auth;
 use Redirect;
 use App\Attendance;
 use App\Helpers\AttendanceHelper;
+use App\WatchTime;
 
 class CourseController extends Controller
 {
@@ -414,6 +415,15 @@ class CourseController extends Controller
       {
           $atn_obj = new AttendanceHelper();
           $atn_obj->studentAttendance();
+          $watchtime = new WatchTime;
+          $watchtime->user_id = Auth::user()->id;
+          $watchtime->course_id = $id;
+          $watchtime->starts_at_date = date('Y-m-d');
+          $watchtime->starts_at_time = date("h:i:s");
+          $watchtime->save();
+
+          session(['watchid' => $id]);
+
         return view('front.course_content',compact('course','courseinclude','whatlearns','coursechapters','courseclass', 'coursequestions', 'announsments'));
       }
      

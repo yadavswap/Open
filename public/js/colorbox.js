@@ -540,6 +540,8 @@
 					publicMethod.prev();
 				});
 				$close.click(function () {
+
+					//Attendance code here
 					publicMethod.close();
 				});
 				$overlay.click(function () {

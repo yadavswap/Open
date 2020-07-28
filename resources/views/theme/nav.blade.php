@@ -1,3 +1,12 @@
+<?php
+if (\Request::is('show/coursecontent/*')) { 
+ @include('instructormodel');
+}
+else{
+	
+?>
+
+
 <section id="nav-bar" class="nav-bar-main-block">
     <div class="container">
         <div class="row">
@@ -204,3 +213,9 @@
 </section>
 
 @include('instructormodel')
+
+<?php
+
+}
+
+?>

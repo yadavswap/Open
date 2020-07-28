@@ -29,6 +29,10 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 
 <script src="{{ asset('zabuto_calendar.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+
+
 <!-- 
 <script >
 	
@@ -89,5 +93,12 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+<script type="text/javascript">
+$(function() {
+  $('.selectpicker').selectpicker();
+});
+</script>
+
 
 @yield('custom-script')

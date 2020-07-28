@@ -17,8 +17,10 @@ class ReportController extends Controller
 
     }
 
-    public function show(){
+    public function showAttendance(){
+
     	
+
     }
 
 

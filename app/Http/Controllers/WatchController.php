@@ -12,6 +12,7 @@ use Crypt;
 use Redirect;
 use App\User;
 use App\Attendance;
+use App\WatchTime;
 
 class WatchController extends Controller
 {
@@ -49,6 +50,12 @@ class WatchController extends Controller
 
     }
 
+    public function stopClass($id){
+
+        
+
+    }
+
 
     public function watchclass($id)
     {
@@ -56,8 +63,17 @@ class WatchController extends Controller
 
         if(Auth::check())
         {
+            $userid = Auth::user()->id;
+
             if(!empty($class))
             {
+
+                $watchtime = new WatchTime();
+                $watchtime->user_id = $userid;
+          $watchtime->lecture_id = $id;
+          $watchtime->starts_at_date = date('Y-m-d');
+          $watchtime->starts_at_time = date("h:i:s");
+          $watchtime->save();
                 return view('classwatch',compact('class'));
             }
             else
