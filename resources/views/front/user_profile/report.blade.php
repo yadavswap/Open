@@ -67,7 +67,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
    <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
     </div>
      <div class="col-md-8">
-      101 Attempted
+    20 This Month
     </div>
    
    </div>
@@ -87,7 +87,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
     <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
     </div>
      <div class="col-md-8">
-      101 Attempted
+      101 Minutes Watched
     </div>
    </div>
 
@@ -111,7 +111,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
    </div>
    
   </div>
-   <center> <div class="card-footer"><a href="{{route('')}}" class="btn-xs btn-primary">View More</a></div></center>
+   <center> <div class="card-footer"><a href="" class="btn-xs btn-primary">View More</a></div></center>
 </div>
                           </div>
 
