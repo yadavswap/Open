@@ -46,12 +46,12 @@
                   </select>
                 </div>
                 <div class="col-md-3">
-                  <label>{{ __('adminstaticword.SubCategory') }}:<span class="redstar">*</span></label>
+                  <label>Subject:<span class="redstar">*</span></label>
                     <select name="subcategory_id" id="upload_id" class="form-control js-example-basic-single">
                     </select>
                 </div>
                 <div class="col-md-3">
-                  <label>{{ __('adminstaticword.ChildCategory') }}:</label>
+                  <label>Units:</label>
                   <select name="childcategory_id" id="grand" class="form-control js-example-basic-single"></select>
                 </div>
                 <div class="col-md-3">

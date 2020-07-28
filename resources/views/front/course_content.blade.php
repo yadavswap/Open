@@ -545,8 +545,26 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3 col-3"> 
+
+                                                            <?php 
+                                                        foreach ($questions as $newques) {
+                                                             if($newques->user_id == Auth::user()->id)
+                                                          {
+
+                                                          }
+                                                          else{
+                                                       
+                                                         
+
+                                                            ?>
+
+
                                                             <div class="profile-heading txt-rgt"><a href="#" data-toggle="modal" data-target="#myModalanswer{{ $ques->id }}" title="response">{{ __('frontstaticword.AddAnswer') }}</a>
                                                             </div>
+                                                            <?php
+                                                             }
+                                                              }
+                                                            ?>
                                                         </div>
                                                         
 

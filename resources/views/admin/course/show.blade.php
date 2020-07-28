@@ -32,9 +32,9 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" id="nav-tab" role="tablist">
               <li role="presentation" class="active"><a href="#a" aria-controls="home" role="tab" data-toggle="tab">{{ __('adminstaticword.Course') }}</a></li>
-              <li  class=""  role="presentation"><a href="#c" aria-controls="messages" role="tab" data-toggle="tab">What You Learn</a></li>
-              <li  class=""  role="presentation"><a href="#d" aria-controls="settings" role="tab" data-toggle="tab">{{ __('adminstaticword.CourseChapter') }}</a></li>
-              <li  class=""  role="presentation"><a href="#e" aria-controls="settings" role="tab" data-toggle="tab">{{"Chapter "}}</a></li>
+              <li  class=""  role="presentation"><a href="#c" aria-controls="messages" role="tab" data-toggle="tab">Learning Outcomes</a></li>
+              <li  class=""  role="presentation"><a href="#d" aria-controls="settings" role="tab" data-toggle="tab">Topics</a></li>
+              <li  class=""  role="presentation"><a href="#e" aria-controls="settings" role="tab" data-toggle="tab">Subtopics (Stage)</a></li>
             
               <li  class=""  role="presentation"><a href="#copy" aria-controls="settings" role="tab" data-toggle="tab">{{ __('adminstaticword.Question') }}</a></li>
               <li  class=""  role="presentation"><a href="#ans" aria-controls="settings" role="tab" data-toggle="tab">{{ __('adminstaticword.Answer') }}</a></li>

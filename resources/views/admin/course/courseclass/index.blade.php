@@ -8,8 +8,8 @@
       <table id="example1" class="table table-bordered table-striped db">
         <thead>
           <tr>
-            <th>{{ __('adminstaticword.CourseChapter') }}</th>
-            <th>{{ __('adminstaticword.Title') }}</th>
+            <th>Topic Title</th>
+            <th>Stage Title</th>
             <th>{{ __('adminstaticword.Status') }}</th>
             <th>{{ __('adminstaticword.Featured') }}</th>
             <th>{{ __('adminstaticword.Edit') }}</th>
@@ -81,7 +81,7 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="exampleInputDetails">{{ __('adminstaticword.ChapterName') }}</label>
+                    <label for="exampleInputDetails">Topic Title</label>
                     <select name="course_chapters" class="form-control col-md-7 col-xs-12 js-example-basic-single">
                       @foreach($coursechapters as $c)
                       <option value="{{ $c->id }}">{{ $c->chapter_name }}</option>
@@ -93,7 +93,7 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="exampleInputDetails">{{ __('adminstaticword.Title') }}:<sup class="redstar">*</sup></label>
+                    <label for="exampleInputDetails">Stage Title:<sup class="redstar">*</sup></label>
                     <input type="text" class="form-control " name="title" id="exampleInputTitle"   placeholder="Enter Your Title"value="" required>
                   </div>
                 </div>
@@ -101,7 +101,7 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="type">{{ __('adminstaticword.Type') }}:</label>
+                    <label for="type">Teaching Material : (Add as per it occures in the lession)</label>
                     <select name="type" id="filetype" class="form-control js-example-basic-single">
                       <option>{{ __('adminstaticword.ChooseFileType') }}</option>
                       <option value="video">{{ __('adminstaticword.Video') }}</option>

@@ -112,7 +112,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <label for="exampleInputTit1e">{{ __('adminstaticword.Marks') }}:<span class="redstar">*</span> </label>
-                    <input type="number" placeholder="Enter Per Question Mark" class="form-control " name="per_q_mark" id="exampleInputTitle" value="">
+                    <input type="text" placeholder="Enter Per Question Mark" class="form-control " name="per_q_mark" id="exampleInputTitle" value="">
                   </div>
                 </div>
                 <br>
