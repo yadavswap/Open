@@ -44,7 +44,7 @@ class UserController extends Controller
             $teacherid = Auth::user()->id;
 
 
-            $users = UserAssignTeacher::select('users.*','user_assign_teachers.*')
+            $users = UserAssignTeacher::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
             ->join('users','user_assign_teachers.student_id','=','users.id')->get();
         return view('admin.user.index', compact('users'));
         }
@@ -355,6 +355,8 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
+
+        //dd($user);
         if ($user->user_img != null)
         {
                 

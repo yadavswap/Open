@@ -17,7 +17,10 @@ class ReportController extends Controller
 
     public function index(){
 
-    	return view('front.user_profile.report');
+    	$now = Carbon::now();
+    	$month = $now->format('F'); 
+
+    	return view('front.user_profile.report',compact('month'));
 
     }
 

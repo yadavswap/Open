@@ -69,7 +69,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('students.attendance.index')}}"><i class="fa fa-circle-o"></i>{{"Student Attendance"}}</a></li>
-              <li class="{{ Nav::isResource('requestinstructor') }}"><a href="{{url('requestinstructor')}}"><i class="fa fa-circle-o"></i>{{"Teacher Attendance"}}</a></li>
+            
             </ul>
           </li>
 
@@ -81,7 +81,10 @@
               </span>
             </a>
             <ul class="treeview-menu">
+                 <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Attendance Report"}}</a></li>
               <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Exam Report"}}</a></li>
+               <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Watch Report"}}</a></li>
+                <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Exam Result"}}</a></li>
             </ul>
           </li>
          
@@ -121,7 +124,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{ __("All Teacher") }}</a></li>
-              <li class="{{ Nav::isResource('requestinstructor') }}"><a href="{{url('requestinstructor')}}"><i class="fa fa-circle-o"></i>{{ __('adminstaticword.InstructorRequest') }}</a></li>
+            
             </ul>
           </li>
 

@@ -63,11 +63,11 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
   <div class="card-body">
    
     <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
    <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
     </div>
-     <div class="col-md-8">
-    20 This Month
+     <div class="col-md-9">
+  Report Of {{$month}}
     </div>
    
    </div>
@@ -83,11 +83,11 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
   <div class="card-body">
    
     <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
     <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
     </div>
-     <div class="col-md-8">
-      101 Minutes Watched
+     <div class="col-md-9">
+     See Watch Time
     </div>
    </div>
 
@@ -102,10 +102,10 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
   <div class="card-body">
    
    <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
     <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
     </div>
-     <div class="col-md-8">
+     <div class="col-md-9">
       101 Attempted
     </div>
    </div>

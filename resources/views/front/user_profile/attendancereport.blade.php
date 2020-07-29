@@ -53,7 +53,7 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 	            <div class="col-xl-9 col-lg-7">
 
 	                <div class="profile-info-block">
-	                    <div class="profile-heading">Reports</div>
+	                    <div class="profile-heading">Attendance Report</div>
 
 	              
 		                 <div id="piechart"></div>
@@ -106,7 +106,7 @@ google.charts.setOnLoadCallback(drawColumnChart);
 
 function drawColumnChart() {
     var bar = google.visualization.arrayToDataTable([
-           ['attendance','Count',{ role: "style" } ],
+           ['attendance','Days',{ role: "style" } ],
            ['Present', <?= $totalpresent ?>,"#006EFF"],
            ['Absent',<?= $totalabsent ?>,"#666666"]
            ]);
