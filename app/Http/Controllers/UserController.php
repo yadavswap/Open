@@ -384,6 +384,22 @@ class UserController extends Controller
         }
     }
 
+    public function unassign($id){
+
+
+
+       $data =  UserAssignTeacher::where('student_id',$id)->where('instructor_id',Auth::user()->id)->first();
+
+
+
+       if($data){
+        $data->delete();
+        session()->flash("success","User Has Been Unassign");
+            return redirect("user");
+       }
+
+    }
+
 
 
     

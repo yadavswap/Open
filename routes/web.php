@@ -101,6 +101,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::get('/assign','UserController@assignStudent')->name('assign.index');
      Route::post('/assign','UserController@assignToStudent')->name('assign.index');
      Route::get('/adduser','UserController@create')->name('user.add');
+       Route::post('/unassign/{id}','UserController@unassign')->name('unassign.index');
     Route::post('/insertuser','UserController@store')->name('user.store');
     Route::get('edit/{id}','UserController@edit')->name('user.edit');
     Route::put('/edit/{id}','UserController@update')->name('user.update');   

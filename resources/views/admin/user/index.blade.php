@@ -86,13 +86,45 @@
                             <i class="glyphicon glyphicon-pencil"></i></a>
                         </td>
                               
-                        <td><form  method="post" action="{{ route('user.delete',$user->id) }}
+                        <td>
+
+                          <?php  if(Auth::user()->role == "instructor") 
+                          {
+
+                            ?>
+
+                               <form  method="post" action="{{ route('unassign.index',$user->id) }}
+                            "data-parsley-validate class="form-horizontal form-label-left">
+                            {{ csrf_field() }}
+                           
+                             
+                              <input type="submit" value="unassign" onclick="return confirm('Are you sure unassign This User..?')" class="btn btn-sm btn-danger"/>
+                            </form>
+
+                           
+
+                            <?php
+
+                          }
+
+                          else{
+
+                            ?>
+
+                              <form  method="post" action="{{ route('user.delete',$user->id) }}
                             "data-parsley-validate class="form-horizontal form-label-left">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                              
                               <input type="submit" value="Delete" onclick="return confirm('Are you sure Delete This User..?')" class="btn btn-sm btn-danger"/>
                             </form>
+
+                            <?php
+
+                          }
+
+                          ?>
+                         
                         </td>
 
                           <td></td>
