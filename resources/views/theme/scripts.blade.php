@@ -31,6 +31,9 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
+<script type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 
 <!-- 

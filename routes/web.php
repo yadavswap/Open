@@ -257,7 +257,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
   
   
-  Route::middleware(['web','switch_languages','userdailyattendance'])->group(function () {
+  Route::middleware(['web','switch_languages','userdailyattendance','auth'])->group(function () {
 
     Route::post('rating/show/{id}','ReviewratingController@rating')->name('course.rating');
     Route::post('reports/insert/{id}','ReportReviewController@store')->name('report.review');
@@ -321,6 +321,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::get('all/purchase', 'OrderController@purchasehistory')->name('purchase.show');
       Route::get('reports', 'ReportController@index')->name('front.report.index');
+        Route::get('reports/attendance/show', 'ReportController@showAttendance')->name('attendance.show');
     Route::get('invoice/show/{id}', 'OrderController@invoice')->name('invoice.show');
 
     

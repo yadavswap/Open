@@ -22,7 +22,7 @@
 	                    <ul>
 	                        <li><i class="fa fa-book"></i><a href="{{ route('mycourse.show') }}" title="Dashboard">{{ __('frontstaticword.MyCourses') }}</a></li>
 	                     <li><i class="fa fa-bar-chart"></i><a href="{{route('profile.attendance',Auth::user()->id)}}">My Attendance</a></li>
-	                       
+	                     
 	                        <li><i class="fa fa-history"></i><a href="{{ route('purchase.show') }}" title="Followers">Enrolled History</a></li>
 	                        <li><i class="fa fa-user"></i><a href="{{route('profile.show',Auth::User()->id)}}" title="Upload Items">{{ __('frontstaticword.UserProfile') }}</a></li>
 	       
@@ -55,71 +55,9 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 	                <div class="profile-info-block">
 	                    <div class="profile-heading">Reports</div>
 
-                      <div class="row">
-                        <div class="col-md-4">
-
-                          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Attendance</div>
-  <div class="card-body">
-   
-    <div class="row">
-    <div class="col-md-4">
-   <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-8">
-    20 This Month
-    </div>
-   
-   </div>
-   
-  </div>
-  <center> <div class="card-footer"><a href="{{route('attendance.show')}}" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-
-                        </div>
-                         <div class="col-md-4">
-                              <div class="card text-white bg-purple mb-3" style="max-width: 18rem;">
-  <div class="card-header">Time Spent Report</div>
-  <div class="card-body">
-   
-    <div class="row">
-    <div class="col-md-4">
-    <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-8">
-      101 Minutes Watched
-    </div>
-   </div>
-
-   
-  </div>
-   <center> <div class="card-footer"><a href="" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-                         </div>
-                          <div class="col-md-4">
-                               <div class="card text-white bg-green mb-3" style="max-width: 18rem;">
-  <div class="card-header">Exam Report</div>
-  <div class="card-body">
-   
-   <div class="row">
-    <div class="col-md-4">
-    <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-8">
-      101 Attempted
-    </div>
-   </div>
-   
-  </div>
-   <center> <div class="card-footer"><a href="{{route('attendance.show')}}" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-                          </div>
-
-                      </div>
-	                 	
-	                
 	              
-		               
+		                 <div id="piechart"></div>
+    <div id="columnchart"></div>
 		               
 	                </div>
 	              
@@ -142,6 +80,51 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 @section('custom-script')
 
 
+
+<script type="text/javascript">  
+google.charts.load('current', {'packages':['corechart']});  
+google.charts.setOnLoadCallback(drawPieChart);  
+
+function drawPieChart()  
+{  
+    var pie = google.visualization.arrayToDataTable([  
+              ['attendancede', 'Numbder'],
+              ['Absent', <?= $totalabsent ?>],
+              ['Present', <?= $totalpresent ?>],
+                    
+         ]);  
+    var header = {  
+          title: 'Student Attendance Report',
+          slices: {0: {color: '#666666'}, 1:{color: '#006EFF'}}
+         };  
+    var piechart = new google.visualization.PieChart(document.getElementById('piechart'));  
+    piechart.draw(pie, header);  
+} 
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawColumnChart);
+
+function drawColumnChart() {
+    var bar = google.visualization.arrayToDataTable([
+           ['attendance','Count',{ role: "style" } ],
+           ['Present', <?= $totalpresent ?>,"#006EFF"],
+           ['Absent',<?= $totalabsent ?>,"#666666"]
+           ]);
+    var columnview = new google.visualization.DataView(bar);
+     columnview.setColumns([0, 1,
+               { calc: "stringify",
+                 sourceColumn: 1,
+                 type: "string",
+                 role: "annotation" },
+               2]);       
+    var header = {
+    title: 'Student Attendance',
+    bar: {groupWidth: "50%"}
+    };
+    var barchart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+    barchart.draw(columnview, header);
+}
+</script>
 
 
 
