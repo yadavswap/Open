@@ -14,11 +14,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
-
+   
     /**
      * Show the application dashboard.
      *
@@ -27,37 +23,11 @@ class HomeController extends Controller
     public function index()
     {
 
-          $role = Auth::user()->role;
-        $date = date('Y-m-d');
-      //  $course_id = request()->segment(3);
-        $time = date("h:i:s");
-
-
-           $userattendanceExist = UserDailyAttendance::where('user_id',Auth::user()->id)
-        ->where('attendance_date',$date)->first();
-
-        if($userattendanceExist){
-
-             return view('home');
-
         
-        }
-        else{
-
-         $userattendance = new UserDailyAttendance();
-            $userattendance->user_id = Auth::user()->id;
-            $userattendance->attendance_date =  $date ;
-            $userattendance->attendance_time =  $time ;
-            $userattendance->save();
-
-             return view('home');
-
-        }
 
 
 
-
-            
+            return view('home');
       
 
     }

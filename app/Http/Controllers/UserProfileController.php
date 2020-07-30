@@ -29,6 +29,18 @@ class UserProfileController extends Controller
      public function userdashboard()
     {
 
+          $role = Auth::user()->role;
+        $date = date('Y-m-d');
+      //  $course_id = request()->segment(3);
+        $time = date("h:i:s");
+
+
+           $userattendanceExist = UserDailyAttendance::where('user_id',Auth::user()->id)
+        ->where('attendance_date',$date)->first();
+
+        if($userattendanceExist){
+
+            
         $id = Auth::user()->id;
         $course = Course::all();
         $countries = Country::all();
@@ -36,6 +48,30 @@ class UserProfileController extends Controller
         $cities = City::all();
         $orders = User::where('id', $id)->first();
         return view('front.user_profile.profile',compact('orders', 'course', 'countries', 'states', 'cities'));  
+
+        
+        }
+        else{
+
+         $userattendance = new UserDailyAttendance();
+            $userattendance->user_id = Auth::user()->id;
+            $userattendance->attendance_date =  $date ;
+            $userattendance->attendance_time =  $time ;
+            $userattendance->save();
+
+           
+        $id = Auth::user()->id;
+        $course = Course::all();
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+        $orders = User::where('id', $id)->first();
+        return view('front.user_profile.profile',compact('orders', 'course', 'countries', 'states', 'cities'));  
+
+        }
+
+
+
     }
 
     public function userattendance($id){
