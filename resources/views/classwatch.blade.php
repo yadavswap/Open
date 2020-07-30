@@ -11,6 +11,17 @@
 	    	$psetting = App\PlayerSetting::first();
 		?>
 
+		<script type="text/javascript">
+
+			
+			var sessionid = "{{$watchid}}";
+			
+			var stopurl = "{{route('stopclass')}}";
+
+			
+		
+		</script>
+
 		<script src="{{url('js/FWDUVPlayer.js')}}"></script>
 
 		<script>
@@ -44,12 +55,14 @@
 			  	});
 			})(jQuery);
 		</script>
+
+
 		
 		<!-- Setup video player-->
 		<script>
 
-			var stopurl = "{{url('stopwatch')}}";
-			var lectureid = "<?= 1 ?>";
+			
+			
 
 			FWDUVPUtils.onReady(function(){
 				

@@ -541,7 +541,32 @@
 				});
 				$close.click(function () {
 
-					//Attendance code here
+					var now = new Date(Date.now());
+var formatted = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
+					
+
+	        $.ajax({
+
+            type: "POST",
+
+            url: "http://localhost/lms/public/stoplecture/",
+
+            dataType: "json",
+
+            data: {time:formatted},
+
+             success : function(data){
+
+             	alert(data);
+             }
+
+
+
+        });
+
+          
+
 					publicMethod.close();
 				});
 				$overlay.click(function () {

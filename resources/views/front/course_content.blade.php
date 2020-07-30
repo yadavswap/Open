@@ -23,7 +23,7 @@
                         </li>
 
                          <li>
-                            <a href="{{ route('user.course.show',['id' => $course->id, 'slug' => $course->slug ]) }}" class="course_btn">Exit Lecture<i class="fa fa-chevron-right"></i></a>
+                            <a href="{{ route('stopcourse') }}" class="course_btn">Exit Lecture<i class="fa fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>

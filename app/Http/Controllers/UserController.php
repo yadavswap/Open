@@ -22,6 +22,7 @@ use App\City;
 use App\Country;
 use App\Course;
 use App\UserAssignTeacher;
+use DB;
 
 class UserController extends Controller
 {
@@ -205,6 +206,24 @@ class UserController extends Controller
         $data = User::create($input);
         $data->added_by_user_id = Auth::user()->id;
         $data->save(); 
+
+
+
+        $exists = UserAssignTeacher::where('student_id',$data->id )
+        ->where('instructor_id',Auth::user()->id)
+        ->first();
+
+        if(!$exists)
+        {
+                $assign = new UserAssignTeacher;
+        $assign->student_id = $data->id;
+        $assign->instructor_id = Auth::user()->id;
+        $assign->save();
+        }
+
+       
+      
+
 
         Session::flash('success','User Added Successfully !');
         return redirect('user');
@@ -398,6 +417,49 @@ class UserController extends Controller
             return redirect("user");
        }
 
+    }
+
+    public function searchuser(Request $request){
+
+           $search = $request->searchfield;
+
+         if(Auth::user()->role == "instructor"){
+
+            $teacherid = Auth::user()->id;
+
+
+          /*  $users = UserAssignTeacher::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
+            ->join('users','user_assign_teachers.student_id','=','users.id')->get();
+        return view('admin.user.index', compact('users'));*/
+
+     
+$users = DB::table('users')
+          ->select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
+          ->join('user_assign_teachers','users.id','=','user_assign_teachers.student_id')
+          ->where(function($query) use($search){
+            $query->where('users.fname', 'like' , '%'. $search .'%')
+              ->orWhere('users.lname', 'like' , '%'. $search .'%')
+              ->orWhere('users.email', 'like' , '%'. $search .'%')
+              ->orWhere('users.mobile', 'like' , '%'. $search .'%');
+            })
+            ->where('users.role','user')
+            ->get();
+
+        //  dd($users);
+
+           return view('admin.user.index', compact('users'));
+
+
+        }
+
+        $users = User::where('users.fname', 'like' , '%'. $search .'%')
+        ->orWhere('users.fname', 'like' , '%'. $search .'%')
+          ->orWhere('users.lname', 'like' , '%'. $search .'%')
+          ->orWhere('users.mobile', 'like' , '%'. $search .'%')
+          ->get();
+      
+      
+        return view('admin.user.index', compact('users'));
     }
 
 

@@ -13,6 +13,7 @@ use Redirect;
 use App\User;
 use App\Attendance;
 use App\WatchTime;
+use Session;
 
 class WatchController extends Controller
 {
@@ -50,7 +51,22 @@ class WatchController extends Controller
 
     }
 
-    public function stopClass($id){
+    public function stopClass(Request $request){
+
+        $watchlectureid = Session::get('watchlectureid');
+        $stopclass = WatchTime::where('id',$watchlectureid)->first();
+
+        if($stopclass){
+            $stopclass->update(['ends_at_date' => date('Y-m-d'),
+                'ends_at_time'=>date("h:i:s")
+        ]);
+             Session::forget('watchlectureid');
+        }
+
+
+
+
+       return response()->json("true",200);
 
         
 
@@ -74,7 +90,18 @@ class WatchController extends Controller
           $watchtime->starts_at_date = date('Y-m-d');
           $watchtime->starts_at_time = date("h:i:s");
           $watchtime->save();
-                return view('classwatch',compact('class'));
+          $watchid = $watchtime->id;
+
+          if(Session::get('watchlectureid'))
+          {
+            Session::forget('watchlectureid');
+            Session::put('watchlectureid', $watchid);
+          }
+
+        Session::put('watchlectureid', $watchid);
+
+
+                return view('classwatch',compact('class','watchid'));
             }
             else
             {

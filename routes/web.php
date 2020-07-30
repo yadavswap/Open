@@ -98,6 +98,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::prefix('user')->group(function (){
     Route::get('/','UserController@viewAllUser')->name('user.index');
+       Route::post('/search','UserController@searchuser')->name('user.search');
     Route::get('/assign','UserController@assignStudent')->name('assign.index');
      Route::post('/assign','UserController@assignToStudent')->name('assign.index');
      Route::get('/adduser','UserController@create')->name('user.add');
@@ -337,7 +338,8 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::get('watch/course/{id}', 'WatchController@watch')->name('watchcourse');
     Route::get('watch/courseclass/{id}', 'WatchController@watchclass')->name('watchcourseclass');
-    Route::post('stopwatch', 'WatchController@stopClass')->name('stopclass');
+    Route::get('stoplecture', 'WatchController@stopClass')->name('stopclass');
+    Route::get('stopcourse', 'CourseController@stopCourse')->name('stopcourse');
 
     Route::get('language-switch/{local}', 'LanguageSwitchController@languageSwitch')->name('languageSwitch');
 

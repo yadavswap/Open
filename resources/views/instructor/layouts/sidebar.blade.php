@@ -59,7 +59,7 @@
 
 
 
-          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students</span></a></li>
+          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Reports</span></a></li>
 
 
           <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user" aria-hidden="true"></i><span>Enrolled Students List</span></a></li>
@@ -103,7 +103,7 @@
 
           <li class="{{ Nav::isResource('instructor/announcement') }}"><a href="{{url('instructor/announcement')}}"><i class="fa fa-compass" aria-hidden="true"></i><span>{{ __('adminstaticword.Announcement') }}</span></a></li>
 
-          <li class="{{ Nav::isResource('blog') }}"><a href="{{url('blog')}}"><i class="fa fa-cube"></i>{{ __('adminstaticword.Blog') }}</a></li>
+        
           
           @if(isset($gsetting->feature_amount))
           <li class="{{ Nav::isResource('featurecourse') }}"><a href="{{url('featurecourse')}}"><i class="fa fa-book" aria-hidden="true"></i><span> {{ __('adminstaticword.Feature') }} {{ __('adminstaticword.Course') }}</span></a></li>

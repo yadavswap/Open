@@ -422,13 +422,41 @@ class CourseController extends Controller
           $watchtime->starts_at_time = date("h:i:s");
           $watchtime->save();
 
-          session(['watchid' => $id]);
+
+           if(Session::get('watchcourseid'))
+          {
+            Session::forget('watchcourseid');
+            Session::put('watchcourseid', $watchtime->id);
+          }
+
+        Session::put('watchcourseid', $watchtime->id);
+
+         
 
         return view('front.course_content',compact('course','courseinclude','whatlearns','coursechapters','courseclass', 'coursequestions', 'announsments'));
       }
      
       return Redirect::route('login')->withInput()->with('delete', 'Please Login to access restricted area.'); 
      
+
+    }
+
+
+    public function stopCourse(){
+
+
+       $watchcourseid = Session::get('watchcourseid');
+        $stopclass = WatchTime::where('id',$watchcourseid)->first();
+
+        if($stopclass){
+            $stopclass->update(['ends_at_date' => date('Y-m-d'),
+                'ends_at_time'=>date("h:i:s")
+        ]);
+             Session::forget('watchcourseid');
+        }
+
+        return redirect()->route('dashboard');
+
 
     }
 

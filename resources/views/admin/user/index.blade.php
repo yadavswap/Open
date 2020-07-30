@@ -12,17 +12,34 @@
         </div>
         <div class="box-header">
 
-          <a class="btn btn-info btn-sm" href="{{ route('user.add') }}">+ {{ __('adminstaticword.Add') }} {{ __('adminstaticword.User') }}</a>
-          
-            <div class="input-group pull-right">
-          <form method="" action="" name="searchuser">
-        <input type="text" name="search" class= "form-control" placeholder="Enter student email or number">
+        <div class="row">
+          <div class="col-md-4">
+              <a class="btn btn-info btn-sm" href="{{ route('user.add') }}">+ {{ __('adminstaticword.Add') }} {{ __('adminstaticword.User') }}</a>
+          </div>
+          <div class="col-md-8">
+               <div class="input-group">
+          <form method="post" action="{{route('user.search')}}" name="searchuser">
+            @csrf
+            <div class="row">
+              <div class="col-md-8">  <input type="text" name="searchfield" class= "form-control" placeholder="Enter student email or mobile"></div>
+
+
+
+
+<div class="col-md-2">  <input type="submit" name="search" class="btn btn-info" value="Search"></div>
+            </div>
+      
+      
 
       
 
 
       </form>
     </div>
+          </div>
+        </div>
+          
+         
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -39,8 +56,9 @@
                   <th>{{ __('adminstaticword.Status') }}</th>
                   <th>{{ __('adminstaticword.Edit') }}</th>
                   <th>{{ __('adminstaticword.Delete') }}</th>
-                    <th>Attendance</th>
-                    <th>Report</th>
+                    <th>Attendance Report</th>
+                    <th>Exam Report</th>
+                     <th>Watch Report</th>
                 </thead> 
 
                 <tbody>
@@ -127,7 +145,21 @@
                          
                         </td>
 
-                          <td></td>
+                        <td>
+                          <a class="btn btn-success btn-sm" href="{{ route('user.update',$user->id) }}">
+                            View Attendance</a>
+                        </td>
+
+                          
+                        <td>
+                          <a class="btn btn-info btn-sm" href="{{ route('user.update',$user->id) }}">
+                            View Result</a>
+                        </td>
+                          
+                        <td>
+                          <a class="btn btn-warning btn-sm" href="{{ route('user.update',$user->id) }}">
+                            View Watch Time</a>
+                        </td>
                     </tr>
                     @endif
                     @endforeach
