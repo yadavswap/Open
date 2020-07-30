@@ -302,8 +302,46 @@
 
 <section id="testimonial" class="testimonial-main-block">
     <div class="container">
-        <h3 class="btm-30">{{ __('frontstaticword.HomeTestimonial') }}</h3>
+        <h3 class="btm-30">{{ "TESTIMONIALS" }}</h3>
         <div id="testimonial-slider" class="testimonial-slider-main-block owl-carousel">
+
+
+            <div class="item testimonial-block">
+                <ul>
+                    <li><img src="{{ asset('images/testimonial3.jpg') }}" alt="blog"></li>
+                    <li><h5 class="testimonial-heading">MANISHA DEOGHARE - STATE (96.40%)</h5></li>
+                </ul>
+                <p>
+                    Hi friends, I  joined SUPER LEARNERS INSTITUTE OF SCIENCE after my 10th board exams to prepare for entrance exam . Here faculty members follow the motto Where "Your Karma Meets Our Dharma".  A dream institution for anyone really desirous of enjoying a life full of interesting information and securing a great future too. 
+
+                </p>
+            </div>
+
+              <div class="item testimonial-block">
+                <ul>
+                    <li><img src="{{ asset('images/testimonial4.jpg') }}" alt="blog"></li>
+                    <li><h5 class="testimonial-heading">POONAM LENDE - STATE  (94.20%)</h5></li>
+                </ul>
+                <p>
+                  It has been a great privilege to be a part of such an excellent institute like SUPER LEARNERS INSTITUTE OF SCIENCE,KATOL. This institution is to provide knowledge and guidance and thereby create an environment to guide students in the path of success as well as inspire them to recognize and explore their potential of intellectual capabilities.
+
+                </p>
+            </div>
+
+                 <div class="item testimonial-block">
+                <ul>
+                    <li><img src="{{ asset('images/testimonial2.jpg') }}" alt="blog"></li>
+                    <li><h5 class="testimonial-heading">TEJAS BARAI - STATE (94%)</h5></li>
+                </ul>
+                <p>
+                    After performing well in class-X, I focused on  exams like JEE and NEET. It's necessary to prepare from class-XI and also to choose a coaching which is best not by banner but by dedication. When most students rush to renowned classes in Nagpur or other cities, I choose SUPERLEARNERS INSTITUTE OF SCIENCE ,KATOL for the dedication of teachers and other members towards student encouraging them to perform better. In the very beginning, strategies and ultimate goal, which was study plan for me for next two years  have been discussed thoroughly.
+
+                </p>
+            </div>
+
+               
+
+
             
           
             <div class="item testimonial-block">
@@ -317,40 +355,9 @@
                 </p>
             </div>
 
-             <div class="item testimonial-block">
-                <ul>
-                    <li><img src="{{ asset('images/testimonial2.jpg') }}" alt="blog"></li>
-                    <li><h5 class="testimonial-heading">TEJAS BARAI - STATE (94%)</h5></li>
-                </ul>
-                <p>
-                    After performing well in class-X, I focused on  exams like JEE and NEET. It's necessary to prepare from class-XI and also to choose a coaching which is best not by banner but by dedication. When most students rush to renowned classes in Nagpur or other cities, I choose SUPERLEARNERS INSTITUTE OF SCIENCE ,KATOL for the dedication of teachers and other members towards student encouraging them to perform better. In the very beginning, strategies and ultimate goal, which was study plan for me for next two years  have been discussed thoroughly.
+        
 
-                </p>
-            </div>
-
-               <div class="item testimonial-block">
-                <ul>
-                    <li><img src="{{ asset('images/testimonial3.jpg') }}" alt="blog"></li>
-                    <li><h5 class="testimonial-heading">MANISHA DEOGHARE - STATE (96.40%)</h5></li>
-                </ul>
-                <p>
-                    Hi friends, I  joined SUPER LEARNERS INSTITUTE OF SCIENCE after my 10th board exams to prepare for entrance exam . Here faculty members follow the motto Where "Your Karma Meets Our Dharma".  A dream institution for anyone really desirous of enjoying a life full of interesting information and securing a great future too. 
-
-                </p>
-            </div>
-
-
-               <div class="item testimonial-block">
-                <ul>
-                    <li><img src="{{ asset('images/testimonial.jpeg.jpg') }}" alt="blog"></li>
-                    <li><h5 class="testimonial-heading">POONAM LENDE - STATE  (94.20%)</h5></li>
-                </ul>
-                <p>
-                  It has been a great privilege to be a part of such an excellent institute like SUPER LEARNERS INSTITUTE OF SCIENCE,KATOL. This institution is to provide knowledge and guidance and thereby create an environment to guide students in the path of success as well as inspire them to recognize and explore their potential of intellectual capabilities.
-
-                </p>
-            </div>
-
+             
 
 
 
@@ -407,7 +414,7 @@
             <input type="email" name="e-mail" placeholder="Your E-mail Adress" />
             <input type="tel" name="phone" placeholder="Your Phone Number"/>
             <textarea name="text" id="" rows="8" placeholder="Your Message"></textarea>
-            <button class="btn-send">Get a Call Back</button>
+        <button class="btn-send" style="background-color: #F44A4A !important;">Get a Call Back</button>
         </form>
     </div>
 </div>
