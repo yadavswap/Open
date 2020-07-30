@@ -95,35 +95,64 @@
         </div>
     </div>
     <hr>
-    <div class="tiny-footer">
+    <div class="tiny-footer" style="background-color: #15151e !important;">
         <div class="container">
+                <h5 style="color:#fff;">Quick Contact</h5>
             <div class="row">
-                <div class="col-md-6">
+
+
+                  <div class="col-12 col-md-6 col-lg-6">
+                        <div class="kilimanjaro_part">
+                        
+                            <div class="row">
+                            <div class="col-md-6">
+                                  <h5 style="color: #fff;">Phone:</h5>
+                                <a href="tel:91-8605195919">+91-8605195919<br> +91-7083801183</a>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h5 style="color: #fff;">Email:</h5>
+                                 <a href="mailto:brsuperlearners@gmail.com">brsuperlearners@gmail.com</a>
+                            </div>
+                               </div>
+                        </div>
+                      
+                    </div>
+
+
+                    <div class="col-md-6">
+                        
+                        <div class="col-md-6">
+                            
+
                     <div class="logo-footer">
                         <ul>
                             @php
                                 $logo = App\Setting::first();
                             @endphp
                             <li>
-                                @if($logo->logo_type == 'L')
-                                    <a href="{{ url('/') }}" title="logo"><img src="{{ asset('images/logo/'.$logo->logo) }}" alt="logo" class="img-fluid" ></a>
-                                @else()
-                                    <a href="{{ url('/') }}"><b>{{ $logo->project_title }}</b></a>
-                                @endif
+                               
+                                    <a href="{{ url('/') }}" style="color:#fff;"><b>BR SUPER LEARNERS</b>
+                                    </br>Institute Of Science,Katol
+                            
+                                    </a>
+                               
                             </li>
 
                           
                         </ul>
-                    </div>
+                  
+
                 </div>
-                <div class="col-md-6">
-                    <div class="copyright-social">
-                        <ul>
-                            <li><a href="{{url('terms_condition')}}" title="Terms">{{ __('frontstaticword.Terms&Condition') }}</a></li> 
-                            <li><a href="{{url('privacy_policy')}}" title="Policy">{{ __('frontstaticword.PrivacyPolicy') }}</a></li>
-                        </ul>
+                
+
+                        </div>
+
+
                     </div>
-                </div>
+
+           
+               
             </div>
         </div>
     </div>
