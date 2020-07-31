@@ -29,7 +29,7 @@
       </div>
       <div class="col-lg-9 col-md-10">
         <ul  class="top-header-right">
-          <li> <i class='fa fa-map'></i>BR Super Learners,Katol</li>
+          <li> <i class='fa fa-map'></i>BR Super Learners,Katol,Nagpur,Maharashtra</li>
           <li> <i class='fa fa-envelope'></i> <a href="mailto:info@test.com">brsuperlearners@gmail.com</a> </li>
           <li> <i class='fa fa-phone'></i> <a href="tel:+91-8605195919">+91-8605195919</a> </li>
         </ul>
@@ -390,7 +390,8 @@
             <div class="info-box">
               <div class="icon"> <i class="fa fa-map-marker"></i> </div>
               <h4>Address</h4>
-              <span>BR Super Learners,Institute Of Science,Katol</span> </div>
+              <span>BR Super Learners,Institute Of Science,Dhantoli<br/>
+              Dhantoli,Maharashtra,Nagpur</span> </div>
             <div class="info-box">
               <div class="icon"> <i class="fa fa-phone"></i> </div>
               <h4>Phone</h4>
