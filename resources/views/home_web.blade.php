@@ -281,8 +281,8 @@
               <div class="about-author d-flex align-items-center">
                 <div class="author-ava"> <img src="{{ asset('images/testimonial.jpeg.jpg') }}" alt="" style="width: 90px;"> </div>
                 <div class="author-desination author-desination-2">
-                  <h4>TEJAS BARAI</h4>
-                  <h6>STATE (94%)</h6>
+                  <h4>BHOOMIKA PATRIKAR</h4>
+                  <h6>STATE (93.60%)</h6>
                 </div>
               </div>
 
