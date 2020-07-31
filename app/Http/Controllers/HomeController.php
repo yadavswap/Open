@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Helpers\AttendanceHelper;
 use Auth;
 use App\UserDailyAttendance;
+use App\ContactInfo;
 
 class HomeController extends Controller
 {
@@ -41,6 +42,24 @@ class HomeController extends Controller
 
             return view('home');
       
+
+    }
+
+
+    public function contact(Request $request){
+
+        $data = new ContactInfo;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->mobile = $request->mobile;
+        $data->message = $request->message;
+        $data->save();
+
+        return back()->with("success","Details Sent Successfully");
+
+
+
+
 
     }
 }

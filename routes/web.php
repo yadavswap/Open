@@ -29,6 +29,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
   
       Route::get('/', 'HomeController@index')->name('webhome');
         Route::get('/learnpage', 'HomeController@newhome')->name('oldhome');
+        Route::post('/contactsubmit','HomeController@contact')->name('contactsubmit');
 
       Auth::routes(['verify' => true, 'register' => false]);
 

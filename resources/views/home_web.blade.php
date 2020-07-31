@@ -21,6 +21,13 @@
 <!-- Pre Loader -->
 <div id="dvLoading"></div>
 <!-- Top Header -->
+
+@if(Session::has('success'))
+
+<center>
+<p class="alert alert-success alert-dismissible">{{Session::get('success')}}</p>
+</center>
+@endif
 <header class="top-header">
   <div class="container">
     <div class="row align-items-center">
@@ -58,7 +65,7 @@
             <li class="nav-item"><a href="#testimonialsection">Testimonials</a>
           
             </li>
-            <li class="nav-item"><a href="#mnvsection">Mission & Vission</a></li>
+            <li class="nav-item"><a href="#mnvsection">Mission & Vision</a></li>
             
             <li class="nav-item"> <a href="#contactsection" > Contact </a> </li>
           </ul>
@@ -178,7 +185,7 @@
                 </div>
               </div>
               <div class="members-text">
-                <p><br/>Hi friends, I  joined SUPER LEARNERS INSTITUTE OF SCIENCE after my 10th board exams to prepare for entrance exam . Here faculty members follow the motto Where "Your Karma Meets Our Dharma".  A dream institution for anyone really desirous of enjoying a life full of interesting information and securing a great future too. </p>
+                <p> <blockquote style="color: #010101;"><br/>Hi friends, I  joined SUPER LEARNERS INSTITUTE OF SCIENCE after my 10th board exams to prepare for entrance exam . Here faculty members follow the motto Where "Your Karma Meets Our Dharma".  A dream institution for anyone really desirous of enjoying a life full of interesting information and securing a great future too. </blockquote></p>
               </div>
               <div class="members-rating">
                 <ul>
@@ -342,7 +349,8 @@
             <div class="title">
               <h3>Write Us</h3>
             </div>
-            <form id="contactForm">
+            <form id="contactForm" action="{{route('contactsubmit')}}" method="post">
+              @csrf
               <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="form-group">
@@ -360,8 +368,8 @@
                 </div>
                 <div class="col-lg-12 col-md-12">
                   <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                    <label>Mobile Number</label>
+                    <input type="text" name="mobile" id="msg_subject" class="form-control" required data-error="Please enter your Mobile Number" maxlength="10" minlength="10" required="">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
@@ -398,6 +406,10 @@
               <div class="icon"> <i class="fa fa-envelope-o"></i> </div>
               <h4>Email</h4>
               <span> <a href="mailto:brsuperlearners@gmail.com">brsuperlearners@gmail.com</a> </span> </div>
+                <div class="info-box">
+              <div class="icon"> <i class="fa fa-internet-explorer"></i> </div>
+              <h4>Website</h4>
+              <span><a href="http://brsuperlearners.io">http://brsuperlearners.io</a></span> </div>
           </div>
         </div>
       </div>      
