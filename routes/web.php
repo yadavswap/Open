@@ -331,6 +331,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::get('all/purchase', 'OrderController@purchasehistory')->name('purchase.show');
       Route::get('reports', 'ReportController@index')->name('front.report.index');
         Route::get('reports/attendance/show', 'ReportController@showAttendance')->name('attendance.show');
+         Route::get('reports/watchtime/show', 'ReportController@watchTime')->name('watchtimne.show');
     Route::get('invoice/show/{id}', 'OrderController@invoice')->name('invoice.show');
 
     

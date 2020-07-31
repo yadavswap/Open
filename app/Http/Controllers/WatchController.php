@@ -77,6 +77,12 @@ class WatchController extends Controller
     {
         $class = CourseClass::where('id',$id)->first();
 
+
+        //course_id = Course
+        //lecture_id = Course Class
+
+
+
         if(Auth::check())
         {
             $userid = Auth::user()->id;
@@ -86,7 +92,9 @@ class WatchController extends Controller
 
                 $watchtime = new WatchTime();
                 $watchtime->user_id = $userid;
+                $watchtime->course_id = $class->coursechapter_id;
           $watchtime->lecture_id = $id;
+          
           $watchtime->starts_at_date = date('Y-m-d');
           $watchtime->starts_at_time = date("h:i:s");
           $watchtime->save();

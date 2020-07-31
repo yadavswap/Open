@@ -22,7 +22,7 @@
 	                    <ul>
 	                        <li><i class="fa fa-book"></i><a href="{{ route('mycourse.show') }}" title="Dashboard">{{ __('frontstaticword.MyCourses') }}</a></li>
 	                     <li><i class="fa fa-bar-chart"></i><a href="{{route('profile.attendance',Auth::user()->id)}}">My Attendance</a></li>
-	                       
+	                     
 	                        <li><i class="fa fa-history"></i><a href="{{ route('purchase.show') }}" title="Followers">Enrolled History</a></li>
 	                        <li><i class="fa fa-user"></i><a href="{{route('profile.show',Auth::User()->id)}}" title="Upload Items">{{ __('frontstaticword.UserProfile') }}</a></li>
 	       
@@ -53,73 +53,12 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 	            <div class="col-xl-9 col-lg-7">
 
 	                <div class="profile-info-block">
-	                    <div class="profile-heading">Reports</div>
+	                    <div class="profile-heading">Watch Time Report</div>
 
-                      <div class="row">
-                        <div class="col-md-4">
-
-                          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Attendance</div>
-  <div class="card-body">
-   
-    <div class="row">
-    <div class="col-md-3">
-   <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-9">
-  Report Of {{$month}}
-    </div>
-   
-   </div>
-   
-  </div>
-  <center> <div class="card-footer"><a href="{{route('attendance.show')}}" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-
-                        </div>
-                         <div class="col-md-4">
-                              <div class="card text-white bg-purple mb-3" style="max-width: 18rem;">
-  <div class="card-header">Time Spent Report</div>
-  <div class="card-body">
-   
-    <div class="row">
-    <div class="col-md-3">
-    <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-9">
-     See Watch Time
-    </div>
-   </div>
-
-   
-  </div>
-   <center> <div class="card-footer"><a href="{{route('watchtimne.show')}}" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-                         </div>
-                          <div class="col-md-4">
-                               <div class="card text-white bg-green mb-3" style="max-width: 18rem;">
-  <div class="card-header">Exam Report</div>
-  <div class="card-body">
-   
-   <div class="row">
-    <div class="col-md-3">
-    <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
-    </div>
-     <div class="col-md-9">
-      101 Attempted
-    </div>
-   </div>
-   
-  </div>
-   <center> <div class="card-footer"><a href="{{route('attendance.show')}}" class="btn-xs btn-primary">View More</a></div></center>
-</div>
-                          </div>
-
-                      </div>
-	                 	
-	                
 	              
-		               
+		                
+     <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
+      </div>
 		               
 	                </div>
 	              
@@ -141,6 +80,36 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 
 @section('custom-script')
 
+
+  <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart']});     
+      </script>
+
+
+
+  <script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+
+            <?php foreach ($watchdata as  $value): ?>
+
+                var data = google.visualization.arrayToDataTable([
+               ['Time', 'Minutes'],
+               ['<?= $value['course_name'] ?>',  <?= $value['course_duration'] ?>]
+              
+            ]);
+
+              
+            <?php endforeach ?>
+          
+            var options = {title: 'Watch Duration In Minutes'}; 
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('container'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
 
 
 

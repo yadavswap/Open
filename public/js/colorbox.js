@@ -558,7 +558,7 @@ var formatted = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds()
 
              success : function(data){
 
-             	alert(data);
+             console.log(data);
              }
 
 

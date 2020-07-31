@@ -48,7 +48,7 @@ $(function() {
             items: 1,
             margin: 0,
             dots: true,
-            nav: true,
+            nav: false,
             animateOut: 'slideOutDown',
             animateIn: 'fadeIn',
             active: true,
