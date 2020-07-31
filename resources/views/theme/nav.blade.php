@@ -10,7 +10,7 @@ else{
 <section id="nav-bar" class="nav-bar-main-block">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12">
                         <div class="logo">
@@ -76,21 +76,7 @@ else{
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-
-                @guest
-
-                <div class="row">
-                      <div class="col-lg-12 col-md-12 col-12">
-                        <div class="learning-business learning-business-two" style="float:right;">
-                           
-                                    <a href="{{route('login')}}" class="btn btn-link"  title="Become An Instructor" style="font-weight: 400;"><i class="fa fa-lock"></i> Student Login</a>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                @endguest
+            <div class="col-lg-6">
                
 
                 @auth

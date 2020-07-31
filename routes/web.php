@@ -27,7 +27,7 @@ Route::middleware(['web','IsInstalled' ,'switch_languages'])->group(function () 
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
   
-      Route::get('/', 'HomeController@index');
+      Route::get('/', 'HomeController@index')->name('webhome');
 
       Auth::routes(['verify' => true, 'register' => false]);
 
