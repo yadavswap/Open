@@ -68,6 +68,7 @@
             <li class="nav-item"><a href="#mnvsection">Mission & Vision</a></li>
             
             <li class="nav-item"> <a href="#contactsection" > Contact </a> </li>
+            <li class="nav-item"> <a href="{{route('login')}}" > Student Panel </a> </li>
           </ul>
           @guest
           <div class="appointment-btn"><a href="{{route('login')}}" class="btn ">User Login <i class='bx bx-right-arrow-alt'></i> </a> </div>

@@ -46,11 +46,11 @@ class UserController extends Controller
 
 
             $users = UserAssignTeacher::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
-            ->join('users','user_assign_teachers.student_id','=','users.id')->get();
+            ->join('users','user_assign_teachers.student_id','=','users.id')->orderBy('users.created_at','DESC')->get();
         return view('admin.user.index', compact('users'));
         }
       
-        $users = User::all();
+        $users = User::where('role','user')->orderBy('created_at','DESC')->get();
         return view('admin.user.index', compact('users'));
     }
 
@@ -58,6 +58,15 @@ class UserController extends Controller
     {
 
       
+    }
+
+    public function viewAllTeachers(){
+
+
+      
+        $users = User::where('role','instructor')->orderBy('created_at','DESC')->get();
+        return view('admin.user.teachers', compact('users'));
+
     }
 
     public function assignStudent(){

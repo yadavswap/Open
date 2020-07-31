@@ -26,6 +26,7 @@
       <div class="box box-primary">
 
         <div class="content-header">
+         <a href="{{url('course')}}"><button class="btn btn-success pull-right">Back</button></a> 
         </div>
         <div class="box-body">
           <div class="nav-tabs-custom">

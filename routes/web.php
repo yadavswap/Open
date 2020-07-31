@@ -29,6 +29,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
   
       Route::get('/', 'HomeController@index')->name('webhome');
         Route::get('/learnpage', 'HomeController@newhome')->name('oldhome');
+          Route::get('/app', 'HomeController@newhome')->name('appview');
         Route::post('/contactsubmit','HomeController@contact')->name('contactsubmit');
 
       Auth::routes(['verify' => true, 'register' => false]);
@@ -44,6 +45,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
         Route::get('/', 'AdminController@index')->name('admin.index');
     });
   
+ // Route::get('inst','InstructorRequestController@create');
   
 
   Route::middleware(['web', 'auth', 'switch_languages'])->group(function () {
@@ -51,6 +53,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     // Player Settings
     Route::get('/admin/playersetting','PlayerSettingController@get')->name('player.set');
     Route::post('/admin/playersetting/update','PlayerSettingController@update')->name('player.update');
+
 
 
     Route::get('admin/ads','AdsController@getAds')->name('ads');
@@ -100,6 +103,8 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::prefix('user')->group(function (){
     Route::get('/','UserController@viewAllUser')->name('user.index');
+      Route::get('/teachers','UserController@viewAllTeachers')->name('teacher.index');
+
        Route::post('/search','UserController@searchuser')->name('user.search');
     Route::get('/assign','UserController@assignStudent')->name('assign.index');
      Route::post('/assign','UserController@assignToStudent')->name('assign.index');

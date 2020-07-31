@@ -61,31 +61,13 @@
 
           <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Reports</span></a></li>
 
+           <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Parents</span></a></li>
+
 
           <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user" aria-hidden="true"></i><span>Enrolled Students List</span></a></li>
 
 
-            <li class="{{ Nav::isResource('category') }} {{ Nav::isResource('subcategory') }} {{ Nav::isResource('childcategory') }} {{ Nav::isResource('course') }} {{ Nav::isResource('courselang') }} treeview">
-            <a href="#">
-                <i class="fa fa-pie-chart"></i>Reports
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
 
-            <ul class="treeview-menu">
-              <li class="{{ Nav::isResource('reports') }} treeview">
-                 
-                
-                
-                                       
-
-                
-                  <li class="{{ Nav::isResource('examreport') }}"><a href="{{url('course')}}"><i class="fa fa-book" aria-hidden="true"></i><span>Exam Report</span></a></li>
-
-                  <li class="{{ Nav::isResource('courselang') }}"><a href="{{url('courselang')}}"> <i class="fa fa-language" aria-hidden="true"></i></i><span> {{ __('adminstaticword.Course') }} {{ __('adminstaticword.Language') }}</span></a></li>
-                 
-                </li>
-              </ul>
-          </li>
 
 
           <li class="{{ Nav::isResource('instructorquestion') }} {{ Nav::isResource('instructoranswer') }} treeview">

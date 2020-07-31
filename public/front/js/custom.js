@@ -48,12 +48,12 @@ $(function() {
             items: 1,
             margin: 0,
             dots: true,
-            nav: false,
+            nav: true,
             animateOut: 'slideOutDown',
             animateIn: 'fadeIn',
             active: true,
             smartSpeed: 1000,
-            autoplay: 7000
+            autoplay: 1000
         });
         slideOneWrap.find('.slide-one__left-btn').on('click', function (e) {
             slideOneCarousel.trigger('next.owl.carousel');

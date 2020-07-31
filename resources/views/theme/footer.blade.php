@@ -95,67 +95,7 @@
         </div>
     </div>
     <hr>
-    <div class="tiny-footer" style="background-color: #15151e !important;">
-        <div class="container">
-                <h5 style="color:#fff;">Quick Contact</h5>
-            <div class="row">
-
-
-                  <div class="col-12 col-md-6 col-lg-6">
-                        <div class="kilimanjaro_part">
-                        
-                            <div class="row">
-                            <div class="col-md-6">
-                                  <h5 style="color: #fff;">Phone:</h5>
-                                <a href="tel:91-8605195919">+91-8605195919<br> +91-7083801183</a>
-                            </div>
-
-                            <div class="col-md-6">
-                                <h5 style="color: #fff;">Email:</h5>
-                                 <a href="mailto:brsuperlearners@gmail.com">brsuperlearners@gmail.com</a>
-                            </div>
-                               </div>
-                        </div>
-                      
-                    </div>
-
-
-                    <div class="col-md-6">
-                        
-                        <div class="col-md-6">
-                            
-
-                    <div class="logo-footer">
-                        <ul>
-                            @php
-                                $logo = App\Setting::first();
-                            @endphp
-                            <li>
-                               
-                                    <a href="{{ url('/') }}" style="color:#fff;"><b>BR SUPER LEARNERS</b>
-                                    </br>Institute Of Science,Katol
-                            
-                                    </a>
-                               
-                            </li>
-
-                          
-                        </ul>
-                  
-
-                </div>
-                
-
-                        </div>
-
-
-                    </div>
-
-           
-               
-            </div>
-        </div>
-    </div>
+   
 </footer>
 
 @include('instructormodel')

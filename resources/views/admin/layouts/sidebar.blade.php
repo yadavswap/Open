@@ -24,27 +24,20 @@
         
           <li class="{{ Nav::isRoute('admin.index') }}"><a href="{{route('admin.index')}}"><i class="fa fa-tachometer" aria-hidden="true"></i><span>{{ __('adminstaticword.Dashboard') }}</span></a></li>
 
-          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>{{ __('adminstaticword.User') }}</span></a></li>
+          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Report</span></a></li>
+
+          
+           <li class="{{ Nav::isRoute('all.instructor') }} {{ Nav::isResource('requestinstructor') }} treeview
+"><a href="{{route('teacher.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Teachers</span></a></li>
+
+    <li class="{{ Nav::isRoute('all.instructor') }} {{ Nav::isResource('requestinstructor') }} treeview
+"><a href="{{route('all.instructor')}}"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Parents</span></a></li>
+
 
            <li class="{{ Nav::isRoute('assign.index') }}"><a href="{{route('assign.index')}}"><i class="fa fa-plus" aria-hidden="true"></i><span>Assign To Teacher</span></a></li>
 
 
 
-          @if(isset($zoom_enable) && $zoom_enable == 1)
-          <li class="{{ Nav::isRoute('meeting.create') }} {{ Nav::isRoute('zoom.show') }} {{ Nav::isRoute('zoom.edit') }} {{ Nav::isRoute('zoom.setting') }} {{ Nav::isRoute('zoom.index') }}  treeview">
-            <a href="#">
-             <i class="fa fa-grav" aria-hidden="true"></i> <span>{{ __('Zoom Live Meetings') }}</span>
-              <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="{{ Nav::isRoute('zoom.setting') }}"><a href="{{route('zoom.setting')}}"><i class="fa fa-circle-o"></i>{{ __('Zoom Settings') }}</a></li>
-              <li class="{{ Nav::isRoute('zoom.index') }} {{ Nav::isRoute('zoom.show') }} {{ Nav::isRoute('zoom.edit') }} {{ Nav::isRoute('meeting.create') }}"><a href="{{route('zoom.index')}}"><i class="fa fa-circle-o"></i>{{ __('Zoom Dashboard') }}</a></li>
-              <li class="{{ Nav::isRoute('meeting.show') }}"><a href="{{route('meeting.show')}}"><i class="fa fa-circle-o"></i>{{ __('adminstaticword.AllMeetings') }}</a></li>
-            </ul>
-          </li>
-       @endif
 
           <li class="{{ Nav::isResource('admin/country') }} {{ Nav::isResource('admin/state') }} {{ Nav::isResource('admin/city') }} treeview">
             <a href="#">
@@ -73,20 +66,7 @@
             </ul>
           </li>
 
-          <li class="treeview">
-           <a href="#">
-             <i class="fa fa-pie-chart" aria-hidden="true"></i> <span>{{"Reports"}}</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                 <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Attendance Report"}}</a></li>
-              <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Exam Report"}}</a></li>
-               <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Watch Report"}}</a></li>
-                <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{"Exam Result"}}</a></li>
-            </ul>
-          </li>
+        
          
 
           <li class="{{ Nav::isResource('category') }} {{ Nav::isResource('subcategory') }} {{ Nav::isResource('childcategory') }} {{ Nav::isResource('course') }} {{ Nav::isResource('courselang') }} treeview">
@@ -115,18 +95,7 @@
           </li>
 
          
-          <li class="{{ Nav::isRoute('all.instructor') }} {{ Nav::isResource('requestinstructor') }} treeview">
-           <a href="#">
-             <i class="fa fa-user-plus" aria-hidden="true"></i> <span>{{"Teacher"}}</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('all.instructor')}}"><i class="fa fa-circle-o"></i>{{ __("All Teacher") }}</a></li>
-            
-            </ul>
-          </li>
+       
 
           
           
