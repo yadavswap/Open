@@ -24,10 +24,8 @@
 <header class="top-header">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-3 col-md-2">
-       
-      </div>
-      <div class="col-lg-9 col-md-10">
+     
+      <div class="col-lg-12 col-md-12">
         <ul  class="top-header-right">
           <li> <i class='fa fa-map'></i>BR Super Learners,Katol,Nagpur,Maharashtra</li>
           <li> <i class='fa fa-envelope'></i> <a href="mailto:info@test.com">brsuperlearners@gmail.com</a> </li>
