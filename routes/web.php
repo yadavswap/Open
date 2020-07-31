@@ -28,7 +28,7 @@ Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
   
       Route::get('/', 'HomeController@index')->name('webhome');
-        Route::get('/learnpage', 'HomeController@newhome')->name('oldhome');
+        Route::get('/learnpage', 'HomeController@newhome')->name('oldhome')->middleware('auth');
           Route::get('/app', 'HomeController@newhome')->name('appview');
         Route::post('/contactsubmit','HomeController@contact')->name('contactsubmit');
 
