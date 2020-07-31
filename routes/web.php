@@ -28,6 +28,7 @@ Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
   
       Route::get('/', 'HomeController@index')->name('webhome');
+        Route::get('/homepage', 'HomeController@newhome')->name('newhome');
 
       Auth::routes(['verify' => true, 'register' => false]);
 

@@ -42,12 +42,15 @@
 
 <div class="navbar-area"> 
   <!-- Menu For Mobile Device -->
-  <div class="mobile-nav"> <a href="{{route('webhome')}}" class="logo"> <img src="{{ asset('images/logo/logo.jpeg') }}" alt="Logo"> </a> </div>
+  <div class="mobile-nav"> <a href="{{route('webhome')}}" class="logo"> <img src="{{ asset('images/logo/logo.jpeg') }}" style="width: 70px;" alt="Logo"> </a> </div>
   
   <!-- Menu For Desktop Device -->
   <div class="top-nav main-nav">
-    <div class="container">
-      <nav class="navbar navbar-expand-md navbar-light "> <a class="navbar-brand" href="{{route('webhome')}}"> <img src="{{ asset('images/logo/logo.jpeg') }}" alt="Logo"> </a>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-light "> 
+        <a class="navbar-brand" href="{{route('webhome')}}"> 
+          <img src="{{ asset('images/logo/logo.jpeg') }}" alt="Logo" style="width:70px;"></a>
+          <p style="color:#010101;">BR SUPER LEARNERS</p>
         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
           <ul class="navbar-nav m-auto">
             <li class="nav-item"> <a href="{{route('webhome')}}" class="nav-link active"> Home </a></li>
@@ -57,11 +60,29 @@
             <li class="nav-item"><a href="#testimonialsection">Testimonials</a>
           
             </li>
-            <li class="nav-item"><a href="mnvsection">Mission & Vission</a></li>
+            <li class="nav-item"><a href="#mnvsection">Mission & Vission</a></li>
             
             <li class="nav-item"> <a href="#contactsection" > Contact </a> </li>
           </ul>
+          @guest
           <div class="appointment-btn"><a href="{{route('login')}}" class="btn ">User Login <i class='bx bx-right-arrow-alt'></i> </a> </div>
+          @endguest
+
+          @auth
+
+          @if(Auth::user()->role == "user")
+           <div class="appointment-btn"><a href="{{route('dashboard')}}" class="btn ">User Dashboard <i class='bx bx-right-arrow-alt'></i> </a> </div>
+          @endif
+
+           @if(Auth::user()->role == "instructor")
+           <div class="appointment-btn"><a href="{{route('admin.index')}}" class="btn ">Teacher Dashboard <i class='bx bx-right-arrow-alt'></i> </a> </div>
+          @endif
+
+            @if(Auth::user()->role == "admin")
+           <div class="appointment-btn"><a href="{{route('admin.index')}}" class="btn ">Admin Dashboard <i class='bx bx-right-arrow-alt'></i> </a> </div>
+          @endif
+
+          @endauth
         </div>
       </nav>
     </div>
