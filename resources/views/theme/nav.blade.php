@@ -19,9 +19,9 @@ else{
                             @endphp
 
                             @if($setting->logo_type == 'L')
-                                <a href="{{ url('/') }}" ><img src="{{ asset('images/logo/'.$setting->logo) }}" class="img-fluid" alt="logo"></a>
+                                <a href="{{ route('oldhome') }}" ><img src="{{ asset('images/logo/'.$setting->logo) }}" class="img-fluid" alt="logo"></a>
                             @else()
-                                <a href="{{ url('/') }}"><b><div class="logotext">{{ str_limit($setting->project_title, $limit=6, $end="") }}</div></b></a>
+                                <a href="{{ route('oldhome') }}"><b><div class="logotext">{{ str_limit($setting->project_title, $limit=6, $end="") }}</div></b></a>
                             @endif
                         </div>
                     </div>

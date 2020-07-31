@@ -143,8 +143,8 @@
           <div class="sec-title style-two">
             <h2>More About Us</h2>
             <span class="decor"> <span class="inner"></span> </span> </div>
-          <h3>We are Providing best educational institute</h3>
-          <p>At SUPER LEARNERS ACADEMY OF SCIENCE our mission is to provide excellent education for IIT JEE/NEET/AIIMS, Board exams. Here you'll find exceptional teachers, study materials, practice sessions and learning environment that encourage children to learn, explore & grow in a dynamic and nurturing environment. </p>
+            <p>  We  are Providing best educational institute
+    ,At SUPER LEARNERS ACADEMY OF SCIENCE our mission is to provide excellent education for IIT JEE/NEET/AIIMS, Board exams. Here you'll find exceptional teachers, study materials, practice sessions and learning environment that encourage children to learn, explore & grow in a dynamic and nurturing environment. </p>
         </div>
       </div>
       <div class="col-lg-5 col-md-12">
@@ -242,7 +242,7 @@
               <div class="about-author d-flex align-items-center">
                 <div class="author-ava"> <img src="{{ asset('images/testimonial2.jpg') }}" alt="" style="width: 90px;"> </div>
                 <div class="author-desination author-desination-2">
-                  <h4>TEJAS BARAI</h4>
+                  <h4>TILAK BARAI</h4>
                   <h6>STATE (94%)</h6>
                 </div>
               </div>
@@ -320,7 +320,7 @@
 <div class="brand-wrapper" id="#mnvsection">
   <div class="container">
     <div class="sec-title text-center mb-0">
-      <h2>Our <span>Mission & Vission</span></h2>
+      <h2>Our <span>Mission & Vision</span></h2>
     
       <span class="decor"><span class="inner"></span></span> </div>
     <div class="row justify-content-center">

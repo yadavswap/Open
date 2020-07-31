@@ -101,7 +101,7 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
            
         
             <!-- User Account: style can be found in dropdown.less -->
-            <li><a href="{{ url('/') }}" target="_blank" class="visit site" style="color: white">{{ __('adminstaticword.VisitSite') }}</a></li>
+            <li><a href="{{ route('oldhome') }}" target="_blank" class="visit site" style="color: white">{{ __('adminstaticword.VisitSite') }}</a></li>
 
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

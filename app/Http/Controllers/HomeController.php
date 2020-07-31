@@ -31,4 +31,16 @@ class HomeController extends Controller
       
 
     }
+
+    public function newhome()
+    {
+
+        
+
+
+
+            return view('home');
+      
+
+    }
 }
