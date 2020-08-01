@@ -15,6 +15,29 @@
 <link href="{{url('front/css/style.css')}}" rel="stylesheet">
 <!-- Favicon -->
 
+<style type="text/css">
+  
+  blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -65,7 +88,8 @@
             <li class="nav-item"><a href="#testimonialsection">Testimonials</a>
           
             </li>
-            <li class="nav-item"><a href="#mnvsection">Mission & Vision</a></li>
+            <li class="nav-item"><a href="#mnvsection">Mission</a></li>
+              <li class="nav-item"><a href="#mnvsection">Vision</a></li>
             
             <li class="nav-item"> <a href="#contactsection" > Contact </a> </li>
             <li class="nav-item"> <a href="{{route('login')}}" > Student Panel </a> </li>
@@ -217,9 +241,11 @@
               </div>
 
                 <div class="members-text">
+                  <blockquote>
                 <p>  
                    It has been a great privilege to be a part of such an excellent institute like SUPER LEARNERS INSTITUTE OF SCIENCE,KATOL. This institution is to provide knowledge and guidance and thereby create an environment to guide students in the path of success as well as inspire them to recognize and explore their potential of intellectual capabilities.
 </p>
+</blockquote>
               </div>
 
                 <div class="members-rating">
@@ -256,9 +282,11 @@
               </div>
 
                 <div class="members-text">
+                  <blockquote>
                 <p style="font-size: 13px;">  
                     After performing well in class-X, I focused on  exams like JEE and NEET. It's necessary to prepare from class-XI and also to choose a coaching which is best not by banner but by dedication. When most students rush to renowned classes in Nagpur or other cities, I choose SUPERLEARNERS INSTITUTE OF SCIENCE ,KATOL for the dedication of teachers and other members towards student encouraging them to perform better. In the very beginning, strategies and ultimate goal, which was study plan for me for next two years  have been discussed thoroughly.
 </p>
+</blockquote>
               </div>
 
                 <div class="members-rating">
@@ -293,9 +321,11 @@
               </div>
 
                 <div class="members-text">
+                  <blockquote>
                 <p style="font-size: 13px;">  
                      I am very grateful to be the part of B.R SUPER LEARNERS PLATFORM. I have taken admission in this institution due to the college reputation and my  career goals....  "Opportunity don't happen , you create it",and this institution gives me an opportunity to fulfill my dreams .The faculty is the biggest strength of this institution and  teach  with great encouragement. As we know there is no substitution for hardwork  and hardwork is key of success ... And  being  a BRSUPERLEARNER we are destine to be the successful and a good human being
 </p>
+</blockquote>
               </div>
 
                 <div class="members-rating">
@@ -327,18 +357,36 @@
 <!-- Start Brand Wrapper -->
 <div class="brand-wrapper" id="#mnvsection">
   <div class="container">
-    <div class="sec-title text-center mb-0">
-      <h2>Our <span>Mission & Vision</span></h2>
+
+<div class="row">
+
+  <div class="col-md-6">
+     <div class="sec-title text-center mb-0">
+      <h2>Our <span>Vision</span></h2>
     
       <span class="decor"><span class="inner"></span></span> </div>
     <div class="row justify-content-center">
       <div class="col-lg-10">
-      <blockquote>
-        Our efforts to deliver quality education, we will emphasis more on the need to establish one to one contact with every student and be attentive to his /her need so that the teacher can monitor individual progress and guide them accordingly on the way to success. Our faculty team will be of committed bunch of professionals who will be responsible to make positive difference in the life of our students. We are also committed to bring change in the teaching learning process in which students can learn in free and unstressed environment. We are fully aware of our social responsibilities and humanitarian ground which will help us to contribute to the society.
-      </blockquote>
+    
+     Our vision is to impart value-based quality education through learners' motivation towards skill and activity and reinforcement of creativity with intellectual and spiritual development.
+    
       </div>
     </div>
   </div>
+  <div class="col-md-6">
+     <div class="sec-title text-center mb-0">
+      <h2>Our <span>Mission</span></h2>
+    
+      <span class="decor"><span class="inner"></span></span> </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+    Our mission is to provide a safe, caring and cultural environment where  students can best excel in science, humanities, arts, commerce and sports and build a strong character necessary to serve the society.
+      </div>
+    </div>
+  </div>
+  </div>  
+</div>
+   
 </div>
 <!-- End Brand Wrapper --> 
 
