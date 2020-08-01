@@ -43,6 +43,8 @@
               <li  class=""  role="presentation"><a href="#an" aria-controls="settings" role="tab" data-toggle="tab">{{"Notifications"}}</a></li>
              
               <li  class=""  role="presentation"><a href="#topic" aria-controls="topic" role="tab" data-toggle="tab">MCQ Exams</a></li>
+
+               <li  class=""  role="presentation"><a href="#assignments" aria-controls="topic" role="tab" data-toggle="tab">Assignments</a></li>
            
             </ul>
 
@@ -80,6 +82,10 @@
               </div>
               <div role="tabpanel" class="fade tab-pane" id="topic">
                 @include('admin.course.quiztopic.index')
+              </div>
+
+               <div role="tabpanel" class="fade tab-pane" id="assignments">
+                 @include('admin.course.assignments.assignments_index')
               </div>
              
             </div>

@@ -100,7 +100,7 @@
                     <a class="nav-item nav-link text-center" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">{{ __('frontstaticword.Q&A') }}</a>
                     <a class="nav-item nav-link text-center" id="nav-announcement-tab" data-toggle="tab" href="#nav-announcement" role="tab" aria-controls="nav-announcement" aria-selected="false">Course Notifications</a>
                     <a class="nav-item nav-link text-center" id="nav-quiz-tab" data-toggle="tab" href="#nav-quiz" role="tab" aria-controls="nav-quiz" aria-selected="false">MCQ Exams</a>
-                     <a class="nav-item nav-link text-center" id="nav-quiz-tab" data-toggle="tab" href="#nav-quiz" role="tab" aria-controls="nav-quiz" aria-selected="false">Notes</a>
+                     <a class="nav-item nav-link text-center" id="nav-assign-tab" data-toggle="tab" href="#nav-assign" role="tab" aria-controls="nav-assign" aria-selected="false">Assignments</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -897,6 +897,76 @@
                                     </div>
                                 </div> 
                             @endif
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="tab-pane fade" id="nav-assign" role="tabpanel" aria-labelledby="nav-assign-tab">
+                    <div class="container">
+                        <div class="quiz-main-block">
+                          <div class="row">
+                            @php 
+                                $assignments = App\Assignment::where('course_id', $course->id)->get();
+
+                                @endphp
+                        
+                            @if(count($assignments)>0 )
+                              @foreach ($assignments as $assignment)
+                              @if($assignment->status == 1)
+
+                               
+
+                               
+                               
+                               
+                              
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                  <div class="topic-block">
+                                    <div class="card blue-grey darken-1">
+                                      <div class="card-content dark-text">
+                                     <center>   <span class="card-title">{{ucfirst($assignment->assignment_title)}}</span>
+                                     </center>
+                                     
+                                        <div class="row">
+                                          <div class="col-lg-12 col-12">
+                                            <div class="topic-detail">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6">
+                                                             <h6 class="card-action text-left">Submission Date</h6>
+                                                    </div>
+
+                                                      <div class="col-md-6 col-sm-6">
+                                                            
+                                                   <h6 class="card-action text-right">
+                                                    <i class="fa fa-calender"></i>
+                                                    {{$assignment->submission_time}}</h6>
+                                                    </div>
+                                              
+
+                                               </div>
+                                              <p>{{ucfirst($assignment->assignment_data)}}</p>     
+                                         
+                                            </div>
+                                          </div>
+                                         
+                                        </div>
+                                      </div>
+
+
+                                                                             {{ $assignment->submission_date }}
+                                    
+                                    </div>
+                                  </div>
+                                </div>
+                                 @endif
+                                @endforeach
+
+                               
+
+                               
+                              @endif
+                              
+                        
                           </div>
                         </div>
                     </div>

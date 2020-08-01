@@ -59,6 +59,9 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 		                
      <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
       </div>
+
+         <div id = "container2" style = "width: 550px; height: 400px; margin: 0 auto">
+      </div>
 		               
 	                </div>
 	              
@@ -82,7 +85,8 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 
 
   <script type = "text/javascript">
-         google.charts.load('current', {packages: ['corechart']});     
+         google.charts.load('current', {packages: ['corechart']});    
+
       </script>
 
 
@@ -109,6 +113,33 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
             chart.draw(data, options);
          }
          google.charts.setOnLoadCallback(drawChart);
+
+
+           function pieChartStat() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Course Name');
+            data.addColumn('number', 'Time');
+
+         
+               data.addRows([
+                 ['Course',  10.12]
+            ]);
+           
+               
+            // Set chart options
+            var options = {
+               'title':'Courses Names',
+               'width':550,
+               'height':400,
+               is3D:true
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.PieChart(document.getElementById('container2'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(pieChartStat);
       </script>
 
 

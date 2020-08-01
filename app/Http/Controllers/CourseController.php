@@ -31,6 +31,7 @@ use Redirect;
 use App\Attendance;
 use App\Helpers\AttendanceHelper;
 use App\WatchTime;
+use App\Assignment;
 
 class CourseController extends Controller
 {
@@ -376,7 +377,8 @@ class CourseController extends Controller
         $answers = Answer::where('course_id','=',$id)->get();
         $quizes = Quiz::where('course_id','=',$id)->get();
         $topics = QuizTopic::where('course_id','=',$id)->get();
-        return view('admin.course.show',compact('cor','course','courseinclude','whatlearns','coursechapters','coursechapter','relatedcourse','courseclass', 'announsments', 'answers', 'reports', 'questions', 'quizes', 'topics' ));
+        $assignments = Assignment::Where('course_id','=',$id)->get();
+        return view('admin.course.show',compact('cor','course','courseinclude','whatlearns','coursechapters','coursechapter','relatedcourse','courseclass', 'announsments', 'answers', 'reports', 'questions', 'quizes', 'topics','assignments' ));
     }
 
 
@@ -473,6 +475,41 @@ class CourseController extends Controller
        
 
     }
+
+
+    public function createAssignment(Request $request){
+
+      $id = $request->course_id;
+
+      $coursedata = Course::findOrFail($id);
+
+      $assignment = new Assignment;
+      $assignment->course_id = $id;
+      $assignment->teacher_id = Auth::user()->id;
+      $assignment->assignment_title = $request->assignment_title;
+      $assignment->assignment_data = $request->assignment_details;
+      $assignment->submission_time = $request->submission_date;
+      $assignment->save();
+
+      return redirect()->back()->with('success',"Assignment Added Succesfully.");
+
+    }
+
+    public function deleteassignment(Request $request){
+
+
+        $assignment = Assignment::where('id', $request->id)->get();
+
+  
+        $assignment->delete();
+        return back()->with('delete','Deleted successfully' );
+     
+
+     }
+
+
+
+
 
        
 }

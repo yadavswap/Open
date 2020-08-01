@@ -83,7 +83,7 @@ class ReportController extends Controller
 
   $watchdata[$i]= array(
     'course_name'=>$coursename->title,
-    'course_duration'=> (float)$diff_in_minutes/60,
+    'course_duration'=> (float)$diff_in_minutes/60
   ); 
 
 
