@@ -610,7 +610,7 @@ $users = DB::table('users')
 
 
         // Session::flash('success','User Added Successfully ! Add Parent info');
-        return redirect()->back()->with("success","Teacher Added");
+        return redirect()->route('teacher.index')->with("success","Teacher Added");
          
 
 

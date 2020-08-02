@@ -180,19 +180,7 @@
               </div>
 
 
-              <div class="col-md-3">
-                  <label  for="married_status">{{ __('adminstaticword.ChooseMarrigeStatus') }}: </label>
-                  <select class="form-control js-example-basic-single" id="married_status" name="married_status">
-                    <option value="none" selected disabled hidden> 
-                       {{ __('adminstaticword.SelectanOption') }}
-                    </option> 
-                    <option id="Unmarried" {{ $user->married_status == 'Unmarried' ? 'selected' : ''}} value="Unmarried">{{ __('adminstaticword.Unmarried') }}</option>
-                    <option id="Married" {{ $user->married_status == 'Married' ? 'selected' : ''}} value="Married">{{ __('adminstaticword.Married') }}</option>
-                    <option id="Divorced" {{ $user->married_status == 'Divorced' ? 'selected' : ''}} value="Divorced">{{ __('adminstaticword.Divorced') }}</option>
-                    <option id="Widowed" {{ $user->married_status == 'Widowed' ? 'selected' : ''}} value="Widowed">{{ __('adminstaticword.Widowed') }}</option>
-                  </select>
-                  <br> 
-              </div>
+           
 
 
               <div class="col-md-3 display-none" id="doaboxxx">
@@ -254,82 +242,102 @@
             <div class="box-header with-border">
               <h3 class="box-title">Parent Info</h3>
             </div>
-            <br>
 
-            <?php
+              <div class="panel-body">
+                @php
 
-            if($user->role == "user")
-            {
-              
-          ?>
-
-
-            <?php
-        $parents =     App\User::where('id',$user->parent_id)->get();
-
-        $parentsarray = $parents->toArray();
-
-       // dd($parentsarray);
-
-
-
-            ?>
-
-            <div class="row">
-             <div class="col-md-6">
-                <label for="fname">
-                  {{ __('adminstaticword.FirstName') }}:
-                  <sup class="redstar">*</sup>
-                </label>
-                <input value="<?= ($parentsarray) ? $parentsarray['0']['fname'] : '' ?>" autofocus  name="parentfname" type="text" class="form-control" placeholder="Enter first name"/>
-              </div>
-
-              <div class="col-md-6">
-                <label for="lname">
-                  {{ __('adminstaticword.LastName') }}:
-                  <sup class="redstar">*</sup>
-                </label>
-                <input value="<?= ($parentsarray) ? $parentsarray['0']['lname'] : '' ?>"  name="parentlname" type="text" class="form-control" placeholder="Enter last name"/>
-              </div>
-
-                            <div class="col-md-6">
-                <label for="parentemail">
-                 Parent Email
-                  <sup class="redstar">*</sup>
-                </label>
-                <input value="<?= ($parentsarray) ? $parentsarray['0']['email'] : '' ?>"  name="parentemail" type="text" class="form-control" placeholder="Enter Email"/>
-              </div>
-
-                 <div class="col-md-6">
-                <label for="parentemail">
-                 Parent Mobile
-                  <sup class="redstar">*</sup>
-                </label>
-                <input value="<?= ($parentsarray) ? $parentsarray['0']['mobile'] : '' ?>"  name="parentmobile" type="text" class="form-control" placeholder="Enter mobile" maxlength="10" />
-              </div>
-
+                $parents = \App\User::where('id',$user->parent_id)->get();
 
              
+
+                @endphp
+
+              
+              @if($parents)
+
+              @foreach($parents as $parent)
+
+
+                   <div class="row">
+                    <!-- START COL -->
+
+                      <div class="col-md-2">
+                <div class="edit-user-img">
+                    <label for="exampleInputTit1e">Photo:</label>
+                   <img src="{{ url('/images/user_img/'.$parent->user_img) }}" class="img-fluid" alt="User Image" class="img-responsive">
+                </div>
+              </div>
+
+
+              <div class="col-md-5">
+                <label for="exampleInputTit1e">Parent Full Name:</label>
+               
+             <input value="{{$parent->fname}} {{$parent->lname}}" placeholder="Enter Pincode" type="text" name="" class="form-control" disabled="">
+              </div>
+
+               <div class="col-md-5">
+                <label for="exampleInputTit1e">Parent Email:</label>
+               
+             <input value="{{$parent->email}}" placeholder="Enter Pincode" type="text" name="" class="form-control" disabled="">
+              </div>
+
+               <div class="col-md-5">
+
+                  <label for="exampleInputTit1e">Parent Mobile:</label>
+
+                  <input value="{{$parent->mobile}}" placeholder="" type="text" name="" class="form-control" disabled="">
+                
+              </div>
+
+               <div class="col-md-5">
+
+                  <label for="exampleInputTit1e">Parent Address:</label>
+
+                  <input value="{{$parent->address}}" placeholder="" type="text" name="" class="form-control" disabled="">
+                
+              </div>
+
+               <div class="col-md-2">
+
+                  <label for="exampleInputTit1e">Gender:</label>
+
+                  <input value="{{$parent->gender}}" placeholder="" type="text" name="" class="form-control" disabled="">
+                
+              </div>
+
+
+
+
+
+
+
+
+              <!-- END COL -->
+
             </div>
 
             <div class="row">
-                 <div class="col-md-6">
-                <label for="parentpassword">
-                  Parent Password:
-                  <sup class="redstar">*</sup>
-                </label>
-                <input value="" required name="parentpassword" type="password" class="form-control" placeholder="********"/>
-              </div>
+              
+              <!-- Start Col -->
+
+             
+              <!-- End COl -->
+
             </div>
 
-            <br>
-            <br>
-            <?php
-
-              }
+              @endforeach
 
 
-            ?>
+
+
+
+
+              @endif
+
+
+
+              </div>
+         
 
             
 
