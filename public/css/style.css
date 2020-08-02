@@ -152,7 +152,7 @@ ul {
 }
 .btn-primary { 
   padding: 20px 25px;
-  background-color: #F44A4A;
+  background-color: #ff9933;
   color: #FFF;
   font-size: 15px;
   font-weight: 400;
@@ -4688,7 +4688,7 @@ sup.redstar {
   border-radius: 1px;
   font-weight: 500;
   font-size: 17px;
-  background-color: #0284A2;
+  background-color: #ff9933;
   color: #FFF;
 }
 .about-home-btn .btn-secondary:hover {
