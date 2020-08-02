@@ -572,7 +572,6 @@ $users = DB::table('users')
             'email' => 'required|unique:users,email',
             'password' => 'required|min:6|max:20',
             'status' => 'required|boolean',
-            'role' => 'required',
             'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
             'experience' => 'required',
             'qualification' => 'required'
@@ -597,7 +596,7 @@ $users = DB::table('users')
         }
 
         $input['password'] = Hash::make($request->password);
-        
+          $input['role'] = "instructor";
         $data = User::create($input);
         $data->added_by_user_id = Auth::user()->id;
         $data->save(); 

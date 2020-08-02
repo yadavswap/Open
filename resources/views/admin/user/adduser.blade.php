@@ -134,7 +134,7 @@
 
 
                   <option value="user">Student</option>
-                  <option value="instructor">Teacher</option>
+                
                 </select>
               </div> 
            
