@@ -36,11 +36,17 @@ class HomeController extends Controller
     public function newhome()
     {
 
+        if(Auth::user())
+        {
+            return view('home');
+        }
+
+        return redirect()->route('login');
         
 
 
 
-            return view('home');
+            
       
 
     }
@@ -61,5 +67,10 @@ class HomeController extends Controller
 
 
 
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('appview');
     }
 }

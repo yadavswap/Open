@@ -30,6 +30,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
       Route::get('/', 'HomeController@index')->name('webhome');
         Route::get('/learnpage', 'HomeController@newhome')->name('oldhome')->middleware('auth');
           Route::get('/app', 'HomeController@newhome')->name('appview');
+             Route::get('/app_logout', 'HomeController@logout')->name('applogout');
         Route::post('/contactsubmit','HomeController@contact')->name('contactsubmit');
 
       Auth::routes(['verify' => true, 'register' => false]);
