@@ -102,6 +102,22 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
     Route::post('/quickupdate/order/{id}','QuickUpdateController@orderQuick')->name('order.quick');
 
+     Route::prefix('parent')->group(function (){
+
+         Route::get('/','UserController@viewAllParent')->name('parent.index');
+           Route::get('newparent','UserController@createparent')->name('parent.add');
+              Route::post('storeparent','UserController@storeparent')->name('parent.store');
+
+     });
+
+      Route::prefix('teacher')->group(function (){
+
+         Route::get('/','UserController@viewAllTeacher')->name('teacher.index');
+           Route::get('newteacher','UserController@createteacher')->name('teacher.add');
+              Route::post('storeteacher','UserController@storeTeacher')->name('teacher.store');
+
+     });
+
     Route::prefix('user')->group(function (){
     Route::get('/','UserController@viewAllUser')->name('user.index');
       Route::get('/teachers','UserController@viewAllTeachers')->name('teacher.index');
@@ -110,6 +126,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::get('/assign','UserController@assignStudent')->name('assign.index');
      Route::post('/assign','UserController@assignToStudent')->name('assign.index');
      Route::get('/adduser','UserController@create')->name('user.add');
+     
        Route::post('/unassign/{id}','UserController@unassign')->name('unassign.index');
     Route::post('/insertuser','UserController@store')->name('user.store');
     Route::get('edit/{id}','UserController@edit')->name('user.edit');

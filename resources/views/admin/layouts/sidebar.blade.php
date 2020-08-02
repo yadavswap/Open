@@ -27,11 +27,12 @@
           <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Report</span></a></li>
 
           
-           <li class="{{ Nav::isRoute('all.instructor') }} {{ Nav::isResource('requestinstructor') }} treeview
-"><a href="{{route('teacher.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Teachers</span></a></li>
+       
+           <li class="{{ Nav::isRoute('parent.index') }}"><a href="{{route('parent.index')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Parents</span></a></li>
 
-    <li class="{{ Nav::isRoute('all.instructor') }} {{ Nav::isResource('requestinstructor') }} treeview
-"><a href="{{route('all.instructor')}}"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Parents</span></a></li>
+            <li class="{{ Nav::isRoute('teacher.index') }}"><a href="{{route('teacher.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Teachers</span></a></li>
+
+
 
 
            <li class="{{ Nav::isRoute('assign.index') }}"><a href="{{route('assign.index')}}"><i class="fa fa-plus" aria-hidden="true"></i><span>Assign To Teacher</span></a></li>

@@ -17,10 +17,10 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"> {{ __('adminstaticword.Add') }} {{ __('adminstaticword.Users') }}</h3>
+          <h3 class="box-title"> ADD TEACHER</h3>
         </div>
         <div class="panel-body">
-          <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="row">
@@ -116,6 +116,21 @@
                 <input value="{{ old('pin_code')}}" placeholder="Enter your pincode" type="text" name="pin_code" class="form-control">
               </div>
             </div>
+
+              <div class="row">
+              <div class="col-md-4">
+                <label for="qualification">Qualification : <sup class="redstar">*</sup> </label>
+
+                   <input value="{{ old('qualification')}}" placeholder="Enter Qualification" type="text" name="qualification" class="form-control">
+               
+              </div>
+         
+              
+              <div class="col-md-4"> 
+                <label for="pin_code">Experience: <sup>*</sup></label>
+                <input value="{{ old('experience')}}" placeholder="Enter Experience" type="text" name="experience" class="form-control">
+              </div>
+            </div>
             <br>
 
             <div class="row">
@@ -127,14 +142,14 @@
               </div>
               <div class="col-md-3"> 
                 <label for="role">{{ __('adminstaticword.SelectRole') }}: <sup class="redstar">*</sup></label>
-                <select class="form-control js-example-basic-single" name="role" required id="roleselect">
+                <select class="form-control js-example-basic-single" name="role" required id="roleselect" disabled="disabled">
                   <option value="none" selected disabled hidden> 
                    {{ __('adminstaticword.SelectanOption') }}
                   </option>
 
 
-                  <option value="user">Student</option>
-                  <option value="instructor">Teacher</option>
+                
+                  <option value="instructor" selected="">Teacher</option>
                 </select>
               </div> 
            
@@ -171,19 +186,13 @@
             </div>
             <br>
 
-            <div class="row">
-              <div class="col-md-12">
-                <label for="exampleInputDetails">{{ __('adminstaticword.Detail') }}:<sup class="redstar">*</sup></label>
-                <textarea id="detail" name="detail" rows="3"  class="form-control" placeholder="Enter your detail"></textarea>
-              </div>
-            </div>
             <br>
             <br>
 
         
             <div class="box-footer">
               <button type="submit" class="btn btn-md btn-primary">
-                <i class="fa fa-plus-circle"></i> {{ __('adminstaticword.AddUser') }}
+                <i class="fa fa-plus-circle"></i> Add New Teacher
               </button>
             </form>
               <a href="{{ route('user.index') }}" title="Cancel and go back" class="btn btn-md btn-default btn-flat">

@@ -37,6 +37,26 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+       public function viewAllParent()
+    {
+          if(Auth::user()->role == "instructor"){
+
+            $teacherid = Auth::user()->id;
+
+
+            $users = UserAssignTeacher::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
+            ->join('users','user_assign_teachers.student_id','=','users.id')->orderBy('users.created_at','DESC')->get();
+        return view('admin.user.index', compact('users'));
+        }
+
+
+          $users = User::where('role','parent')->orderBy('created_at','DESC')->get();
+         // dd($users);
+        return view('admin.user.parentindex', compact('users'));
+
+
+    }
+
     public function viewAllUser()
     {
 
@@ -63,9 +83,8 @@ class UserController extends Controller
     public function viewAllTeachers(){
 
 
-      
         $users = User::where('role','instructor')->orderBy('created_at','DESC')->get();
-        return view('admin.user.teachers', compact('users'));
+        return view('admin.user.teacherindex', compact('users'));
 
     }
 
@@ -148,51 +167,11 @@ class UserController extends Controller
             'password' => 'required|min:6|max:20',
             'status' => 'required|boolean',
             'role' => 'required',
-            'user_img' => 'image|mimes:jpeg,png,jpg|max:2048',
-
-        ]);
-
-        $parentid = 0;
-
-
-        if($request->role == "user")
-        {
-
-             $data = $this->validate($request, [
-             'parentfname'=>'required|string',
-            'parentlname'=>'required|string',
-            'parentemail'=>'required|unique:users,email',
-            'parentmobile'=>'required|regex:/[0-9]{9}/',
-            'parentpassword'=>'required'
+            'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
 
         ]);
 
 
-
-         $parent = new User();
-         $parent->fname = $request->parentfname;
-         $parent->lname = $request->parentlname;
-         $parent->mobile = $request->parentmobile;
-         $parent->email = $request->parentemail;
-          $parent->role = "parent";
-         $issave = $parent->save();
-
-           $parentid = $parent->id;
-
-
-
-
-
-
-            
-
-
-        }
-
-
-        
-
-           // dd($parent->id);
 
 
         $input = $request->all();
@@ -211,7 +190,6 @@ class UserController extends Controller
 
         $input['password'] = Hash::make($request->password);
         $input['detail'] = $request->detail;      
-        $input['parent_id'] = $parentid;
         $data = User::create($input);
         $data->added_by_user_id = Auth::user()->id;
         $data->save(); 
@@ -234,17 +212,9 @@ class UserController extends Controller
       
 
 
-        Session::flash('success','User Added Successfully !');
-        return redirect('user');
+        Session::flash('success','User Added Successfully ! Add Parent info');
+        return redirect()->route('parent.add');
          
-
-        //  else{
-
-        //      Session::flash('error','Something Went Wrong!');
-        // return redirect('user');
-
-        //  }
-
 
 
 
@@ -469,6 +439,182 @@ $users = DB::table('users')
       
       
         return view('admin.user.index', compact('users'));
+    }
+
+
+    public function createparent(){
+
+
+
+      $students = User::where('role','user')->orderBy('created_at','DESC')->get();
+
+    //  dd($students);
+
+       $cities = Allcity::all();
+        $states = Allstate::all();
+        $countries = Country::all();
+        return view('admin.user.parentadd')->with(['cities' => $cities, 'states' => $states, 'countries' => $countries,'students'=>$students]);
+
+          // return view('admin.user.parentadd', compact('users'));
+
+      
+
+
+
+
+    }
+
+    public function storeparent(Request $request){
+
+        $data = $this->validate($request, [
+            'fname' => 'required',
+            'lname' => 'required',
+            'mobile' => 'required|regex:/[0-9]{9}/',
+            'address' => 'max:2000',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:6|max:20',
+            'status' => 'required|boolean',
+            'role' => 'required',
+            'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
+            'student_id' =>'required'
+
+        ]);
+
+
+
+        $input = $request->all();
+
+       
+     
+        if ($file = $request->file('user_img')) 
+        {            
+            $optimizeImage = Image::make($file);
+            $optimizePath = public_path().'/images/user_img/';
+            $image = time().$file->getClientOriginalName();
+            $optimizeImage->save($optimizePath.$image, 72);
+            $input['user_img'] = $image;
+            
+        }
+
+        $input['password'] = Hash::make($request->password);
+        $input['role'] = "parent";
+        $data = User::create($input);
+        $data->added_by_user_id = Auth::user()->id;
+        $data->save(); 
+
+
+        $updateastudent = User::where('id',$request->student_id)->first();
+        $updateastudent->update([
+          'parent_id' => $data->id,
+        ]);
+
+
+
+        $exists = UserAssignTeacher::where('student_id',$data->id )
+        ->where('instructor_id',Auth::user()->id)
+        ->first();
+
+        if(!$exists)
+        {
+                $assign = new UserAssignTeacher;
+        $assign->student_id = $data->id;
+        $assign->instructor_id = Auth::user()->id;
+        $assign->save();
+        }
+
+           Session::flash('success','Parent Added Successfully ');
+        return redirect()->route('parent.index');
+
+
+
+
+    }
+
+
+    public function createteacher(Request $request){
+
+
+     /*  $data = $this->validate($request, [
+            'fname' => 'required',
+            'lname' => 'required',
+            'mobile' => 'required|regex:/[0-9]{9}/',
+            'address' => 'max:2000',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:6|max:20',
+            'status' => 'required|boolean',
+            'role' => 'required',
+            'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
+            'qualification' =>'required',
+            'experiance' => 'required'
+
+        ]);
+*/
+
+          $cities = Allcity::all();
+        $states = Allstate::all();
+        $countries = Country::all();
+        return view('admin.user.teacheradd')->with(['cities' => $cities, 'states' => $states, 'countries' => $countries]);
+
+
+
+
+    }
+
+
+    public function storeTeacher(Request $request){
+
+
+       $data = $this->validate($request, [
+            'fname' => 'required',
+            'lname' => 'required',
+            'mobile' => 'required|regex:/[0-9]{9}/',
+            'address' => 'required|max:2000',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:6|max:20',
+            'status' => 'required|boolean',
+            'role' => 'required',
+            'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
+            'experience' => 'required',
+            'qualification' => 'required'
+
+        ]);
+
+
+
+
+        $input = $request->all();
+
+       
+     
+        if ($file = $request->file('user_img')) 
+        {            
+            $optimizeImage = Image::make($file);
+            $optimizePath = public_path().'/images/user_img/';
+            $image = time().$file->getClientOriginalName();
+            $optimizeImage->save($optimizePath.$image, 72);
+            $input['user_img'] = $image;
+            
+        }
+
+        $input['password'] = Hash::make($request->password);
+        
+        $data = User::create($input);
+        $data->added_by_user_id = Auth::user()->id;
+        $data->save(); 
+
+
+
+      
+
+       
+      
+
+
+        // Session::flash('success','User Added Successfully ! Add Parent info');
+        return redirect()->back()->with("success","Teacher Added");
+         
+
+
     }
 
 

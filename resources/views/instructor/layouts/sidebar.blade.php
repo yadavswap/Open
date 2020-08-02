@@ -59,10 +59,11 @@
 
 
 
-          <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Reports</span></a></li>
+           <li class="{{ Nav::isRoute('user.index') }} {{ Nav::isRoute('user.add') }} {{ Nav::isRoute('user.edit') }}"><a href="{{route('user.index')}}"><i class="fa fa-user-o" aria-hidden="true"></i><span>Students & Report</span></a></li>
 
-           <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user-circle" aria-hidden="true"></i><span>Parents</span></a></li>
-
+          
+       
+           <li class="{{ Nav::isRoute('parent.index') }}"><a href="{{route('parent.index')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Parents</span></a></li>
 
           <li class="{{ Nav::isResource('userenroll') }}"><a href="{{url('userenroll')}}"><i class="fa fa-user" aria-hidden="true"></i><span>Enrolled Students List</span></a></li>
 

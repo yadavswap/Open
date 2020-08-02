@@ -11,17 +11,48 @@
   </ul>
 </div>
 @endif
+
+@if ($success = Session::get('success')))
+<div class="alert alert-success">
+ <strong>{{ $success }}</strong>
+</div>
+@endif
  
 <section class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"> {{ __('adminstaticword.Add') }} {{ __('adminstaticword.Users') }}</h3>
+          <h3 class="box-title"> Assign Parent For Student</h3>
         </div>
         <div class="panel-body">
-          <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+
+
+
+          <form action="{{ route('parent.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+
+            <div class="row">
+              <div class="col-md-12">
+                  <label for="role">Select Student: <sup class="redstar">*</sup></label>
+                <select class="form-control js-example-basic-single" name="student_id" required id="studentselect">
+                  <option value="none" selected disabled hidden> 
+                   {{ __('adminstaticword.SelectanOption') }}
+                  </option>
+
+
+               @foreach($students as $student)
+
+                  <option value="{{ $student->id }}" >{{ $student->fname }} {{ $student->lname }} - {{ $student->email }}</option>
+
+               @endforeach
+                 
+                </select>
+              </div>
+            </div>
+
+            <br/>
+
 
             <div class="row">
               <div class="col-md-6 col-6">
@@ -53,16 +84,16 @@
 
             <div class="row">
               <div class="col-md-6">
-                <label for="exampleInputDetails">{{ __('adminstaticword.Address') }}:<sup class="redstar">*</sup></label>
+                <label for="exampleInputDetails">{{ __('adminstaticword.Address') }}:</label>
                 <textarea name="address" rows="1"  class="form-control" placeholder="Enter your address" value="{{old('address')}}"></textarea>
               </div>
               <div class="col-md-6">
-                <label for="dob">{{ __('adminstaticword.DateofBirth') }}:<sup class="redstar">*</sup></label>
+                <label for="dob">{{ __('adminstaticword.DateofBirth') }}:</label>
                 <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" value="{{ old('dob')}}" name="dob" required class="form-control pull-right" id="dob" placeholder="Enter your date of birth" autocomplete="off">
+                  <input type="text" value="{{ old('dob')}}" name="dob"  class="form-control pull-right" id="dob" placeholder="Enter your date of birth" autocomplete="off">
                 </div>
 
               </div>
@@ -133,8 +164,8 @@
                   </option>
 
 
-                  <option value="user">Student</option>
-                  <option value="instructor">Teacher</option>
+                  <option value="parent" selected="">parent</option>
+                 
                 </select>
               </div> 
            
@@ -171,19 +202,14 @@
             </div>
             <br>
 
-            <div class="row">
-              <div class="col-md-12">
-                <label for="exampleInputDetails">{{ __('adminstaticword.Detail') }}:<sup class="redstar">*</sup></label>
-                <textarea id="detail" name="detail" rows="3"  class="form-control" placeholder="Enter your detail"></textarea>
-              </div>
-            </div>
+          
             <br>
             <br>
 
         
             <div class="box-footer">
               <button type="submit" class="btn btn-md btn-primary">
-                <i class="fa fa-plus-circle"></i> {{ __('adminstaticword.AddUser') }}
+                <i class="fa fa-plus-circle"></i> Assign Parent
               </button>
             </form>
               <a href="{{ route('user.index') }}" title="Cancel and go back" class="btn btn-md btn-default btn-flat">
@@ -209,6 +235,24 @@
 @section('scripts')
 
 <script>
+
+  $(document).ready(function(){
+
+
+    $(":input").not("#studentselect").prop("disabled",true);
+
+  });
+
+
+
+  $("#studentselect").change(function(){
+
+    console.log("selected");
+       $(":input").not("#studentselect").prop("disabled",false);
+  });
+
+
+
 
 
 
