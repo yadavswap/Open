@@ -11,6 +11,7 @@
             <th>Sr No</th>
             <th>Assignment Title</th>
             <th>Assignment Detail</th>
+
             <th>Submission Time</th>
              <th>Status</th>
             <th>{{ __('adminstaticword.Delete') }}</th>
@@ -78,7 +79,7 @@
           <div class="box box-primary">
           <div class="panel panel-sum">
             <div class="modal-body">
-              <form id="demo-form2" method="post" action="{{route('assignment.add')}}" data-parsley-validate class="form-horizontal form-label-left">
+              <form id="demo-form2" method="post" action="{{route('assignment.add')}}" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <input type="hidden" name="course_id" value="{{$cor->id}}"/>
@@ -104,6 +105,18 @@
                       
                   
                   </div>
+
+
+                 
+
+                    <div class="col-md-12"> 
+                    <label for="exampleInputTit1e">Select File:<span class="redstar">*</span> </label>
+                    <input type="file" name="file" class="form-control"  required=""/>
+                      
+                  
+                  </div>
+                  
+
                 </div>
            
                      

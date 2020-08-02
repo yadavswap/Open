@@ -54,6 +54,8 @@ class QuizStartController extends Controller
         $ans = QuizAnswer::where('user_id',$auth->id)
               ->where('topic_id',$id)->get(); 
 
+           //   dd($questions);
+
         return view('front.quiz.finish', compact('auth','topic','questions','count_questions','ans','topics'));
 
 	}

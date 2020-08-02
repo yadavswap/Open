@@ -11,7 +11,7 @@
           <div class="question-block">
            
 
-          @if($topics->show_ans==1)
+          @if($topics->show_ans==0)
         
           <div class="question-block">
             <h3 class="text-center main-block-heading">{{ __('frontstaticword.answerreoprt') }}</h3>
@@ -22,6 +22,7 @@
                   <th>{{ __('frontstaticword.Question') }}</th> 
                   <th style="color: red;">{{ __('frontstaticword.YourAnswer') }}</th>
                   <th style="color: #48A3C6;">{{ __('frontstaticword.CorrectAnswer') }}</th>
+                     <th style="color: #62760C;">Correct Answer Explaination</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,6 +36,19 @@
                       <td>{{ $a->quiz->question }}</td>
                        <td>{{ $a->user_answer }}</td>
                       <td>{{ $a->answer }}</td>
+                   
+                    @foreach($questions as $anskey)
+                    @php
+                      $asas = strtolower($anskey->answer)
+                      @endphp
+                       <td>{{$anskey->$asas}}</td>
+                    @endforeach
+                  
+                   
+                       
+                     
+
+
                      
                     
                     </tr>
@@ -44,6 +58,8 @@
                         break;
                       }
                     @endphp
+
+
                  
                 @endforeach              
                
