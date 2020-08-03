@@ -14,6 +14,7 @@
 
             <th>Submission Time</th>
              <th>Status</th>
+               <th>Download</th>
             <th>{{ __('adminstaticword.Delete') }}</th>
           </tr>
         </thead>
@@ -34,6 +35,17 @@
                 @if($assignment->status)
                 {{"Active"}}
                 @endif
+                  </button>
+                
+                </form>
+              </td>
+
+                               <td>
+                <form action="{{route('assignment.add')}}" method="POST">
+                  {{ csrf_field() }}
+
+                  <button type="Submit" class="btn btn-xs btn-success">
+               <i class="fa fa-download"></i>
                   </button>
                 
                 </form>

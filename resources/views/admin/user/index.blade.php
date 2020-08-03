@@ -14,7 +14,8 @@
 
         <div class="row">
           <div class="col-md-4">
-              <a class="btn btn-info btn-sm" href="{{ route('user.add') }}">+ {{ __('adminstaticword.Add') }} {{ __('adminstaticword.User') }}</a>
+              <a class="btn btn-info btn-sm" href="{{ route('user.add') }}">+ {{ __('adminstaticword.Add') }} Student </a>
+               <a class="btn btn-info btn-sm" href="{{ route('parent.add') }}">+ Add Parent</a>
           </div>
           <div class="col-md-8">
                <div class="input-group">

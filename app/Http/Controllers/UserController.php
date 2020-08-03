@@ -64,9 +64,14 @@ class UserController extends Controller
 
             $teacherid = Auth::user()->id;
 
+            // $users = User::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
+            // ->join('user_assign_teachers','users.id','=','user_assign_teachers.student_id')
+
 
             $users = UserAssignTeacher::select('users.*','user_assign_teachers.*','user_assign_teachers.id as uas_id','users.id as id')
-            ->join('users','user_assign_teachers.student_id','=','users.id')->orderBy('users.created_at','DESC')->get();
+            ->join('users','user_assign_teachers.student_id','=','users.id')
+            ->where('user_assign_teachers.instructor_id',$teacherid)
+            ->orderBy('users.created_at','DESC')->get();
         return view('admin.user.index', compact('users'));
         }
       
@@ -475,7 +480,6 @@ $users = DB::table('users')
             'password' => 'required|min:6|max:20',
             'status' => 'required|boolean',
             'role' => 'required',
-            'user_img' => 'image|mimes:jpeg,png,jpg|max:8048',
             'student_id' =>'required'
 
         ]);
