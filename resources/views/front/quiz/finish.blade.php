@@ -20,10 +20,8 @@
               <thead>
                 <tr>
                   <th>{{ __('frontstaticword.Question') }}</th> 
-                    <th style="color: red;">Your Selected Option</th>
-                 
+                  <th style="color: red;">{{ __('frontstaticword.YourAnswer') }}</th>
                   <th style="color: #48A3C6;">{{ __('frontstaticword.CorrectAnswer') }}</th>
-                     <th style="color: #62760C;">Correct Answer Explaination</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,31 +33,8 @@
                 @foreach($ans as $key=> $a)
                     <tr>
                       <td>{{ $a->quiz->question }}</td>
-
-                        @foreach($questions as $anskey)
-                    @php
-                      $asas = strtolower($a->user_answer)
-                      @endphp
-                      <td><b>{{ $a->user_answer }}</b> : {{$anskey->$asas}} </td>
-                      
-                    @endforeach
-
-
-                       
+                       <td>{{ $a->user_answer }}</td>
                       <td>{{ $a->answer }}</td>
-                   
-                    @foreach($questions as $anskey)
-                    @php
-                      $asas = strtolower($anskey->answer)
-                      @endphp
-                       <td>{{$anskey->$asas}}</td>
-                    @endforeach
-                  
-                   
-                       
-                     
-
-
                      
                     
                     </tr>
@@ -69,8 +44,6 @@
                         break;
                       }
                     @endphp
-
-
                  
                 @endforeach              
                

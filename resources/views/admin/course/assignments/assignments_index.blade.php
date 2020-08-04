@@ -41,24 +41,32 @@
               </td>
 
                                <td>
-                <form action="{{route('assignment.add')}}" method="POST">
-                  {{ csrf_field() }}
 
+             @php
+             $path = "uploads/".$assignment->file_path;
+             @endphp
+                                <a href="{{url($path)}}">
                   <button type="Submit" class="btn btn-xs btn-success">
                <i class="fa fa-download"></i>
                   </button>
+
+                </a>
                 
-                </form>
+                
               </td>
 
               <td>
 
-                  <form action="{{route('assignment.delete')}}" method="POST">
-                  {{ csrf_field() }}
-                  <input type="hidden" name="id" value="{{$assignment->id}}" />
- <button type="submit" class="btn btn-danger"><i class="fa fa-fw fa-trash-o"></i></button>
+                 
+
+                  <a href="{{route('assignment.delete',$assignment->id)}}">
+
+                     <button type="button" class="btn btn-danger"><i class="fa fa-fw fa-trash-o"></i></button>
+                  </a>
+
+
                 
-                </form>
+              
               
                    
               

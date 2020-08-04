@@ -479,6 +479,26 @@ class CourseController extends Controller
 
     public function createAssignment(Request $request){
 
+              $request->validate([
+
+            'file' => 'required|max:10400',
+
+        ]);
+
+
+                      $fileName = time().'.'.$request->file->extension();  
+
+   
+
+        $request->file->move(public_path('uploads'), $fileName);
+
+       // dd($fileName);
+
+
+
+  
+
+
       $id = $request->course_id;
 
       $coursedata = Course::findOrFail($id);
@@ -489,16 +509,18 @@ class CourseController extends Controller
       $assignment->assignment_title = $request->assignment_title;
       $assignment->assignment_data = $request->assignment_details;
       $assignment->submission_time = $request->submission_date;
+      $assignment->file_path = $fileName;
       $assignment->save();
 
       return redirect()->back()->with('success',"Assignment Added Succesfully.");
 
     }
 
-    public function deleteassignment(Request $request){
+    public function deleteassignment($id){
 
 
-        $assignment = Assignment::where('id', $request->id)->get();
+        $assignment = Assignment::findOrFail($id);
+
 
   
         $assignment->delete();

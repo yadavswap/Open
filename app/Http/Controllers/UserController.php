@@ -268,39 +268,8 @@ class UserController extends Controller
 
         $user = User::findorfail($id);
 
-        if($user->parent_id == 0 && $user->role == "user")
-        {
-            $parent = new User;
-            $parent->fname = $request->parentfname;
-              $parent->lname = $request->parentlname;
-                $parent->email = $request->parentemail;
-                 $parent->mobile = $request->parentmobile;
-                 $parent->password = $request->parentpassword;
-                 $parent->save();
-
-
-        }
-        else{
-
-             if(isset($request->update_pass)){
-          
-            $input['password'] = Hash::make($request->parentpassword);
-        }
-        else{
-            $input['password'] = "12345678";
-        }
-
-
-
-
-            // $parentinput = array(
-            //     'fname' = $request->parentfname,
-            //     'lname' = $request->parentlname,
-            //     'email' = $request->parentemail,
-            //     'mobile'= $request->parentmobile,
-            //     'password' = $input['password'],
-            // );
-        }
+       
+     
 
         $input = $request->all();
         

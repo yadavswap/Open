@@ -244,7 +244,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
     Route::resource('announsment','AnnounsmentController');
     Route::get('/course/create/{id}','CourseController@showCourse')->name('course.show');
       Route::post('/assignment/create/','CourseController@createAssignment')->name('assignment.add');
-         Route::post('/assignment/delete/','CourseController@deleteassignment')->name('assignment.delete');
+         Route::get('/assignment/delete/{id}','CourseController@deleteassignment')->name('assignment.delete');
     Route::post('/category/insert','CategoriesController@categoryStore')->name('cat.store');
     Route::post('/subcategory/insert','SubcategoryController@SubcategoryStore')->name('child.store');
     Route::put('/course/include/{id}','CourseController@testup')->name('corinc.update');
