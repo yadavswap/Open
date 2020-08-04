@@ -147,7 +147,7 @@
                         </td>
 
                         <td>
-                          <a class="btn btn-success btn-sm" href="{{ route('user.update',$user->id) }}">
+                          <a class="btn btn-success btn-sm" href="{{ route('attendance.view',$user->id) }}">
                             View Attendance</a>
                         </td>
 

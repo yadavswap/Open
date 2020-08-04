@@ -68,6 +68,8 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
   @endif
   <link rel="stylesheet" href="{{ asset('css/custom-style.css') }}"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{url('zabuto_calendar.min.css')}}">
+
   @yield('stylesheets')
   
 </head>
@@ -206,7 +208,7 @@ $rtl = array('ar','he','ur', 'arc', 'az', 'dv', 'ku'); //make a list of rtl lang
   <script src="{{ url('admin/bower_components/moment/moment.js') }}"></script>
    <script src="{{ url('js/datepicker.js') }}"></script>
   <script src="{{ url('js/custom-js.js')}}"></script>
-  
+  <script src="{{url('zabuto_calendar.min.js')}}"></script>
   <!-- page script -->
   <script>
     $(function () {

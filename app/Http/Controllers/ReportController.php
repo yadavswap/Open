@@ -113,4 +113,85 @@ $i++;
     }
 
 
+    public function viewAttendanceReport($id){
+
+        $users = User::findOrFail($id);
+
+            $currentmonth = $date = date('Y-m');
+
+  
+        $data = UserDailyAttendance::where('attendance_date','LIKE','%'.$currentmonth.'%')->where('user_id',$id)->get();
+
+        $currentday = date("d");
+
+        $totalpresent = $data->count();
+        $totaldays = Carbon::now()->daysInMonth;
+        $totalabsent =  (int)$currentday - (int)$totalpresent;
+
+        //dd($totalabsent);
+
+
+
+          $date = date('Y-m-d');
+
+        $attendancedata = UserDailyAttendance::select('user_daily_attendance.id','user_daily_attendance.user_id','users.id','users.fname','users.lname','user_daily_attendance.attendance_date','user_daily_attendance.attendance_time','users.email','users.added_by_user_id','users.user_img')
+        ->join('users','users.id','=','user_daily_attendance.user_id')
+        ->where('added_by_user_id',$id)
+        ->where('attendance_date',$date)
+        ->get();
+
+
+
+        $count = $attendancedata->count();
+
+       // dd($count);
+
+        $attendancearray = $this->attendancearray($id);
+
+        //dd($attendancearray);
+
+
+
+
+        return view('admin.reports.attendance',compact('users','totalpresent','totaldays','totalabsent','attendancedata','date','count','currentday','attendancearray'));
+
+       // dd($users);
+
+
+
+    }
+
+
+    private function attendancearray($id,$date = null)
+    {
+        $attendancearray = [];
+
+        $attendance = UserDailyAttendance::where('user_id',$id)->orderBy('created_at','DESC')->get();
+
+       
+
+        $i = 0;
+        foreach ($attendance as $ud) {
+
+      
+          $attendancearray[$i]['date']=   $ud->attendance_date;
+           $attendancearray[$i]['badge']=   true;
+            $attendancearray[$i]['title']=   "Present";
+
+            $attendancearray[$i]['body'] = "<p class=\"lead\">Party<\/p><p>Like it's 1999.<\/p>";
+
+
+            $i++;
+
+        }
+
+        $attendancearray = json_encode($attendancearray);
+    
+
+        return $attendancearray;
+
+
+    }
+
+
 }

@@ -54,20 +54,7 @@
             </ul>
           </li>
 
-          <li class="treeview">
-           <a href="#">
-             <i class="fa fa-user-plus" aria-hidden="true"></i> <span>{{"Attendance"}}</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="{{ Nav::isRoute('all.instructor') }}"><a href="{{route('students.attendance.index')}}"><i class="fa fa-circle-o"></i>{{"Student Attendance"}}</a></li>
-            
-            </ul>
-          </li>
-
-        
+       
          
 
           <li class="{{ Nav::isResource('category') }} {{ Nav::isResource('subcategory') }} {{ Nav::isResource('childcategory') }} {{ Nav::isResource('course') }} {{ Nav::isResource('courselang') }} treeview">

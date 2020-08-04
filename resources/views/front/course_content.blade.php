@@ -944,7 +944,17 @@
                                               
 
                                                </div>
-                                              <p>{{ucfirst($assignment->assignment_data)}}</p>     
+                                              
+                                              <b>{{ucfirst($assignment->assignment_data)}}</b>   
+                                              <center>
+                                                @php
+                                                $file = "uploads/".$assignment->file_path;
+                                                @endphp
+                                                <a href="{{url($file)}}">
+                                              <button class="btn btn-success btn-sm"><i class="fa fa-download"></i></button>  
+                                              </a>
+
+                                              </center>
                                          
                                             </div>
                                           </div>

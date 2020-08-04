@@ -118,6 +118,13 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 
      });
 
+        Route::prefix('viewreport')->group(function (){
+
+         Route::get('attendance/{id}','ReportController@viewAttendanceReport')->name('attendance.view');
+        
+
+     });
+
     Route::prefix('user')->group(function (){
     Route::get('/','UserController@viewAllUser')->name('user.index');
       Route::get('/teachers','UserController@viewAllTeachers')->name('teacher.index');
