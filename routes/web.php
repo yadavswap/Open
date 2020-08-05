@@ -121,7 +121,11 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
         Route::prefix('viewreport')->group(function (){
 
          Route::get('attendance/{id}','ReportController@viewAttendanceReport')->name('attendance.view');
+
+
+         Route::post('attendance/{id}/export/attendance','ReportController@exportReport')->name('attendance.export');
         
+          Route::get('watchtime/{id}','ReportController@watchTimeIndex')->name('watchtime.view');
 
      });
 

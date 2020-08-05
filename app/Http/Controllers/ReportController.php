@@ -194,4 +194,80 @@ $i++;
     }
 
 
+    public function exportReport(Request $request,$id){
+
+        dd($request);
+
+       $user =  User::findOrFail($id);
+
+
+
+
+    }
+
+
+    public function watchTimeIndex($id){
+
+        $users = User::findOrFail($id);
+
+         $watchdata = [];
+
+
+        /*Watch Time Code Start*/
+
+
+          $currentmonth = $date = date('Y-m-d');
+
+  
+        $data = WatchTime::where('starts_at_date','LIKE','%'.$currentmonth.'%')
+        ->where('user_id',$id)
+        ->whereNotNull('ends_at_time')
+        ->get();
+
+
+        $i = 0;
+
+        if($data){
+
+      
+        foreach ($data as $time) {
+            if($time->starts_at_time && $time->ends_at_time)
+            {
+
+        $from = Carbon::createFromFormat('H:s:i', $time->starts_at_time);
+        $to = Carbon::createFromFormat('H:s:i', $time->ends_at_time);
+        $diff_in_minutes = $to->diffInSeconds($from);
+        $coursename =  \App\CourseClass::where('course_id', $time->course_id)->first();
+
+
+          $watchdata[$i]= array(
+            'course_name'=>$coursename->title,
+            'course_duration'=> (float)$diff_in_minutes/60
+          ); 
+
+
+            $i++;
+
+            }
+
+
+              }
+
+
+        }
+
+       
+
+
+
+        /* Watch Time Code Ended*/
+
+      
+       return view('admin.reports.watchtime',compact('users','watchdata'));
+
+
+
+    }
+
+
 }

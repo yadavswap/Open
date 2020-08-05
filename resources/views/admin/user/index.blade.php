@@ -58,8 +58,9 @@
                   <th>{{ __('adminstaticword.Edit') }}</th>
                   <th>{{ __('adminstaticword.Delete') }}</th>
                     <th>Attendance Report</th>
-                    <th>Exam Report</th>
+                  
                      <th>Watch Report</th>
+                       <th>Exam Report</th>
                 </thead> 
 
                 <tbody>
@@ -152,14 +153,16 @@
                         </td>
 
                           
-                        <td>
-                          <a class="btn btn-info btn-sm" href="{{ route('user.update',$user->id) }}">
-                            View Result</a>
-                        </td>
+                       
                           
                         <td>
-                          <a class="btn btn-warning btn-sm" href="{{ route('user.update',$user->id) }}">
+                          <a class="btn btn-warning btn-sm" href="{{ route('watchtime.view',$user->id) }}">
                             View Watch Time</a>
+                        </td>
+
+                         <td>
+                          <a class="btn btn-info btn-sm" href="{{ route('user.update',$user->id) }}">
+                            View Result</a>
                         </td>
                     </tr>
                     @endif

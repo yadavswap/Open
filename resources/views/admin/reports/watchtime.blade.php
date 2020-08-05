@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('body')
-@section('title', 'View Attendance - Student')
+@section('title', 'View Watch Time Of Student - Student')
 
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -23,7 +23,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"> View Attendance Of Student</h3>
+          <h3 class="box-title"> View Watch Log Of Student</h3>
         </div>
         <div class="panel-body">
 
@@ -35,7 +35,7 @@
             <input type="hidden" name="id" value="{{$users->id}}">
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                   <label for="role">Select Month: <sup class="redstar">*</sup></label>
                 <select class="form-control js-example-basic-single" name="month" required id="monthselect">
                   <option value="none" selected disabled hidden> 
@@ -63,39 +63,109 @@
                  
                 </select>
               </div>
+              <!--  -->
+
+               <div class="col-md-6">
+                  <label for="role">Select Course: <sup class="redstar">*</sup></label>
+                <select class="form-control js-example-basic-single" name="month" required id="monthselect">
+                  <option value="none" selected disabled hidden> 
+                   {{ __('adminstaticword.SelectanOption') }}
+                  </option>
+
+
+            
+
+                 
+                 
+
+
+              
+                 
+                </select>
+              </div>
+
             </div>
 
             <br/>
 
              <div class="row">
 
-               <div class="col-md-2">
-                   <b>Total Days : </b>  <button class="btn btn-xs btn-info" type="button">{{$totaldays}}</button>
+               <div class="col-md-3">
+                   <b>Total Attended Courses : </b>  <button class="btn btn-xs btn-info" type="button">3 Courses</button>
                </div>
 
-              <div class="col-md-2">
-              <b>Total Present : </b>  <button class="btn btn-xs btn-success" type="button">{{$totalpresent}}</button>
+              <div class="col-md-3">
+              <b>Total Attended Lectures : </b>  <button class="btn btn-xs btn-success" type="button">2 Lectures</button>
               </div>
-                  <div class="col-md-2">
-                     <b>Total Absent : </b>  <button class="btn btn-xs btn-danger" type="button">{{$totalabsent}}</button>
-                  </div>
+
+                <div class="col-md-4">
+              <b>Total Minutes Watched This Month : </b>  <button class="btn btn-xs btn-warning" type="button">0 Minutes</button>
+              </div>
+               
                      
              </div>
 
              <br/>
+              <br/>
 
              <div class="row">
 
-            <div class="container">
+          
 
-               <div class="col-md-8">
+               <div class="col-md-12">
+
+<!-- Table start -->
+
+
+ <div class="table-responsive">
+              <table id="example2" class="table table-bordered table-striped table-responsive">
+                <thead>
+                  <th>#</th>
+                  <th>Lecture Name</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Total Minutes Spent</th>
+                
+
+                <tbody>
+                 
+
+                      <tr>
+                        <td>1</td>
+                        <td>Sample Lecture</td>
+                        <td>11:00:22 am</td>
+                        <td>12:00:10 pm</td>
+                        <td>60 Mins</td>
+                        <td>
+                        </td>
+                 
+                        
+
+                     
+
+                    </tr>
+                 
+
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+
+                <!-- Table End -->
                
              </div>
               
-            </div>
+       
             
 
              </div>
+
+             <br/>
+                <br/>
+                   <br/>
 
 
 
@@ -175,74 +245,15 @@
 
 @section('scripts')
 
-<script type="application/javascript">
-var eventData = 
- <?=$attendancearray;?>
-;
-$(document).ready(function () {
-  $("#demo").zabuto_calendar({
-    data: eventData,
-     nav_icon: {
-      prev: '<i class="fa fa-chevron-circle-left"></i>',
-      next: '<i class="fa fa-chevron-circle-right"></i>'
-    },
-        cell_border: true,
-  });
-});
-
-var now = new Date();
-var year = now.getFullYear();
-var month = now.getMonth() + 1;
-var settings = {
-    language: false,
-    year: year,
-    month: month,
-    show_previous: true,
-    show_next: true,
-    cell_border: true,
-    today: false,
-    show_days: true,
-    weekstartson: 1,
-    nav_icon: false, // object: prev: string, next: string
-    data: false,
-    ajax: false, // object: url: string, modal: boolean,
-    legend: false, // object array, [{type: string, label: string, classname: string}]
-    action: false, // function
-    action_nav: false // function
-};
-
-</script>
 
   
 
-
- <script>  
- $(document).ready(function(){  
-      $('#employee_data').DataTable();  
- });  
- </script> 
 
 
 <script>
 
 
 
-
-
-(function($) {
-  "use strict";
-
-  $('#married_status').change(function() {
-      
-    if($(this).val() == 'Married')
-    {
-      $('#doaboxxx').show();
-    }
-    else
-    {
-      $('#doaboxxx').hide();
-    }
-  });
 
   $(function() {
     $( "#dob,#doa" ).datepicker({
@@ -254,62 +265,7 @@ var settings = {
 
   tinymce.init({selector:'textarea#detail'});
 
-  $(function() {
-    var urlLike = '{{ url('country/dropdown') }}';
-    $('#country_id').change(function() {
-      var up = $('#upload_id').empty();
-      var cat_id = $(this).val(); 
-      if(cat_id){
-        $.ajax({
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          type:"GET",
-          url: urlLike,
-          data: {catId: cat_id},
-          success:function(data){   
-            console.log(data);
-            up.append('<option value="0">Please Choose</option>');
-            $.each(data, function(id, title) {
-              up.append($('<option>', {value:id, text:title}));
-            });
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(XMLHttpRequest);
-          }
-        });
-      }
-    });
-  });
 
-  $(function() {
-    var urlLike = '{{ url('country/gcity') }}';
-    $('#upload_id').change(function() {
-      var up = $('#grand').empty();
-      var cat_id = $(this).val();    
-      if(cat_id){
-        $.ajax({
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          type:"GET",
-          url: urlLike,
-          data: {catId: cat_id},
-          success:function(data){   
-            console.log(data);
-            up.append('<option value="0">Please Choose</option>');
-            $.each(data, function(id, title) {
-              up.append($('<option>', {value:id, text:title}));
-            });
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(XMLHttpRequest);
-          }
-        });
-      }
-    });
-  });
-})(jQuery);
 </script>
 
 @endsection
