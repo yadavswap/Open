@@ -55,6 +55,17 @@ font-weight: normal; font-size: 14px;"><i class="fa fa-sign-out"> Logout</i>
 	                <div class="profile-info-block">
 	                    <div class="profile-heading">Attendance Report</div>
 
+                      <div class="row">
+                        <div class="col-md-4">
+                        <b>Total Present :</b>  <button class="btn btn-succcess btn-xs">{{$totalpresent}}</button>
+                        </div>
+                        <div class="col-md-4">
+                        <b>Total Absent :</b>  <button class="btn btn-succcess btn-xs">{{$totalabsent}}</button>
+                        </div>
+                      </div>
+
+                      <br/>
+
 	              
 		                 <div id="piechart"></div>
     <div id="columnchart"></div>
