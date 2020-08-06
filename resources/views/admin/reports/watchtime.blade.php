@@ -72,6 +72,12 @@
                    {{ __('adminstaticword.SelectanOption') }}
                   </option>
 
+                  @foreach ($attendedcourses as $attendedcourse)
+
+                    <option value="{{$attendedcourse['course_id']}}">{{$attendedcourse['course_name']}}</option>
+
+                  @endforeach
+
 
             
 
@@ -91,15 +97,12 @@
              <div class="row">
 
                <div class="col-md-3">
-                   <b>Total Attended Courses : </b>  <button class="btn btn-xs btn-info" type="button">3 Courses</button>
+                   <b>Total Attended Courses : </b>  <button class="btn btn-xs btn-info" type="button">{{$totallectures}} Courses</button>
                </div>
 
-              <div class="col-md-3">
-              <b>Total Attended Lectures : </b>  <button class="btn btn-xs btn-success" type="button">2 Lectures</button>
-              </div>
-
+          
                 <div class="col-md-4">
-              <b>Total Minutes Watched This Month : </b>  <button class="btn btn-xs btn-warning" type="button">0 Minutes</button>
+              <b>Total Minutes Watched This Month : </b>  <button class="btn btn-xs btn-warning" type="button">{{$totaltime}} Minutes</button>
               </div>
                
                      
@@ -122,6 +125,7 @@
                 <thead>
                   <th>#</th>
                   <th>Lecture Name</th>
+                  <th>Date</th>
                   <th>Start Time</th>
                   <th>End Time</th>
                   <th>Total Minutes Spent</th>
@@ -131,12 +135,21 @@
                  
 
                       <tr>
-                        <td>1</td>
-                        <td>Sample Lecture</td>
-                        <td>11:00:22 am</td>
-                        <td>12:00:10 pm</td>
-                        <td>60 Mins</td>
-                        <td>
+                        <?php $i = 1;?>
+
+                      @foreach ($watchdata as $wd)
+                      <td>{{$i}}</td>
+                      <td>{{$wd['course_name']}}</td>
+                      <td>{{$wd['starts_at_date']}}</td>
+                        <td>{{$wd['starts_time']}}</td>
+                          <td>{{$wd['ends_time']}}</td>
+                            <td>{{$wd['course_duration']}} Min (approx)</td>
+
+                            @php
+                            $i++;
+                            @endphp
+
+                      @endforeach
                         </td>
                  
                         
@@ -201,7 +214,7 @@
 
               <div class="col-md-12">
                 
-                  <span style="font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; line-height: 18px; white-space: pre-wrap; background-color: rgb(255, 255, 255);"><div id="demo"></div></span>
+               
                   
 
               </div>

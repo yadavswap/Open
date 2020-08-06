@@ -32,9 +32,11 @@ class ReportController extends Controller
   
     	$data = UserDailyAttendance::where('attendance_date','LIKE','%'.$currentmonth.'%')->where('user_id',Auth::user()->id)->get();
 
-    	$totalpresent = $data->count();
-    	$totaldays = Carbon::now()->daysInMonth;
-    	$totalabsent =  (int)$totaldays - (int)$totalpresent;
+    	 $currentday = date("d");
+
+        $totalpresent = $data->count();
+        $totaldays = Carbon::now()->daysInMonth;
+        $totalabsent =  (int)$currentday - (int)$totalpresent;
 
     
 
@@ -209,18 +211,37 @@ $i++;
     public function watchTimeIndex($id){
 
         $users = User::findOrFail($id);
-
+        $currentmonth = $date = date('Y-m-d');
+        $attendedcourses[0] = array('course_id'=>0,
+        'course_name'=> "Not Available"
+    );
          $watchdata = [];
+         $totaltime = 0;
+         $totallectures = WatchTime::where('starts_at_date','LIKE','%'.$currentmonth.'%')
+        ->where('user_id',$id)
+        ->whereNotNull('lecture_id')
+        ->whereNotNull('ends_at_time')
+        ->groupBy('course_id')
+        ->get('course_id');
+
+        if($totallectures)
+        {
+            $totallectures = $totallectures->count();
+        }
+        else{
+            $totallectures = 0;
+        }
 
 
         /*Watch Time Code Start*/
 
 
-          $currentmonth = $date = date('Y-m-d');
+         
 
   
         $data = WatchTime::where('starts_at_date','LIKE','%'.$currentmonth.'%')
         ->where('user_id',$id)
+           ->whereNotNull('lecture_id')
         ->whereNotNull('ends_at_time')
         ->get();
 
@@ -239,14 +260,22 @@ $i++;
         $diff_in_minutes = $to->diffInSeconds($from);
         $coursename =  \App\CourseClass::where('course_id', $time->course_id)->first();
 
+        $watchinmin = (float)$diff_in_minutes/60;
+        $watchinmin /= $watchinmin;
+
 
           $watchdata[$i]= array(
             'course_name'=>$coursename->title,
-            'course_duration'=> (float)$diff_in_minutes/60
+            'course_duration'=> $watchinmin,
+            'starts_time' => $time->starts_at_time,
+            'ends_time'=>$time->ends_at_time,
+            'starts_at_date'=>$time->starts_at_date,
           ); 
 
 
             $i++;
+
+            $totaltimespent = $totaltime + $watchinmin;
 
             }
 
@@ -254,6 +283,15 @@ $i++;
               }
 
 
+        }
+        else{
+              $watchdata[0]= array(
+            'course_name'=> "Not Available yet",
+            'course_duration'=> 0,
+            'starts_time' => "NA",
+            'ends_time'=>"NA",
+            'starts_at_date'=>"NA",
+          ); 
         }
 
        
@@ -263,11 +301,17 @@ $i++;
         /* Watch Time Code Ended*/
 
       
-       return view('admin.reports.watchtime',compact('users','watchdata'));
+       return view('admin.reports.watchtime',compact('users','watchdata','totaltimespent','totallectures','totaltime','attendedcourses'));
 
 
 
     }
+
+
+
+
+
+
 
 
 }
